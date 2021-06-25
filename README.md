@@ -1,5 +1,3 @@
-# k052109_verilog
-
 # k051962_verilog
 
 !["052109"](https://github.com/RndMnkIII/k052109_verilog/blob/main/img/konami_052109.jpg)
