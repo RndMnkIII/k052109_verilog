@@ -1,0 +1,16 @@
+#ignore generated trace data folder and trace files
+traces/
+*.vvp
+*.lxt
+*.vcd
+
+#ignore IDE files
+.vscode/
+.DS_Store
+
+#ignore binary rom files
+*.mem
+875b??.*
+875b??_???.hex
+PROM_H14
+
