@@ -1,0 +1,156 @@
+void aliens_state::aliens_map(address_map &map)
+{
+	map(0x0000, 0x03ff).m(m_bank0000, FUNC(address_map_bank_device::amap8));
+	map(0x0400, 0x1fff).ram();
+	map(0x2000, 0x3fff).bankr("rombank");                                /* banked ROM */
+	map(0x4000, 0x7fff).rw(FUNC(aliens_state::k052109_051960_r), FUNC(aliens_state::k052109_051960_w));
+	map(0x5f80, 0x5f80).portr("DSW3");
+	map(0x5f81, 0x5f81).portr("P1");
+	map(0x5f82, 0x5f82).portr("P2");
+	map(0x5f83, 0x5f83).portr("DSW2");
+	map(0x5f84, 0x5f84).portr("DSW1");
+	map(0x5f88, 0x5f88).r("watchdog", FUNC(watchdog_timer_device::reset_r)).w(FUNC(aliens_state::aliens_coin_counter_w));      /* coin counters */
+	map(0x5f8c, 0x5f8c).w(FUNC(aliens_state::aliens_sh_irqtrigger_w));                       /* cause interrupt on audio CPU */
+	map(0x8000, 0xffff).rom().region("maincpu", 0x28000);                   /* ROM e24_j02.bin */
+}
+
+uint8_t aliens_state::k052109_051960_r(offs_t offset)
+{
+	if (m_k052109->get_rmrd_line() == CLEAR_LINE)
+	{
+		if (offset >= 0x3800 && offset < 0x3808)
+			return m_k051960->k051937_r(offset - 0x3800);
+		else if (offset < 0x3c00)
+			return m_k052109->read(offset);
+		else
+			return m_k051960->k051960_r(offset - 0x3c00);
+	}
+	else
+		return m_k052109->read(offset);
+}
+
+void aliens_state::k052109_051960_w(offs_t offset, uint8_t data)
+{
+	if (offset >= 0x3800 && offset < 0x3808)
+		m_k051960->k051937_w(offset - 0x3800, data);
+	else if (offset < 0x3c00)
+		m_k052109->write(offset, data);
+	else
+		m_k051960->k051960_w(offset - 0x3c00, data);
+}
+
+/*
+Konami 052109/051962
+-------------
+These work in pair.
+The 052109 manages 3 64x32 scrolling tilemaps with 8x8 characters, and
+optionally generates timing clocks and interrupt signals. It uses 0x4000
+bytes of RAM, and a variable amount of ROM. It cannot read the ROMs:
+instead, it exports 21 bits (16 from the tilemap RAM + 3 for the character
+raster line + 2 additional ones for ROM banking) and these are externally
+used to generate the address of the required data on the ROM; the output of
+the ROMs is sent to the 051962, along with a color code. In theory you could
+have any combination of bits in the tilemap RAM, as long as they add to 16.
+In practice, all the games supported so far standardize on the same format
+which uses 3 bits for the color code and 13 bits for the character code.
+The 051962 multiplexes the data of the three layers and converts it into
+palette indexes and transparency bits which will be mixed later in the video
+chain.
+Priority is handled externally: these chips only generate the tilemaps, they
+don't mix them.
+Both chips are interfaced with the main CPU. When the RMRD pin is asserted,
+the CPU can read the gfx ROM data. This is done by telling the 052109 which
+dword to read (this is a combination of some banking registers, and the CPU
+address lines), and then reading it from the 051962.
+052109 inputs:
+- address lines (AB0-AB15, AB13-AB15 seem to have a different function)
+- data lines (DB0-DB7)
+- misc interface stuff
+052109 outputs:
+- address lines for the private RAM (RA0-RA12)
+- data lines for the private RAM (VD0-VD15)
+- NMI, IRQ, FIRQ for the main CPU
+- misc interface stuff
+- ROM bank selector (CAB1-CAB2)
+- character "code" (VC0-VC10)
+- character "color" (COL0-COL7); used foc color but also bank switching and tile
+  flipping. Exact meaning depends on externl connections. All evidence indicates
+  that COL2 and COL3 select the tile bank, and are replaced with the low 2 bits
+  from the bank register. The top 2 bits of the register go to CAB1-CAB2.
+  However, this DOES NOT WORK with Gradius III. "color" seems to pass through
+  unaltered.
+- layer A horizontal scroll (ZA1H-ZA4H)
+- layer B horizontal scroll (ZB1H-ZB4H)
+- ????? (BEN)
+051962 inputs:
+- gfx data from the ROMs (VC0-VC31)
+- color code (COL0-COL7); only COL4-COL7 seem to really be used for color; COL0
+  is tile flip X.
+- layer A horizontal scroll (ZA1H-ZA4H)
+- layer B horizontal scroll (ZB1H-ZB4H)
+- let main CPU read the gfx ROMs (RMRD)
+- address lines to be used with RMRD (AB0-AB1)
+- data lines to be used with RMRD (DB0-DB7)
+- ????? (BEN)
+- misc interface stuff
+051962 outputs:
+- FIX layer palette index (DFI0-DFI7)
+- FIX layer transparency (NFIC)
+- A layer palette index (DSA0-DSAD); DSAA-DSAD seem to be unused
+- A layer transparency (NSAC)
+- B layer palette index (DSB0-DSBD); DSBA-DSBD seem to be unused
+- B layer transparency (NSBC)
+- misc interface stuff
+052109 memory layout:
+0000-07ff: layer FIX tilemap (attributes)
+0800-0fff: layer A tilemap (attributes)
+1000-17ff: layer B tilemap (attributes)
+180c-1833: A y scroll
+1a00-1bff: A x scroll
+1c00     : ?
+1c80     : row/column scroll control
+           ------xx layer A row scroll
+                    00 = disabled
+                    01 = disabled? (gradius3, vendetta)
+                    10 = 32 lines
+                    11 = 256 lines
+           -----x-- layer A column scroll
+                    0 = disabled
+                    1 = 64 (actually 40) columns
+           ---xx--- layer B row scroll
+           --x----- layer B column scroll
+           suratk sets this register to 70 during the second boss to produce rotating star field, using X and Y scroll in the same time.
+           not emulated due to MAME's tilemaps restrictions, currently handled in hacky way.
+           glfgreat sets it to 30 when showing the leader board
+           mariorou sets it to 36 when ingame, while actually does per-row scroll for layer A and per-collumn scroll for layer B.
+           such usage not supported by current implementation, hacked in game driver instead.
+1d00     : bits 0 & 1 might enable NMI and FIRQ, not sure
+         : bit 2 = IRQ enable
+1d80     : ROM bank selector bits 0-3 = bank 0 bits 4-7 = bank 1
+1e00     : ROM membank selector for ROM testing
+1e80     : bit 0 = flip screen (applies to tilemaps only, not sprites)
+         : bit 1 = set by crimfght, mainevt, surpratk, xmen, mia, punkshot, thndrx2, spy
+         :         it seems to enable tile flip X, however flip X is handled by the
+         :         051962 and it is not hardwired to a specific tile attribute.
+         :         Note that xmen, punkshot and thndrx2 set the bit but the current
+         :         drivers don't use flip X and seem to work fine.
+         : bit 2 = enables tile flip Y when bit 1 of the tile attribute is set
+1f00     : ROM bank selector bits 0-3 = bank 2 bits 4-7 = bank 3
+2000-27ff: layer FIX tilemap (code)
+2800-2fff: layer A tilemap (code)
+3000-37ff: layer B tilemap (code)
+3800-3807: nothing here, so the chip can share address space with a 051937
+380c-3833: B y scroll
+3a00-3bff: B x scroll
+3c00-3fff: nothing here, so the chip can share address space with a 051960
+3d80     : mirror of 1d80, but ONLY during ROM test (surpratk)
+3e00     : mirror of 1e00, but ONLY during ROM test (surpratk)
+3f00     : mirror of 1f00, but ONLY during ROM test (surpratk)
+EXTRA ADDRESSING SPACE USED BY X-MEN:
+4000-47ff: layer FIX tilemap (code high bits)
+4800-4fff: layer A tilemap (code high bits)
+5000-57ff: layer B tilemap (code high bits)
+The main CPU doesn't have direct acces to the RAM used by the 052109, it has
+to through the chip.
+*/
+
