@@ -116,6 +116,11 @@ endmodule
 //Function: Block Clock Buffer (Non-Inv)
 //to: 2.26-3.31ns A->X
 
+//Cell Name: K3B
+//Function: Gated Clock Buffer (AND) X = A1 & A2
+//to: 1.34-1.45ns A->X
+
+
 //Cell Name: C43
 //Function: 4-bit Binary Synchronous Up Counter
 //CK->CO to=12.44-13.40ns

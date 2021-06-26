@@ -211,8 +211,52 @@ module k052109_DLY (
     assign RST = P18_Q[3]; //*** OUTPUT SIGNAL RST ***
     //* END Section 3.2. Reset delayed signal *
 
+    //* START Section 3.3. Buffered,inverted and ANDed signals *
+    wire AB9n, AB9_BUF; //Logic Cell V1N 0.55//AB9_INV
+    wire AB8n, AB8_BUF; //Logic Cell V1N 0.55//AB8_INV
+    wire AB7n, AB7_BUF; //Logic Cell V1N 0.55//AB7_INV
+    wire RMRDn; //Logic Cell V2B 0.64
+    wire RMRD_BUF; //Logic Cell K1B 1.26
+    wire AB_18xx; //Logic Cell K3B
+
+    assign #0.55 AB9n = ~AB[9];
+    assign #0.55 AB9_BUF = ~AB9n;
     
+    assign #0.55 AB8n = ~AB[8];
+    assign #0.55 AB8_BUF = ~AB8n;
+    
+    assign #0.55 AB7n = ~AB[7];
+    assign #0.55 AB7_BUF = ~AB7n;
 
+    assign #1.26 RMRDn = ~RMRD;
+    assign #0.64 RMRD_BUF = RMRD;
 
+    assign #1.45 AB_18xx = AB[12] & AB[12];
+    //* END Section 3.3. Buffered,inverted and ANDed signals *
 
+    //* START Section 3.4. Buffered DB_IN[7:0] signals *
+    wire [7:0] DB_IN;
+    wire [7:0] DB_BUF;
+    generate
+        genvar i;
+        for(i=0; i < 8; i=i+1) begin
+            //Logic Cell K2B
+            assign #1.83 DB_BUF[i] = DB_IN[i];
+        end
+    endgenerate
+    //* END Section 3.4. Buffered DB_IN[7:0] signals *
+
+    //* START Section 3.5. Interrupt flags signals *
+    wire P4_Q;
+    FDN_DLY p4(.D(1'b0), .Sn(€REG1D00_D2), .CK(€TRIG_IRQ), .Q(P4_Q));
+    assign IRQ = P4_Q; //*** OUTPUT SIGNAL IRQ ***
+
+    wire F27_Q;
+    FDN_DLY f27(.D(1'b0), .Sn(€REG1D00_D1), .CK(€TRIG_FIRQ), .Q(F27_Q));
+    assign FIRQ = F27_Q; //*** OUTPUT SIGNAL FIRQ ***
+
+    wire CC52_Q;
+    FDN_DLY cc52(.D(1'b0), .Sn(€REG1D00_D0), .CK(€TRIG_NMI), .Q(CC52_Q));
+    assign NMI = CC52_Q; //*** OUTPUT SIGNAL NMI ***
+    //* END Section 3.5. Interrupt flags signals *
 endmodule
