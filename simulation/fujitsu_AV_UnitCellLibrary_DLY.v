@@ -352,14 +352,10 @@ endmodule
 //|          H   L           L   L          | Inh |
 //|          L   H           H   H          | Inh |
 //|          H   L           H   H          | Inh |
-//|  L   X   X   X   L   H   X   X   L   H  | ~A1 |
-//|  H   X   X   X   L   H   X   X   L   H  | ~A1 |
-//|  X   L   X   X   H   L   X   X   L   H  | ~A2 |
-//|  X   H   X   X   H   L   X   X   L   H  | ~A2 |
-//|  X   X   L   X   X   X   L   H   H   L  | ~B1 |
-//|  X   X   H   X   X   X   L   H   H   L  | ~B1 |
-//|  X   X   X   L   X   X   H   L   H   L  | ~B2 |
-//|  X   X   X   H   X   X   H   L   H   L  | ~B2 |
+//| A1   X   X   X   L   H   X   X   L   H  | ~A1 |
+//|  X  A2   X   X   H   L   X   X   L   H  | ~A2 |
+//|  X   X  B1   X   X   X   L   H   H   L  | ~B1 |
+//|  X   X   X  B2   X   X   H   L   H   L  | ~B2 |
 //-------------------------------------------------
 //(A1 != A2 -> S1 == S2) OR S5==S6 Inhibit
 //(B1 != B2 ->S3 == S4) OR S5==S6 Inhibit
@@ -385,8 +381,113 @@ module T5A_DLY ( input A1,
             6'b10xx01: out = ~A2;
             6'b0110xx: out = ~B1;
             6'b0101xx: out = ~B2;
-            default:   out = 1'bZ; //inhibit
+            default:   out = 1'bZ; //inhibit?
         endcase
     end
     assign #3.22 Xn = out
+endmodule
+
+//Cell Name: T2B
+//Function: 2:1 Selector
+//A,B->X to: 0.87-0.62ns
+//S1-S2->X to: 1.39-3.09ns
+
+//Function Table:
+//      Inputs        Output
+//---------------------------
+//|  A   B   S1n  S2  |  Xn | 
+//---------------------------
+//|  A   X    L    H  |  ~A |
+//|  X   B    H    L  |  ~B |
+//|  L   H    L    L  | Inh |
+//|  H   L    L    L  | Inh |
+//|  L   H    H    H  | Inh |
+//|  H   L    H    H  | Inh |
+//---------------------------
+module T2B_DLY ( input A,
+                 input B,
+                 input S1n,
+                 input S2,
+                 output Xn);
+    wire [3:0] sel;
+    wire out;
+
+    assign sel = {S2, S1n, B, A};
+    always @ * begin
+        case (sel)
+            4'b10xx: out = ~A;
+            4'b01xx: out = ~B;
+            4'b0010: out = 1'bZ; //inhibit
+            4'b0001: out = 1'bZ; //inhibit
+            4'b1110: out = 1'bZ; //inhibit
+            4'b1101: out = 1'bZ; //inhibit
+            default:   out = 1'bZ; //x??
+        endcase
+    end
+    assign #3.09 Xn = out
+endmodule
+
+//Cell Name: T2C
+//Function: Dual 2:1 Selector
+//A,B->X to: 0.87-0.62ns
+//S1-S2->X to: 1.39-3.09ns
+
+//Function Table:
+//        Inputs          Output
+//-------------------------------
+//|A1,B1  A2,B2  S1n  S2  |  X1n  X0n| 
+//------------------------------------
+//|A1,B1    X      L   H  |  ~A1 ~B1 |
+//|  X    A2,B2    H   L  |  ~A2 ~B2 |
+//|  L      H      L   L  |  Inh Inh |
+//|  H      L      L   L  |  Inh Inh |
+//|  L      H      H   H  |  Inh Inh |
+//|  H      L      H   H  |  Inh Inh |
+//------------------------------------
+module T2C_DLY ( input A1,
+                 input A2,
+                 input B1,
+                 input A2,
+                 input S1n,
+                 input S2,
+                 output X0n,
+                 output X1n);
+    wire [3:0] sel;
+    wire out0, out1;
+
+    assign sel = {S2, S1n, B, A};
+    always @ * begin
+        case (sel)
+            4'b10xx: begin
+                out0 = ~A1;
+                out1 = ~B1;
+            end
+            4'b01xx: begin
+                out0 = ~A2;
+                out1 = ~B2;
+            end
+            4'b0010: begin
+                    out0 = 1'bZ; //inhibit
+                    out1 = 1'bZ; //inhibit
+            end 
+            4'b0001: begin
+                    out0 = 1'bZ; //inhibit
+                    out1 = 1'bZ; //inhibit
+            end
+            4'b1110: begin
+                    out0 = 1'bZ; //inhibit
+                    out1 = 1'bZ; //inhibit
+            end
+            4'b1101: begin
+                    out0 = 1'bZ; //inhibit
+                    out1 = 1'bZ; //inhibit
+            end
+            default: begin
+                    out0 = 1'bZ; //inhibit
+                    out1 = 1'bZ; //inhibit
+            end
+        endcase
+    end
+    assign #3.09 Xn0 = out0
+    assign #3.09 Xn1 = out1
 endmodule
