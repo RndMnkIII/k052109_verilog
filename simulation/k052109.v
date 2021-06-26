@@ -211,6 +211,8 @@ module k052109_DLY (
     assign RST = P18_Q[3]; //*** OUTPUT SIGNAL RST ***
     //* END Section 3.2. Reset delayed signal *
 
+    
+
 
 
 endmodule
