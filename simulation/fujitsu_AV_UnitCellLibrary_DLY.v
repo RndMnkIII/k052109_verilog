@@ -277,24 +277,50 @@ endmodule
 
 //Function Table:
 //   Inputs      Outputs
-//-------------------------
-//|  D  G  |  Q   Qn   | 
-//-------------------------
-//|  H  H  |  L   H    |
-//|  L  H  |  Q0  Qn0  |
-//|  H  L  |  H   L    |
-//|  L  L  |  L   H    |
-//-------------------------
+//-----------------------
+//|  D  Gn  |  Q   Qn   | 
+//-----------------------
+//|  X  H  |  Q0  Qn0   |
+//|  D  L  |  D    Dn   |
+//-----------------------
 module LT2_DLY ( input D,
                  input Gn,
                  output reg Q,
                  output Qn);
 
-      assign #0.85 Qn = ~Q; //3.94 - 3.09
+      assign Qn = ~Q;
 
       always @*  
         if (!Gn) begin
-            Q <= #3.09 D; 
+            Q <= #3.94 D; 
+        end
+endmodule
+
+
+//Cell Name: LTK
+//Function: 1-bit Data Latch
+//Gn->Q to: 5.35-3.61ns
+//Gn->Qn to: 4.41-6.11ns
+//D->Q to: 1.42-1.63ns
+//D->Qn to: 2.43-2.18ns
+
+//Function Table:
+//   Inputs      Outputs
+//-----------------------
+//|  D  Gn  |  Q   Qn   | 
+//-----------------------
+//|  X  H  |  Q0  Qn0   |
+//|  D  L  |  D    Dn   |
+//-----------------------
+module LTK_DLY ( input D,
+                 input Gn,
+                 output reg Q,
+                 output Qn);
+      assign Qn = ~Q;
+
+      always @*  
+        if (!Gn) begin
+            Q <= #6.11 D; 
         end
 endmodule
 
@@ -311,10 +337,9 @@ endmodule
 //-------------------------
 //| CL  D  G  |  Q   Qn   | 
 //-------------------------
-//| *L  X  H  |  L   H    |
-//|  H  X *H  |  Q0  Qn0  |
-//|  H  H *L  |  H   L    |
-//|  H  L *L  |  L   H    |
+//|  L  X  H  |  L   H    |
+//|  H  X  H  |  Q0  Qn0  |
+//|  H  D  L  |  D   Dn   |
 //-------------------------
 module LTL_DLY ( input D,
              input Gn,
@@ -322,13 +347,13 @@ module LTL_DLY ( input D,
              output reg Q,
              output Qn);
 
-      assign #0.55 Qn = ~Q;
+      assign Qn = ~Q;
 
       always @*  
-        if (!CLn & Gn)  //The function table states that must be Gn == H and CLn == L to Clear the register
+        if (~CLn & Gn)  //The function table states that must be Gn == H and CLn == L to Clear the register
             Q  <= #2.20 0;  
-        else if (!Gn)  
-            Q <= #6.24 D;  
+        else if (CLn & ~Gn)
+            Q <= #6.25 D;  
 endmodule
 
 //Cell Name: T5A
