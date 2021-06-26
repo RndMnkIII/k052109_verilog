@@ -286,9 +286,9 @@ endmodule
 //|  L  L  |  L   H    |
 //-------------------------
 module LT2_DLY ( input D,
-             input Gn,
-             output reg Q,
-             output Qn);
+                 input Gn,
+                 output reg Q,
+                 output Qn);
 
       assign #0.85 Qn = ~Q; //3.94 - 3.09
 
@@ -381,7 +381,10 @@ module T5A_DLY ( input A1,
             6'b10xx01: out = ~A2;
             6'b0110xx: out = ~B1;
             6'b0101xx: out = ~B2;
-            default:   out = 1'bZ; //inhibit?
+            default: begin
+                $display("<<<T5A Inhibit?>>>");
+                out = 1'bZ; //inhibit?
+            end
         endcase
     end
     assign #3.22 Xn = out
@@ -417,11 +420,26 @@ module T2B_DLY ( input A,
         case (sel)
             4'b10xx: out = ~A;
             4'b01xx: out = ~B;
-            4'b0010: out = 1'bZ; //inhibit
-            4'b0001: out = 1'bZ; //inhibit
-            4'b1110: out = 1'bZ; //inhibit
-            4'b1101: out = 1'bZ; //inhibit
-            default:   out = 1'bZ; //x??
+            4'b0010: begin
+                $display("<<<T2B Inhibit>>>");
+                out = 1'bZ; //inhibit
+            end
+            4'b0001: begin
+                $display("<<<T2B Inhibit>>>");
+                out = 1'bZ; //inhibit
+            end
+            4'b1110: begin
+                $display("<<<T2B Inhibit>>>");
+                out = 1'bZ; //inhibit
+            end
+            4'b1101: begin
+                $display("<<<T2B Inhibit>>>");
+                out = 1'bZ; //inhibit
+            end
+            default: begin
+                $display("<<<T2B x?>>>");
+                out = 1'bZ; //x??
+            end 
         endcase
     end
     assign #3.09 Xn = out
@@ -452,39 +470,24 @@ module T2C_DLY ( input A1,
                  input S2,
                  output X0n,
                  output X1n);
-    wire [3:0] sel;
+    wire [1:0] sel;
     wire out0, out1;
 
-    assign sel = {S2, S1n, B, A};
+    assign sel = {S2, S1n};
     always @ * begin
         case (sel)
-            4'b10xx: begin
+            2'b10: begin
                 out0 = ~A1;
                 out1 = ~B1;
             end
-            4'b01xx: begin
+            2'b01: begin
                 out0 = ~A2;
                 out1 = ~B2;
             end
-            4'b0010: begin
-                    out0 = 1'bZ; //inhibit
-                    out1 = 1'bZ; //inhibit
-            end 
-            4'b0001: begin
-                    out0 = 1'bZ; //inhibit
-                    out1 = 1'bZ; //inhibit
-            end
-            4'b1110: begin
-                    out0 = 1'bZ; //inhibit
-                    out1 = 1'bZ; //inhibit
-            end
-            4'b1101: begin
-                    out0 = 1'bZ; //inhibit
-                    out1 = 1'bZ; //inhibit
-            end
             default: begin
-                    out0 = 1'bZ; //inhibit
-                    out1 = 1'bZ; //inhibit
+                    $display("<<<T2C inhibit>>>");
+                    out0 = 1'bZ;
+                    out1 = 1'bZ;
             end
         endcase
     end
