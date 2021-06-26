@@ -259,4 +259,55 @@ module k052109_DLY (
     FDN_DLY cc52(.D(1'b0), .Sn(€REG1D00_D0), .CK(€TRIG_NMI), .Q(CC52_Q));
     assign NMI = CC52_Q; //*** OUTPUT SIGNAL NMI ***
     //* END Section 3.5. Interrupt flags signals *
+
+    //*** PAGE 4: H/V Counters ***
+    //* START Section 4.1. HORIZONTAL COUNTER signals *
+    wire H20_Q;
+    FDO_DLY k148(.D(PQ),.Rn(RES_SYNC2n), .CK(J121), .Q(H20_Q));
+
+    wire H15; //Logic Cell R2P
+    assign #0.87 H15 = €TEST_D1
+
+    //* END Section 4.1. HORIZONTAL COUNTER signals *
+
+    //*** PAGE 5: REGISTERS ***
+    //* START Section 5.1. TEST signals *
+    wire TEST_D15;
+    wire TEST_D14;
+    wire TEST_D13;
+    wire TEST_D12;
+
+    wire TEST_D11;
+    wire TEST_D10;
+    wire TEST_D9;
+    wire TEST_D8;
+
+    wire AB3_REG;
+    wire AB2_REG;
+    wire AB1_REG;
+
+    wire V51_QD;
+    FDR_DLY v51(.D({AB[0],AB[1],AB[2],AB[3]}), 
+                .CLn(RES_SYNCn),
+                .CK(TEST), 
+                .Q({V51_QD,AB1_REG,AB2_REG,AB3_REG}));
+
+    wire TEST_EN2n; //Logic Cell V2B
+    wire TEST_ENn; //Logic Cell V1N
+    wire TEST_EN; //Logic Cell K1B
+    
+    assign #0.64 TEST_EN2n = ~V51_QD;
+    assign #0.55 TEST_ENn = ~V51_QD;
+    assign #1.26 TEST_EN = V51_QD;
+
+    FDR_DLY d51(.D({DB_BUF[4],DB_BUF[5],DB_BUF[6],DB_BUF[7]}), 
+            .CLn(RES_SYNCn),
+            .CK(TEST), 
+            .Q({TEST_D12,TEST_D13,TEST_D14,TEST_D15}));
+
+    FDR_DLY l51(.D({DB_BUF[0],DB_BUF[1],DB_BUF[2],DB_BUF[3]}), 
+            .CLn(RES_SYNCn),
+            .CK(TEST), 
+            .Q({TEST_D8,TEST_D9,TEST_D10,TEST_D11}));
+    //* END Section 5.1. TEST signals *
 endmodule
