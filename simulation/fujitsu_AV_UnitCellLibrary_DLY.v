@@ -268,9 +268,6 @@ module FDR_DLY 	( input [3:0] D,
     end
 endmodule
 
-
-
-
 //Cell Name: LT2
 //Function: 1-bit Data Latch
 //Gn->Q to: 1.84-3.09ns
@@ -332,4 +329,64 @@ module LTL_DLY ( input D,
             Q  <= #2.20 0;  
         else if (!Gn)  
             Q <= #6.24 D;  
+endmodule
+
+//Cell Name: T5A
+//Function: 4:1 Selector
+//A,B->X to: 1.48-1.13ns
+//S1-S4->X to: 3.22-1.25ns
+//S5-S6->X to: 2.63-0.70ns
+
+//Function Table:
+//                   Inputs                 Output
+//-------------------------------------------------
+//| A1  A2  B1  B2 S1n  S2 S3n  S4 S5n  S6  |  Xn | 
+//-------------------------------------------------
+//|  X   X   X   X   X   X   X   X   L   L  | Inh |?
+//|  X   X   X   X   X   X   X   X   H   H  | Inh |?
+//|  H   L           L   L                  | Inh |       
+//|  L   H           L   L                  | Inh |       
+//|  H   L           H   H                  | Inh |       
+//|  L   H           H   H                  | Inh |
+//|          L   H           L   L          | Inh |
+//|          H   L           L   L          | Inh |
+//|          L   H           H   H          | Inh |
+//|          H   L           H   H          | Inh |
+//|  L   X   X   X   L   H   X   X   L   H  | ~A1 |
+//|  H   X   X   X   L   H   X   X   L   H  | ~A1 |
+//|  X   L   X   X   H   L   X   X   L   H  | ~A2 |
+//|  X   H   X   X   H   L   X   X   L   H  | ~A2 |
+//|  X   X   L   X   X   X   L   H   H   L  | ~B1 |
+//|  X   X   H   X   X   X   L   H   H   L  | ~B1 |
+//|  X   X   X   L   X   X   H   L   H   L  | ~B2 |
+//|  X   X   X   H   X   X   H   L   H   L  | ~B2 |
+//-------------------------------------------------
+//(A1 != A2 -> S1 == S2) OR S5==S6 Inhibit
+//(B1 != B2 ->S3 == S4) OR S5==S6 Inhibit
+//(A1,A2 != B1,B2) OR S5==S6 Inhibit
+module T5A_DLY ( input A1,
+                 input A2,
+                 input B1,
+                 input B2,
+                 input S1n,
+                 input S2,
+                 input S3n,
+                 input S4,
+                 input S5n,
+                 input S6,
+                 output Xn);
+    wire [5:0] sel;
+    wire out;
+
+    assign sel = {S6, S5n, S4, S3n, S2, S1n};
+    always @ * begin
+        case (sel)
+            6'b10xx10: out = ~A1;
+            6'b10xx01: out = ~A2;
+            6'b0110xx: out = ~B1;
+            6'b0101xx: out = ~B2;
+            default:   out = 1'bZ; //inhibit
+        endcase
+    end
+    assign #3.22 Xn = out
 endmodule

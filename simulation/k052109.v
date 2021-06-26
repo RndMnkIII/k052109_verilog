@@ -201,6 +201,16 @@ module k052109_DLY (
     assign RES_SYNC2n = H12;
     //* END Section 3.1. Reset synchronizer signals *
 
+    //* START Section 3.2. Reset 8-frame delayed signal *
+    wire [3.0] P51_Q;
+    FDR_DLY p51(.D({P51_Q[2],P51_Q[1],P51_Q[0],RES_SYNC3n}), .CLn(RES_SYNC3n), .CK(€TRIG_IRQ), .Q(P51_Q));
+
+    wire [3.0] P18_Q;
+    FDR_DLY p18(.D({P18_Q[2],P18_Q[1],P18_Q[0],P51_Q[3]}), .CLn(RES_SYNC3n), .CK(€TRIG_IRQ), .Q(P18_Q));
+
+    assign RST = P18_Q[3]; //*** OUTPUT SIGNAL RST ***
+    //* END Section 3.2. Reset delayed signal *
+
 
 
 endmodule
