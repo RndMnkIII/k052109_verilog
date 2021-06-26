@@ -266,8 +266,70 @@ module k052109_DLY (
     FDO_DLY k148(.D(PQ),.Rn(RES_SYNC2n), .CK(J121), .Q(H20_Q));
 
     wire H15; //Logic Cell R2P
-    assign #0.87 H15 = €TEST_D1
+    assign #0.87 H15 = TEST_D15;
 
+    wire PXH0; //Logic Cell K2B
+    wire PXH0n; //Logic Cell V1N
+    assign #1.83 PXH0 = H20_Q;
+    assign #0.55 PXH0n = ~PXH0;
+
+    wire N16_CO;
+    wire N16_QD, N16_QC, PXH1, PXH2;
+    C43_DLY n16(.CK(J121),
+                .CLn(RES_SYNC2n),
+                .Ln(LINE_ENDn),
+                .CI(H15),
+                .EN(H15),
+                .CO(N16_CO),
+                .Q({N16_QD,N16_QC,PXH2,PXH1}),
+                .D({4{1'b0}}));
+
+    wire [3:0] G29_Q;
+    C43_DLY g29(.CK(J121),
+                .CLn(RES_SYNC2n),
+                .Ln(LINE_ENDn),
+                .CI(N16_CO),
+                .EN(N16_CO),
+                .Q(G29_Q),
+                .D({3{1'b0},1'b1}));
+
+    wire G44; //AND-OR-NAND
+    assign #4 G44 = ~(((N16_CO & G29_Q[1]) | G4_Q) & LINE_ENDn);
+
+    wire G4_Q;
+    FDO_DLY g4(.D(F16),.Rn(RES_SYNC2n), .CK(J121), .Q(G4_Q));
+
+    wire F16; //Logic Cell V1N
+    assign #0.55 F16 = ~G44;
+
+    wire PXH3;
+    wire PXH4;
+    assign PXH3 = N16_QC;
+    assign PXH4 = N16_QD;
+
+    wire PXH3F; //Logic Cell X2B
+    assign #3.50 PXH3F = €FLIP_SCREEN ^ N16_QC;
+
+    wire PXH4F; //Logic Cell X2B
+    assign #3.50 PXH4F = €FLIP_SCREEN ^ N16_QD;
+
+    wire PXH5; //Logic Cell X2B
+    assign #3.50 PXH5 = €FLIP_SCREEN ^ G29_Q[0];
+
+    wire PXH6; //Logic Cell X2B
+    assign #3.50 PXH6 = €FLIP_SCREEN ^ G29_Q[1];
+
+    wire PXH7; //Logic Cell X2B
+    assign #3.50 PXH7 = €FLIP_SCREEN ^ G29_Q[2];  
+
+    wire PXH8; //Logic Cell X2B
+    assign #3.50 PXH8 = €FLIP_SCREEN ^ G29_Q[3];    
+
+    wire LINE_END; //Logic Cell N3P
+    assign #1.82 LINE_END = G29_Q[2] & G29_Q[3] & N16_CO;
+
+    wire LINE_ENDn; //Logic Cell V1N
+    assign #0.55 LINE_ENDn = 
     //* END Section 4.1. HORIZONTAL COUNTER signals *
 
     //*** PAGE 5: REGISTERS ***
