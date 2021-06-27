@@ -1,11 +1,15 @@
-/****************************************************************
- * Convenient verilog templates of Fujitsu AV Series            *
- * Unit Cell Modules for simulation. For more info see:         *
- * Fujitsu CMOS Channeled Gate Arrays Data Book (1989)          *
- * Author: @RndMnkIII                                           *
- * Repository: https://github.com/RndMnkIII/k051962_verilog     *
- * Version: 1.0 16/06/2021                                      *
- ***************************************************************/
+/*****************************************************************
+ * Convenient verilog templates of Fujitsu AV Series             *
+ * Unit Cell Modules for simulation. For more info see:          *
+ * Fujitsu CMOS Channeled Gate Arrays Data Book (1989)           *
+ * Author: @RndMnkIII                                            *
+ * Repository: https://github.com/RndMnkIII/k052109_verilog      *
+ *                                                               *
+ * - Version: 1.0 16/06/2021 Initial.                            *
+ * - Version: 1.1 27/06/2021 Added VSCode snippets for Logic     *
+ *                           Cells and more modules:T5A,T2C,T2B. *
+ *                                                               *
+ ****************************************************************/
 
 `default_nettype none
 `timescale 1ns/1ps
