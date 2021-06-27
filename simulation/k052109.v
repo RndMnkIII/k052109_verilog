@@ -130,7 +130,7 @@ module k052109_DLY (
     assign #0.71 J109 = ~(K141_Qn & J114_Qn);
 
     wire J121; //Logic Cell KCB
-    assign #3.31 J121 = J114_Q;
+    assign #3.31 J121 = J114_Q; //*** CLOCK TREE J121 ***
 
     wire J101; //Logic Cell X2B
     assign #3.50 J101 = (J109 ^ J94_Q)
@@ -254,7 +254,7 @@ module k052109_DLY (
     assign IRQ = P4_Q; //*** OUTPUT SIGNAL IRQ ***
 
     wire F27_Q;
-    FDN_DLY f27(.D(1'b0), .Sn(€REG1D00_D1), .CK(€TRIG_FIRQ), .Q(F27_Q));
+    FDN_DLY f27(.D(1'b0), .Sn(€REG1D00_D1), .CK(TRIG_FIRQ), .Q(F27_Q));
     assign FIRQ = F27_Q; //*** OUTPUT SIGNAL FIRQ ***
 
     wire CC52_Q;
@@ -336,6 +336,21 @@ module k052109_DLY (
     wire LINE_ENDn; //Logic Cell V1N
     assign #0.55 LINE_ENDn = ~LINE_END;
     //* END Section 4.1. HORIZONTAL COUNTER signals *
+
+    //* START Section 4.2. VERTICAL COUNTER signals *
+    wire G11; //Logic Cell X2B
+    assign #3.50 G11 = LINE_END ^ G20_Qn;
+
+    wire G20_Q, G20_Qn;
+    FDO_DLY g20(.D(G11),.Rn(RES_SYNC2n), .CK(J121), .Q(G20_Q), .Qn(G20_Qn));
+
+    wire TRIG_FIRQ; //Logic Cell V2B
+    assign #0.64 TRIG_FIRQ = ~G20_Qn;
+
+    wire H6; //Logic Cell R2P
+    
+
+    //* END Section 4.2. VERTICAL COUNTER signals *
 
     //*** PAGE 5: REGISTERS ***
     //* START Section 5.1. TEST signals *
