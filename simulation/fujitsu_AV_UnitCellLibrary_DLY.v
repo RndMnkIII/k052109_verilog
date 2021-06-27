@@ -48,6 +48,10 @@ module H6T_DLY ( input IN,
     assign X = (Cn) ? 1'bZ : OT;
 endmodule
 
+//Cell Name: BD5
+//Function: Buffer Delay Cell ()>10ns)
+//to:22.18-18.78ns A->X
+
 //Cell Name: K2B
 //Function: Power Clock Buffer
 //to: 1.51-1.83ns A->X

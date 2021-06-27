@@ -1,6 +1,17 @@
 {
 	// Place your k052109_verilog workspace snippets here:
 	// Type the Logic Cell prefix and TAB for sustitution.
+	"BD5": {
+		"scope": "verilog",
+		"prefix": "#BD5",
+		"body": "assign #22.18 ${1:name} = ${2:operator};"
+	},
+
+	"BD5xt": {
+		"scope": "verilog",
+		"prefix": "BD5",
+		"body": "//Logic Cell BD5"
+	},
 
 	"V1Ntxt": {
 		"scope": "verilog",
@@ -195,15 +206,15 @@
 
 	"C43": {
 		"scope": "verilog",
-		"prefix": "C#43",
+		"prefix": "#C43",
 		"body": ["C43_DLY ${1:name} (.CK(),",
-			".CLn(RES_SYNC2n),",
-			".Ln(LINE_ENDn),",
-			".CI(H15),",
-			".EN(H15),",
-			".CO(N16_CO),",
-			".Q({N16_QD,N16_QC,PXH2,PXH1}),",
-			".D({4{1'b0}}));"],
+			".CLn(),",
+			".Ln(),",
+			".CI(),",
+			".EN(),",
+			".CO(),",
+			".Q(),",
+			".D();"],
 		"description": "4-bit Binary Synchronous Up Counter"
 	},	
 

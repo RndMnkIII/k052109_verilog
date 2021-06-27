@@ -348,7 +348,54 @@ module k052109_DLY (
     assign #0.64 TRIG_FIRQ = ~G20_Qn;
 
     wire H6; //Logic Cell R2P
-    
+    assign #1.97 H6 = G20_Q | TEST_D15;
+
+    wire H10; //Logic Cell N2P
+    assign #1.41 H10 = G20_Q & LINE_END;
+
+    wire H8; //Logic Cell R2P
+    assign #1.97 H8 = H10 | TEST_D15;
+
+    wire H4; //Logic Cell R2P
+    assign #1.97 H4 = TESTD15 | G20_Q;
+
+    wire [3:0] J29_Q;
+    wire J29_CO;
+    C43_DLY j29 (.CK(J121),
+    .CLn(RES_SYNC2n),
+    .Ln(H3),
+    .CI(H8),
+    .EN(H6),
+    .CO(J29_CO),
+    .Q(J29_Q),
+    .D({2{1'b1},2{1'b0}}));
+
+    wire [3:0] H29_Q;
+    wire H29_CO;
+    C43_DLY h29 (.CK(J121),
+    .CLn(RES_SYNC2n),
+    .Ln(H3),
+    .CI(J29_CO),
+    .EN(H4),
+    .CO(H29_CO),
+    .Q(H29_Q),
+    .D({1'b0,3{1'b1}}));
+
+    wire H3; //Logic Cell V1N
+    assign #0.55 H3 = ~H29_CO;
+
+    wire R10; //Logic Cell BD5
+    assign #22.18 R10 = H3; //LOOK DEEPER AT THIS, real delay capture HVOT signal
+    wire R19; //Logic Cell K1B
+    assign #1.26 R19 = R10;
+
+    assign HVOT = R19; //*** OUTPUT SIGNAL HVOT ***
+
+
+
+
+
+
 
     //* END Section 4.2. VERTICAL COUNTER signals *
 
