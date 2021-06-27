@@ -95,7 +95,7 @@
 	"N4N": {
 		"scope": "verilog",
 		"prefix": "#N4N",
-		"body": "#0.96"
+		"body": "assign #0.96 ${1:name} = ~(${2:op1} & ${3:op2} & ${4:op3} & ${5:op4});"
 	},
 	"N4Ntxt": {
 		"scope": "verilog",
@@ -105,7 +105,7 @@
 	"N8B": {
 		"scope": "verilog",
 		"prefix": "#N8B",
-		"body": "#3.09"
+		"body": "assign #3.09 ${1:name} = ~(${2:op1} & ${3:op2} & ${4:op3} & ${5:op4} & ${6:op5} & ${7:op6} & ${8:op7} & ${9:op8});"
 	},
 	"N8Btxt": {
 		"scope": "verilog",
@@ -155,7 +155,7 @@
 	"R4P": {
 		"scope": "verilog",
 		"prefix": "#R4P",
-		"body": "#4.52"
+		"body": "assign #4.52 ${1:name} = ${2:op1} | ${3:op2} | ${4:op3} | ${5:op4};"
 	},
 	"R4Pxt": {
 		"scope": "verilog",
@@ -195,15 +195,29 @@
 
 	"C43": {
 		"scope": "verilog",
-		"prefix": "C43",
-		"body": ["C43_DLY ${1:instance_name} (.CK(),",
+		"prefix": "C#43",
+		"body": ["C43_DLY ${1:name} (.CK(),",
 			".CLn(RES_SYNC2n),",
 			".Ln(LINE_ENDn),",
 			".CI(H15),",
 			".EN(H15),",
 			".CO(N16_CO),",
 			".Q({N16_QD,N16_QC,PXH2,PXH1}),",
-			".D({4{1'b0}}));"]
-	}	
+			".D({4{1'b0}}));"],
+		"description": "4-bit Binary Synchronous Up Counter"
+	},	
 
+	"D24": {
+		"scope": "verilog",
+		"prefix": "#D24",
+		"body": "D24_DLY ${1:name} (.A1(${2:a1}), .A2(${3:a2}), .B1(${4:b1}), .B2(${5:b2}), .X(${6:x}));",
+		"description": "2-wide 2-AND 4-input AND-OR-Inverter"
+	},
+
+	"FDG": {
+		"scope": "verilog",
+		"prefix": "#FDG",
+		"body":"FDG_DLY ${1:name} (.D(${2:D_in}), .CLn(${3:clear}), .CK(${4:clock}), .Q(${5:Q_out}),.Qn(${6:Qn_out}));",
+		"description": "Positive Edge Clocked DFF with CLEAR to: 3.79-5.24ns"
+	}
 }
