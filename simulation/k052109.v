@@ -301,7 +301,7 @@ module k052109_DLY (
     wire G44; //AND-OR-NAND
     assign #4 G44 = ~(((N16_CO & G29_Q[1]) | G4_Q) & LINE_ENDn);
 
-    wire G4_Q;
+    wire G4_Q; //connects to 4.3, 7 Scroll RAM read triggers
     FDO_DLY g4(.D(F16),.Rn(RES_SYNC2n), .CK(J121), .Q(G4_Q));
 
     wire F16; //Logic Cell V1N
@@ -334,7 +334,7 @@ module k052109_DLY (
     assign #1.82 LINE_END = G29_Q[2] & G29_Q[3] & N16_CO;
 
     wire LINE_ENDn; //Logic Cell V1N
-    assign #0.55 LINE_ENDn = LINE_END;
+    assign #0.55 LINE_ENDn = ~LINE_END;
     //* END Section 4.1. HORIZONTAL COUNTER signals *
 
     //*** PAGE 5: REGISTERS ***
