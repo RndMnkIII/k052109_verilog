@@ -1,6 +1,18 @@
 {
 	// Place your k052109_verilog workspace snippets here:
 	// Type the Logic Cell prefix and TAB for sustitution.
+	"BD3": {
+		"scope": "verilog",
+		"prefix": "#BD3",
+		"body": "assign #11.80 ${1:name} = ${2:operator};"
+	},
+
+	"BD3xt": {
+		"scope": "verilog",
+		"prefix": "BD3",
+		"body": "//Logic Cell BD3"
+	},
+
 	"BD5": {
 		"scope": "verilog",
 		"prefix": "#BD5",
@@ -225,10 +237,52 @@
 		"description": "2-wide 2-AND 4-input AND-OR-Inverter"
 	},
 
+	"FDE": {
+		"scope": "verilog",
+		"prefix": "#FDE",
+		"body":"FDE_DLY ${1:name} (.D(${2:D_in}), .CLn(${3:clear}), .CK(${4:clock}), .Q(${5:Q_out}),.Qn(${6:Qn_out}));",
+		"description": "ositive Edge Clocked Power DFF with CLEAR to: 4.44-6.23ns"
+	},
+
 	"FDG": {
 		"scope": "verilog",
 		"prefix": "#FDG",
 		"body":"FDG_DLY ${1:name} (.D(${2:D_in}), .CLn(${3:clear}), .CK(${4:clock}), .Q(${5:Q_out}),.Qn(${6:Qn_out}));",
 		"description": "Positive Edge Clocked DFF with CLEAR to: 3.79-5.24ns"
+	},
+
+	"FDM": {
+		"scope": "verilog",
+		"prefix": "#FDM",
+		"body":"FDM_DLY ${1:name} (.D(${2:D_in}), .CK(${3:clock}), .Q(${4:Q_out}),.Qn(${5:Qn_out}));",
+		"description": "DFF to: 5.16-5.96ns"
+	},
+
+	"FDN": {
+		"scope": "verilog",
+		"prefix": "#FDN",
+		"body":"FDN_DLY ${1:name} (.D(${2:D_in}), .Sn(${3:set}), .CK(${4:clock}), .Q(${5:Q_out}),.Qn(${6:Qn_out}));",
+		"description": "DFF with SET to: 5.16-6.10ns"
+	},
+
+	"FDO": {
+		"scope": "verilog",
+		"prefix": "#FDO",
+		"body":"FDO_DLY ${1:name} (.D(${2:D_in}), .Rn(${3:reset}), .CK(${4:clock}), .Q(${5:Q_out}),.Qn(${6:Qn_out}));",
+		"description": "DFF with RESET to: 5.96-5.16ns"
+	},
+
+	"FDQ": {
+		"scope": "verilog",
+		"prefix": "#FDQ",
+		"body":"FDQ_DLY ${1:name} (.D(${2:D4bit_in}), .CK(${3:clock}), .Q(${4:Q4bit_out}));",
+		"description": "4-bit DFF falling edge clock to: 8.32-6.58ns"
+	},
+
+	"FDR": {
+		"scope": "verilog",
+		"prefix": "#FDR",
+		"body":"FDR_DLY ${1:name} (.D(${2:D4bit_in}), .CLn(3:clear), .CK(${4:clock}), .Q(${5:Q4bit_out}));",
+		"description": "4-bit DFF with clear to: 8.36-6.68ns"
 	}
 }

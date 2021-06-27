@@ -205,10 +205,10 @@ module k052109_DLY (
 
     //* START Section 3.2. Reset 8-frame delayed signal *
     wire [3.0] P51_Q;
-    FDR_DLY p51(.D({P51_Q[2],P51_Q[1],P51_Q[0],RES_SYNC3n}), .CLn(RES_SYNC3n), .CK(€TRIG_IRQ), .Q(P51_Q));
+    FDR_DLY p51(.D({P51_Q[2],P51_Q[1],P51_Q[0],RES_SYNC3n}), .CLn(RES_SYNC3n), .CK(TRIG_IRQ), .Q(P51_Q));
 
     wire [3.0] P18_Q;
-    FDR_DLY p18(.D({P18_Q[2],P18_Q[1],P18_Q[0],P51_Q[3]}), .CLn(RES_SYNC3n), .CK(€TRIG_IRQ), .Q(P18_Q));
+    FDR_DLY p18(.D({P18_Q[2],P18_Q[1],P18_Q[0],P51_Q[3]}), .CLn(RES_SYNC3n), .CK(TRIG_IRQ), .Q(P18_Q));
 
     assign RST = P18_Q[3]; //*** OUTPUT SIGNAL RST ***
     //* END Section 3.2. Reset delayed signal *
@@ -250,7 +250,7 @@ module k052109_DLY (
 
     //* START Section 3.5. Interrupt flags signals *
     wire P4_Q;
-    FDN_DLY p4(.D(1'b0), .Sn(€REG1D00_D2), .CK(€TRIG_IRQ), .Q(P4_Q));
+    FDN_DLY p4(.D(1'b0), .Sn(€REG1D00_D2), .CK(TRIG_IRQ), .Q(P4_Q));
     assign IRQ = P4_Q; //*** OUTPUT SIGNAL IRQ ***
 
     wire F27_Q;
@@ -258,7 +258,7 @@ module k052109_DLY (
     assign FIRQ = F27_Q; //*** OUTPUT SIGNAL FIRQ ***
 
     wire CC52_Q;
-    FDN_DLY cc52(.D(1'b0), .Sn(€REG1D00_D0), .CK(€TRIG_NMI), .Q(CC52_Q));
+    FDN_DLY cc52(.D(1'b0), .Sn(€REG1D00_D0), .CK(TRIG_NMI), .Q(CC52_Q));
     assign NMI = CC52_Q; //*** OUTPUT SIGNAL NMI ***
     //* END Section 3.5. Interrupt flags signals *
 
@@ -391,13 +391,65 @@ module k052109_DLY (
 
     assign HVOT = R19; //*** OUTPUT SIGNAL HVOT ***
 
+    //--G20--
+    wire ROW0; //Logic Cell X2B
+    assign #3.50 ROW0 = €FLIP_SCREEN ^ G20_Q;
 
+    //--J29--
+    wire ROW1; //Logic Cell X2B
+    assign #3.50 ROW1 = €FLIP_SCREEN ^ J29_Q[0]; //QA
 
+    wire ROW2; //Logic Cell X2B
+    assign #3.50 ROW2 = €FLIP_SCREEN ^ J29_Q[1]; //QB
 
+    wire ROW3; //Logic Cell2X2B//QC
+    assign #3.50 ROW3 = €FLIP_SCREEN ^ J29_Q[2]; //QC
 
+    wire ROW4; //Logic Cell X2B
+    assign #3.50 ROW4 = €FLIP_SCREEN ^ J29_Q[3]; //QD
 
+    //--H29--
+    wire ROW5; //Logic Cell X2B
+    assign #3.50 ROW5 = €FLIP_SCREEN ^ H29_Q[0]; //QA
 
+    wire ROW6; //Logic Cell X2B
+    assign #3.50 ROW6 = €FLIP_SCREEN ^ H29_Q[1]; //QB
+
+    wire ROW7; //Logic Cell X2B
+    assign #3.50 ROW7 = €FLIP_SCREEN ^ H29_Q[2; //QC
+
+    wire CC13_Q, CC13_Qn;
+    FDG_DLY cc13 (.D(CC13_Qn), .CLn(RES_SYNCn), .CK(J29_Q[1]), .Q(CC13_Q),.Qn(CC13_Qn));
+
+    wire CC24_Q, CC24_Qn;
+    FDG_DLY cc24 (.D(CC24_Qn), .CLn(RES_SYNCn), .CK(CC13_Q), .Q(CC24_Q),.Qn(CC24_Qn));
+
+    wire TRIG_NMI;
+    assign TRIG_NMI = CC24_Q;
+
+    wire K74; //Logic Cell N3P
+    assign #1.82 K74 = H29_Q[0] & H29_Q[1] & H29_Q[2];
+
+    wire K37; //Logic Cell BD3
+    assign #11.80 K37 = K74; 
+
+    wire TRIG_IRQ; //LOOK DEEPER AT THIS, real delay capture TRIG_IRQ signal
+    FDO_DLY k42 (.D(K37), .Rn(RES_SYNC2n), .CK(J29_Q[3]), .Q(TRIG_IRQ));
     //* END Section 4.2. VERTICAL COUNTER signals *
+
+    //* START Section 4.3. TEST D13,D14 signals *
+    wire D42; //Logic Cell V1N
+    assign #0.55 D42 = ~TEST_D13;
+
+    wire D39;
+    D24_DLY d39 (.A1(G4_Q), .A2(D42), .B1(TEST_D14), .B2(TEST_D13), .X(D39));
+
+    wire AA38;//Logic Cell K2B
+    assign #1.83 AA38 = D39; //SECTION 3.9, PAGE 1 Y69
+
+    wire AA58; //Logic Cell V2B
+    assign #0.64 AA58 = ~D39; //SECTION 3.9, PAGE 1 Y69
+    //* END Section 4.3. TEST D13,D14 signals *
 
     //*** PAGE 5: REGISTERS ***
     //* START Section 5.1. TEST signals *

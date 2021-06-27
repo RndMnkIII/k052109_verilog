@@ -48,8 +48,12 @@ module H6T_DLY ( input IN,
     assign X = (Cn) ? 1'bZ : OT;
 endmodule
 
+//Cell Name: BD3
+//Function: Buffer Delay Cell 
+//to:11.80-11.76ns A->X
+
 //Cell Name: BD5
-//Function: Buffer Delay Cell ()>10ns)
+//Function: Buffer Delay Cell 
 //to:22.18-18.78ns A->X
 
 //Cell Name: K2B
@@ -254,7 +258,7 @@ module FDO_DLY 	( input D,
 endmodule
 
 //Cell Name: FDQ
-//Function: 4--bit DFF falling edge clock
+//Function: 4-bit DFF falling edge clock
 //to: 8.32-6.58ns
 module FDQ_DLY 	( input [3:0] D,
               input CKn,
