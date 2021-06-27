@@ -5,7 +5,7 @@ traces/
 *.vcd
 
 #ignore IDE files
-.vscode/
+#.vscode/
 .DS_Store
 
 #ignore binary rom files
