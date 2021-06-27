@@ -164,7 +164,9 @@ module k052109_DLY (
 
     wire C92; //R2N
     assign #0.87 C92 = ~(L83 | €REG1C00_D5);
-
+    
+    //----------------------------------------------------------------------
+    
     wire J140_Q, J140_Qn;
     FDO_DLY j140(.D(J121), .Rn(RES_SYNC3n), .CK(M12n), .Q(J140_Q), .Qn(J140_Qn));
 
@@ -266,11 +268,14 @@ module k052109_DLY (
     FDO_DLY k148(.D(PQ),.Rn(RES_SYNC2n), .CK(J121), .Q(H20_Q));
 
     wire H15; //Logic Cell R2P
-    assign #0.87 H15 = TEST_D15;
+    assign #0.87 H15 = TEST_D15 | H20_Q;
+
+    wire H17; //Logic Cell K2B
+    assign #1.83 H17 = H20_Q;
 
     wire PXH0; //Logic Cell K2B
     wire PXH0n; //Logic Cell V1N
-    assign #1.83 PXH0 = H20_Q;
+    assign #1.83 PXH0 = H17;
     assign #0.55 PXH0n = ~PXH0;
 
     wire N16_CO;
@@ -329,7 +334,7 @@ module k052109_DLY (
     assign #1.82 LINE_END = G29_Q[2] & G29_Q[3] & N16_CO;
 
     wire LINE_ENDn; //Logic Cell V1N
-    assign #0.55 LINE_ENDn = 
+    assign #0.55 LINE_ENDn = LINE_END;
     //* END Section 4.1. HORIZONTAL COUNTER signals *
 
     //*** PAGE 5: REGISTERS ***
