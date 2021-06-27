@@ -219,7 +219,7 @@ module k052109_DLY (
     wire AB7n, AB7_BUF; //Logic Cell V1N 0.55//AB7_INV
     wire RMRDn; //Logic Cell V2B 0.64
     wire RMRD_BUF; //Logic Cell K1B 1.26
-    wire AB_18xx; //Logic Cell K3B
+    wire AB_18XX; //Logic Cell K3B
 
     assign #0.55 AB9n = ~AB[9];
     assign #0.55 AB9_BUF = ~AB9n;
@@ -491,4 +491,67 @@ module k052109_DLY (
             .CK(TEST), 
             .Q({TEST_D8,TEST_D9,TEST_D10,TEST_D11}));
     //* END Section 5.1. TEST signals *
+    
+    //* START Section 5.2. REGISTER 0x1D80 *
+    wire D12; //Logic Cell N6B
+    assign #2.83 D12 = ~(€L15 & AB9_INV & AB[10] & AB7_BUF & AB8_BUF & AB_18XX); //L15 FROM SECTION 3.8
+
+    wire [7:0] REG1D80;
+    FDR_DLY a5 (.D(DB_BUF[4:7]), .CLn(RES_SYNCn), .CK(D12), .Q(REG1D80[4:7]));
+    FDR_DLY c3 (.D(DB_BUF[0:3]), .CLn(RES_SYNCn), .CK(D12), .Q(REG1D80[0:3]));
+    //* END Section 5.2. REGISTER 0x1D80 *
+
+    //* START Section 5.3. REGISTER 0x1D00 *
+    wire D18; //Logic Cell N6B
+    assign #2.83 D18 = ~(€L15 & AB9_INV & AB[10] & AB7_INV & AB8_BUF & AB_18XX); //L15 FROM SECTION 3.8
+
+    wire [3:0] REG1D00;
+    FDR_DLY f51 (.D(DB_BUF[0:3]), .CLn(RES_SYNCn), .CK(D18)3 .Q(REG1D00[0:3]));
+    //* END Section 5.3. REGISTER 0x1D00 *
+
+    //* START Section 5.4. REGISTER 0x1C00 *
+    wire D23; //Logic Cell N6B
+    assign #2.83 D23 = ~(€L15 & AB9_INV & AB[10] & AB7_INV & AB8_INV & AB_18XX); //L15 FROM SECTION 3.8
+
+    wire [7:0] REG1C00;
+    FDR_DLY c38 (.D(DB_BUF[4:7]), .CLn(RES_SYNCn), .CK(D23), .Q(REG1C00[4:7]));
+    FDR_DLY b77 (.D(DB_BUF[0:3]), .CLn(RES_SYNCn), .CK(D23), .Q(REG1C00[0:3]));
+    //* END Section 5.4. REGISTER 0x1C00 *
+
+    //* START Section 5.5. REGISTER 0x1C80 *
+    wire D7; //Logic Cell N6B
+    assign #2.83 D7 = ~(€L15 & AB9_INV & AB[10] & AB7_BUF & AB8_INV & AB_18XX); //L15 FROM SECTION 3.8
+
+    wire [7:0] REG1C80;
+    FDR_DLY e4 (.D(DB_BUF[4:7]), .CLn(RES_SYNCn), .CK(D7), .Q(REG1C80[4:7]));
+    FDR_DLY e51 (.D(DB_BUF[0:3]), .CLn(RES_SYNCn), .CK(D7), .Q(REG1C80[0:3]));
+    //* END Section 5.5. REGISTER 0x1C80 *
+
+    //* START Section 5.6. REGISTER 0x1F00 *
+    wire D33; //Logic Cell N6B
+    assign #2.83 D33 = ~(€L15 & AB9_BUF & AB[10] & AB7_INV & AB8_BUF & AB_18XX); //L15 FROM SECTION 3.8
+
+    wire [7:0] REG1F00;
+    FDR_DLY a51 (.D(DB_BUF[4:7]), .CLn(RES_SYNCn), .CK(D33), .Q(REG1F00[4:7]));
+    FDR_DLY b51 (.D(DB_BUF[0:3]), .CLn(RES_SYNCn), .CK(D33), .Q(REG1F00[0:3]));
+    //* END Section 5.6. REGISTER 0x1F00 *
+
+    //* START Section 5.7. REGISTER 0x1E80 *
+    wire D2; //Logic Cell N6B
+    assign #2.83 D2 = ~(€L15 & AB9_BUF & AB[10] & AB7_BUF & AB8_INV & AB_18XX); //L15 FROM SECTION 3.8
+    assign BEN = D2; //*** OUTPUT SIGNAL BEN ***
+    
+    wire M53_Q;
+    FDO_DLY m53 (.D(DB_BUF[0]), .Rn(RES_SYNCn), .CK(BEN), .Q(M53_Q));
+    wire FLIP_SCREEN; //Logic Cell K2B
+    assign #1.83 FLIP_SCREEN = M53_Q;
+
+    wire FLIP_SCREEN_BUF; //Logic Cell K1B
+    assign #1.26 FLIP_SCREEN_BUF = FLIP_SCREEN;
+    //* END Section 5.7. REGISTER 0x1E80 *
+
+        //* START Section 5.8. REGISTER 0x1E00 *
+    wire reg_1E00_WRn; //Logic Cell N6B
+    assign #2.83 reg_1E00_WRn = ~(€L15 & AB9_BUF & AB[10] & AB7_INV & AB8_INV & AB_18XX); //L15 FROM SECTION 3.8
+    //* END Section 5.8. REGISTER 0x1E00 *
 endmodule

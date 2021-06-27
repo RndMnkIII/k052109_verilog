@@ -125,6 +125,16 @@
 		"prefix": "N4N",
 		"body": "//Logic Cell N4N"
 	},
+	"N6B": {
+		"scope": "verilog",
+		"prefix": "#N6B",
+		"body": "assign #2.83 ${1:name} = ~(${2:op1} & ${3:op2} & ${4:op3} & ${5:op4} & ${6:op5} & ${7:op6});"
+	},
+	"N6Btxt": {
+		"scope": "verilog",
+		"prefix": "N6B",
+		"body": "//Logic Cell N6B"
+	},	
 	"N8B": {
 		"scope": "verilog",
 		"prefix": "#N8B",
@@ -282,7 +292,7 @@
 	"FDR": {
 		"scope": "verilog",
 		"prefix": "#FDR",
-		"body":"FDR_DLY ${1:name} (.D(${2:D4bit_in}), .CLn(3:clear), .CK(${4:clock}), .Q(${5:Q4bit_out}));",
+		"body":"FDR_DLY ${1:name} (.D(${2:D4bit_in}), .CLn({3:clear}), .CK(${4:clock}), .Q(${5:Q4bit_out}));",
 		"description": "4-bit DFF with clear to: 8.36-6.68ns"
 	}
 }
