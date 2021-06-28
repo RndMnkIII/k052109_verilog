@@ -322,7 +322,32 @@
 		"scope": "verilog",
 		"prefix": "#LTL",
 		"body":["wire ${1:name}_Q;","wire ${1:name}_Qn;","LTL_DLY ${1/(.*)/${1:/downcase}/} (.D(${2:data_in}), .Gn(${3:latch}), .CLn(${4:clear}), .Q(${1:name}_Q), .Qn(${1:name}_Qn));"],
-		"description": "1-bit Data Latch"
+		"description": "1-bit Data Latch with Clear"
+	},
+
+	"T5A": {
+		"scope": "verilog",
+		"prefix": "#T5A",
+		"body":["wire ${1:name}_Xn;",
+			    "T5A_DLY ${1/(.*)/${1:/downcase}/} (.A1(${2}), .A2(${3}), .B1(${4}), .B2(${5}), .S1n(${6}), .S2(${7}), .S3n(${8}), .S4(${9}), .S5n(${10}), .S6(${11}), .Xn(${1:name}_Xn));"],
+		"description": "4:1 Selector with inverted output"
+	},
+
+	"T2B": {
+		"scope": "verilog",
+		"prefix": "#T2B",
+		"body":["wire ${1:name}_Xn;",
+			    "T2B_DLY ${1/(.*)/${1:/downcase}/} (.A(${2}), .B(${3}), .S1n(${4}), .S2(${5}), .Xn(${1:name}_Xn));"],
+		"description": "2:1 Selector with inverted output"
+	},
+
+	"T2C": {
+		"scope": "verilog",
+		"prefix": "#T2C",
+		"body":["wire ${1:name}_X0n;",
+			    "wire ${1:name}_X1n;",
+			    "T2C_DLY ${1/(.*)/${1:/downcase}/} (.A1(${2}), .A2(${3}), .B1(${4}), .B2(${5}), .S1n(${6}), .S2(${7}), .X0n(${1:name}_X0n), .X1n(${1:name}_X1n));"],
+		"description": "Dual 2:1 Selector with inverted output"
 	},
 }
 
