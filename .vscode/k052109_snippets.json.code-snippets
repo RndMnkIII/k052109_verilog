@@ -4,13 +4,13 @@
 	"BD3": {
 		"scope": "verilog",
 		"prefix": "#BD3",
-		"body": "assign #11.80 ${1:name} = ${2:operator};"
+		"body": ["wire ${1:name}; //Logic Cell BD3","assign #11.80 ${1:name} = ${2:operator};"]
 	},
 
 	"BD5": {
 		"scope": "verilog",
 		"prefix": "#BD5",
-		"body": "assign #22.18 ${1:name} = ${2:operator};"
+		"body": ["wire ${1:name}; //Logic Cell BD5","assign #22.18 ${1:name} = ${2:operator};"]
 	},
 
 	"V1N": {

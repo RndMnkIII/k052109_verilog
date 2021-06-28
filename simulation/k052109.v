@@ -29,8 +29,11 @@ module k052109_DLY (
     inout wire [7:0] DB, //CPU BUS DATA
     
     //ROM addressing interface
-    output wire [10:0] VC,
-    output wire [1:0] CAB, //ROMBANK SELECTORS
+    output wire [7:0] COL, //COL[5:0] -> GFX ROM ADDR[16:11] Aliens Sch.
+    output wire [10:0] VC, //VC[10:0] -> GFX ROM ADDR[10:0] Aliens Sch.
+    output wire [1:0] CAB, //ROMBANK SELECTORS: CAB[0] -> GFX ROM ADDR[17] //FOR 512Kbx16bit GFX ROM Aliens Sch.
+                           //                   CAB[1] -> GFX ROM OEn  //FOR GFX ADDR 0x00000-0x3FFFF Aliens Sch.
+                           //                  ~CAB[1] -> GFX ROM OEn  //FOR GFX ADDR 0x40000-0x5FFFF Aliens Sch. (Max. 0x7FFFF)
 
     //VRAM interface
     output wire [12:0] RA, //VRAM ADDRESS
@@ -44,7 +47,7 @@ module k052109_DLY (
 
     //k051962 interface 
     output wire BEN, //related to BUS ENABLE in k051962 
-    output wire [7:0] COL,
+    //COL[7:6] <-> k051962
     output wire ZB4H, ZB2H, ZB1H,
     output wire ZA4H, ZA2H, ZA1H,
 
@@ -296,6 +299,31 @@ module k052109_DLY (
 
     assign VDE = E143; //*** OUTPUT SIGNAL VDE ***
     //* END Section 2.2. More timings signals *
+
+    //* START Section 2.3. CPU(RMRD) ADDR -> GFX ROM *
+    wire C111_Q;
+    LTK_DLY c111 (.D(AB[4]), .Gn(C92), .Q(C111_Q));
+    wire B106; //Logic Cell BD3
+    assign #11.80 B106 = C111_Q;
+    wire B111; //Logic Cell BD3
+    assign #11.80 B111 = B106;
+
+    wire C107_Q;
+    LTK_DLY c107 (.D(AB[3]), .Gn(C92), .Q(C107_Q));
+    wire C149; //Logic Cell BD3
+    assign #11.80 C149 = C107_Q;
+    wire C144; //Logic Cell BD3
+    assign #11.80 C144 = C149;
+
+    wire C129_Q;
+    LTK_DLY c129 (.D(AB[3]), .Gn(C92), .Q(C129_Q));
+    wire C124; //Logic Cell BD3
+    assign #11.80 C124 = C129_Q;
+    wire C119; //Logic Cell BD3
+    assign #11.80 C119 = C124;
+    //---------------------------------------------
+    
+    //* END Section 2.3. CPU(RMRD) ADDR -> GFX ROM *
 
 
     //*** PAGE 3: CPU Stuff ***
