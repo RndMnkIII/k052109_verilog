@@ -6,7 +6,7 @@
  * Repository: https://github.com/RndMnkIII/k052109_verilog      *
  *                                                               *
  * - Version: 1.0 16/06/2021 Initial.                            *
- * - Version: 1.1 27/06/2021 Added VSCode snippets for Logic     *
+ * - Version: 1.1 28/06/2021 Added VSCode snippets for Logic     *
  *                           Cells and more modules:T5A,T2C,T2B. *
  *                                                               *
  ****************************************************************/
@@ -144,7 +144,6 @@ endmodule
 //CI->CO to=2.94-3.04ns
 //CL->Q to=5.54ns
 //CL->CO to=9.61ns
-
 module C43_DLY ( input CK,
              input CLn,
              input Ln,
@@ -308,7 +307,6 @@ module LT2_DLY ( input D,
                  input Gn,
                  output reg Q,
                  output Qn);
-
       assign Qn = ~Q;
 
       always @*  

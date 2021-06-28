@@ -33,12 +33,13 @@
 	"V1N": {
 		"scope": "verilog",
 		"prefix": "#V1N",
-		"body": "assign #0.55 ${1:name} = ~${2:operator};"
+
+		"body": ["wire ${1:name}; //Logic Cell V1N","assign #0.55 ${1:name} = ~${2:operator};"]
 	},
 	"K2B": {
 		"scope": "verilog",
 		"prefix": "#K2B",
-		"body": "assign #1.83 ${1:name} = ${2:operator};"
+		"body": ["wire ${1:name}; //Logic Cell K2B","assign #1.83 ${1:name} = ${2:operator};"]
 	},
 	"K2Btxt": {
 		"scope": "verilog",
@@ -48,7 +49,7 @@
 	"K1B": {
 		"scope": "verilog",
 		"prefix": "#K1B",
-		"body": "assign #1.26 ${1:name} = ${2:operator};"
+		"body": ["wire ${1:name}; //Logic Cell K1B","assign #1.26 ${1:name} = ${2:operator};"]
 	},
 	"K1Btxt": {
 		"scope": "verilog",
@@ -58,7 +59,7 @@
 	"V2B": {
 		"scope": "verilog",
 		"prefix": "#V2B",
-		"body": "assign #0.64 ${1:name} = ~${2:operator};"
+		"body": ["wire ${1:name}; //Logic Cell V2B","assign #0.64 ${1:name} = ~${2:operator};"]
 	},
 	"V2Btxt": {
 		"scope": "verilog",
@@ -68,7 +69,7 @@
 	"X1B": {
 		"scope": "verilog",
 		"prefix": "#X1B",
-		"body": "assign #3.24 ${1:name} = ~(${2:op1} ^ ${3:op2});"
+		"body": ["wire ${1:name}; //Logic Cell X1B","assign #3.24 ${1:name} = ~(${2:op1} ^ ${3:op2});"]
 	},
 	"X1Btxt": {
 		"scope": "verilog",
@@ -78,7 +79,7 @@
 	"X2B": {
 		"scope": "verilog",
 		"prefix": "#X2B",
-		"body": "assign #3.50 ${1:name} = ${2:op1} ^ ${3:op2};"
+		"body": ["wire ${1:name}; //Logic Cell X2B","assign #3.50 ${1:name} = ${2:op1} ^ ${3:op2};"]
 	},
 	"X2Btxt": {
 		"scope": "verilog",
@@ -88,7 +89,7 @@
 	"N2N": {
 		"scope": "verilog",
 		"prefix": "#N2N",
-		"body": "assign #0.71 ${1:name} = ~(${2:op1} & ${3:op2});"
+		"body": ["wire ${1:name}; //Logic Cell N2N","assign #0.71 ${1:name} = ~(${2:op1} & ${3:op2});"]
 	},
 	"N2Ntxt": {
 		"scope": "verilog",
@@ -98,7 +99,7 @@
 	"N2P": {
 		"scope": "verilog",
 		"prefix": "#N2P",
-		"body": "assign #1.41 ${1:name} = ${2:op1} & ${3:op2};"
+		"body": ["wire ${1:name}; //Logic Cell N2P","assign #1.41 ${1:name} = ${2:op1} & ${3:op2};"]
 	},
 	"N2Ptxt": {
 		"scope": "verilog",
@@ -108,7 +109,7 @@
 	"N3N": {
 		"scope": "verilog",
 		"prefix": "#N3N",
-		"body": "assign #0.83 ${1:name} = ~(${2:op1} & ${3:op2} & ${4:op3});"
+		"body": ["wire ${1:name}; //Logic Cell N3N","assign #0.83 ${1:name} = ~(${2:op1} & ${3:op2} & ${4:op3});"]
 	},
 	"N3Ntxt": {
 		"scope": "verilog",
@@ -118,7 +119,7 @@
 	"N4N": {
 		"scope": "verilog",
 		"prefix": "#N4N",
-		"body": "assign #0.96 ${1:name} = ~(${2:op1} & ${3:op2} & ${4:op3} & ${5:op4});"
+		"body": ["wire ${1:name}; //Logic Cell N4N","assign #0.96 ${1:name} = ~(${2:op1} & ${3:op2} & ${4:op3} & ${5:op4});"]
 	},
 	"N4Ntxt": {
 		"scope": "verilog",
@@ -128,7 +129,7 @@
 	"N6B": {
 		"scope": "verilog",
 		"prefix": "#N6B",
-		"body": "assign #2.83 ${1:name} = ~(${2:op1} & ${3:op2} & ${4:op3} & ${5:op4} & ${6:op5} & ${7:op6});"
+		"body": ["wire ${1:name}; //Logic Cell N6B","assign #2.83 ${1:name} = ~(${2:op1} & ${3:op2} & ${4:op3} & ${5:op4} & ${6:op5} & ${7:op6});"]
 	},
 	"N6Btxt": {
 		"scope": "verilog",
@@ -138,7 +139,7 @@
 	"N8B": {
 		"scope": "verilog",
 		"prefix": "#N8B",
-		"body": "assign #3.09 ${1:name} = ~(${2:op1} & ${3:op2} & ${4:op3} & ${5:op4} & ${6:op5} & ${7:op6} & ${8:op7} & ${9:op8});"
+		"body": ["wire ${1:name}; //Logic Cell N8B","assign #3.09 ${1:name} = ~(${2:op1} & ${3:op2} & ${4:op3} & ${5:op4} & ${6:op5} & ${7:op6} & ${8:op7} & ${9:op8});"]
 	},
 	"N8Btxt": {
 		"scope": "verilog",
@@ -148,7 +149,7 @@
 	"N3P": {
 		"scope": "verilog",
 		"prefix": "#N3P",
-		"body": "assign #1.82 ${1:name} = ${2:op1} & ${3:op2} & ${4:op3};"
+		"body": ["wire ${1:name}; //Logic Cell N3P","assign #1.82 ${1:name} = ${2:op1} & ${3:op2} & ${4:op3};"]
 	},
 	"N3Ptxt": {
 		"scope": "verilog",
@@ -158,7 +159,7 @@
 	"N2B": {
 		"scope": "verilog",
 		"prefix": "#N2B",
-		"body": "assign #2.03 ${1:name} = ~(${2:op1} & ${3:op2});"
+		"body": ["wire ${1:name}; //Logic Cell N2B","assign #2.03 ${1:name} = ~(${2:op1} & ${3:op2});"]
 	},
 	"N2Btxt": {
 		"scope": "verilog",
@@ -168,7 +169,7 @@
 	"N4B": {
 		"scope": "verilog",
 		"prefix": "#N4B",
-		"body": "assign #2.38 ${1:name} = ~(${2:op1} & ${3:op2} & ${4:op3} & ${5:op4});"
+		"body": ["wire ${1:name}; //Logic Cell N4B","assign #2.38 ${1:name} = ~(${2:op1} & ${3:op2} & ${4:op3} & ${5:op4});"]
 	},
 	"N4Btxt": {
 		"scope": "verilog",
@@ -178,7 +179,7 @@
 	"R2P": {
 		"scope": "verilog",
 		"prefix": "#R2P",
-		"body": "assign #1.97 ${1:name} = ${2:op1} | ${3:op2};"
+		"body": ["wire ${1:name}; //Logic Cell R2P","assign #1.97 ${1:name} = ${2:op1} | ${3:op2};"]
 	},
 	"R2Ptxt": {
 		"scope": "verilog",
@@ -188,7 +189,7 @@
 	"R4P": {
 		"scope": "verilog",
 		"prefix": "#R4P",
-		"body": "assign #4.52 ${1:name} = ${2:op1} | ${3:op2} | ${4:op3} | ${5:op4};"
+		"body": ["wire ${1:name}; //Logic Cell R4P","assign #4.52 ${1:name} = ${2:op1} | ${3:op2} | ${4:op3} | ${5:op4};"]
 	},
 	"R4Pxt": {
 		"scope": "verilog",
@@ -198,7 +199,7 @@
 	"R2N": {
 		"scope": "verilog",
 		"prefix": "#R2N",
-		"body": "assign #0.87 ${1:name} = ~(${2:op1} | ${3:op2});"
+		"body": ["wire ${1:name}; //Logic Cell R2N","assign #0.87 ${1:name} = ~(${2:op1} | ${3:op2});"]
 	},
 	"R2Ntxt": {
 		"scope": "verilog",
@@ -208,7 +209,7 @@
 	"KCB": {
 		"scope": "verilog",
 		"prefix": "#KCB",
-		"body": "assign #3.31 ${1:name} = ${2:operator};"
+		"body": ["wire ${1:name}; //Logic Cell KCB","assign #3.31 ${1:name} = ${2:operator};"]
 	},
 	"KCBtxt": {
 		"scope": "verilog",
@@ -218,7 +219,7 @@
 	"K3B": {
 		"scope": "verilog",
 		"prefix": "#K3B",
-		"body": "assign #1.45 ${1:name} = ${2:operator};"
+		"body": ["wire ${1:name}; //Logic Cell K3B","assign #1.45 ${1:name} = ${2:operator};"]
 	},
 	"K3Btxt": {
 		"scope": "verilog",
@@ -229,7 +230,7 @@
 	"C43": {
 		"scope": "verilog",
 		"prefix": "#C43",
-		"body": ["C43_DLY ${1:name} (.CK(),",
+		"body": ["C43_DLY ${1/(.*)/${1:/downcase}/} (.CK(),",
 			".CLn(),",
 			".Ln(),",
 			".CI(),",
@@ -243,56 +244,85 @@
 	"D24": {
 		"scope": "verilog",
 		"prefix": "#D24",
-		"body": "D24_DLY ${1:name} (.A1(${2:a1}), .A2(${3:a2}), .B1(${4:b1}), .B2(${5:b2}), .X(${6:x}));",
+		"body": ["wire ${1:name}_X;","D24_DLY ${1/(.*)/${1:/downcase}/} (.A1(${2:a1}), .A2(${3:a2}), .B1(${4:b1}), .B2(${5:b2}), .X(${1:x}_X));"],
 		"description": "2-wide 2-AND 4-input AND-OR-Inverter"
 	},
 
 	"FDE": {
 		"scope": "verilog",
 		"prefix": "#FDE",
-		"body":"FDE_DLY ${1:name} (.D(${2:D_in}), .CLn(${3:clear}), .CK(${4:clock}), .Q(${5:Q_out}),.Qn(${6:Qn_out}));",
-		"description": "ositive Edge Clocked Power DFF with CLEAR to: 4.44-6.23ns"
+		"body":["wire ${1:name}_Q;","wire ${1:name}_Qn;","FDE_DLY ${1/(.*)/${1:/downcase}/} (.D(${2:D_in}), .CLn(${3:clear}), .CK(${4:clock}), .Q(${5:Q_out}),.Qn(${6:Qn_out}));"],
+		"description": "Positive Edge Clocked Power DFF with CLEAR to: 4.44-6.23ns"
 	},
 
 	"FDG": {
 		"scope": "verilog",
 		"prefix": "#FDG",
-		"body":"FDG_DLY ${1:name} (.D(${2:D_in}), .CLn(${3:clear}), .CK(${4:clock}), .Q(${5:Q_out}),.Qn(${6:Qn_out}));",
+		"body":["wire ${1:name}_Q;","wire ${1:name}_Qn;","FDG_DLY ${1/(.*)/${1:/downcase}/} (.D(${2:D_in}), .CLn(${3:clear}), .CK(${4:clock}), .Q(${5:Q_out}),.Qn(${6:Qn_out}));"],
 		"description": "Positive Edge Clocked DFF with CLEAR to: 3.79-5.24ns"
 	},
 
 	"FDM": {
 		"scope": "verilog",
 		"prefix": "#FDM",
-		"body":"FDM_DLY ${1:name} (.D(${2:D_in}), .CK(${3:clock}), .Q(${4:Q_out}),.Qn(${5:Qn_out}));",
+		"body":["wire ${1:name}_Q;","wire ${1:name}_Qn;","FDM_DLY ${1/(.*)/${1:/downcase}/} (.D(${2:D_in}), .CK(${3:clock}), .Q(${4:Q_out}),.Qn(${5:Qn_out}));"],
 		"description": "DFF to: 5.16-5.96ns"
 	},
 
 	"FDN": {
 		"scope": "verilog",
 		"prefix": "#FDN",
-		"body":"FDN_DLY ${1:name} (.D(${2:D_in}), .Sn(${3:set}), .CK(${4:clock}), .Q(${5:Q_out}),.Qn(${6:Qn_out}));",
+		"body":["wire ${1:name}_Q;","wire ${1:name}_Qn;","FDN_DLY ${1/(.*)/${1:/downcase}/} (.D(${2:D_in}), .Sn(${3:set}), .CK(${4:clock}), .Q(${5:Q_out}),.Qn(${6:Qn_out}));"],
 		"description": "DFF with SET to: 5.16-6.10ns"
 	},
 
 	"FDO": {
 		"scope": "verilog",
 		"prefix": "#FDO",
-		"body":"FDO_DLY ${1:name} (.D(${2:D_in}), .Rn(${3:reset}), .CK(${4:clock}), .Q(${5:Q_out}),.Qn(${6:Qn_out}));",
+		"body":["wire ${1:name}_Q;","wire ${1:name}_Qn;","FDO_DLY ${1/(.*)/${1:/downcase}/} (.D(${2:D_in}), .Rn(${3:reset}), .CK(${4:clock}), .Q(${5:Q_out}),.Qn(${6:Qn_out}));"],
 		"description": "DFF with RESET to: 5.96-5.16ns"
 	},
 
 	"FDQ": {
 		"scope": "verilog",
 		"prefix": "#FDQ",
-		"body":"FDQ_DLY ${1:name} (.D(${2:D4bit_in}), .CK(${3:clock}), .Q(${4:Q4bit_out}));",
+		"body":["wire [3:0] ${1:name}_Q;","FDQ_DLY ${1/(.*)/${1:/downcase}/} (.D(${2:D4bit_in}), .CK(${3:clock}), .Q(${1:name}_Q));"],
 		"description": "4-bit DFF falling edge clock to: 8.32-6.58ns"
 	},
 
 	"FDR": {
 		"scope": "verilog",
 		"prefix": "#FDR",
-		"body":"FDR_DLY ${1:name} (.D(${2:D4bit_in}), .CLn({3:clear}), .CK(${4:clock}), .Q(${5:Q4bit_out}));",
+		"body":["wire [3:0] ${1:name}_Q;","FDR_DLY ${1/(.*)/${1:/downcase}/} (.D(${2:D4bit_in}), .CLn(${3:clear}), .CK(${4:clock}), .Q(${1:name}_Q));"],
 		"description": "4-bit DFF with clear to: 8.36-6.68ns"
-	}
+	},
+
+	"H6T": {
+		"scope": "verilog",
+		"prefix": "#H6T",
+		"body":"H6T_DLY ${1:name} (.IN(${2:in}), .Cn(${3:Sel_n}), .OT(${4:out}), .X(${5:inout}));",
+		"description": "Tri-State Output and Input Buffer (True)"
+	},
+
+	"LT2": {
+		"scope": "verilog",
+		"prefix": "#LT2",
+		"body":["wire ${1:name}_Q;","wire ${1:name}_Qn;","LT2_DLY ${1/(.*)/${1:/downcase}/} (.D(${2:data_in}), .Gn(${3:latch}), .Q(${1:name}_Q), .Qn(${1:name}_Qn));"],
+		"description": "1-bit Data Latch"
+	},
+
+	"LTK": {
+		"scope": "verilog",
+		"prefix": "#LTK",
+		"body":["wire ${1:name}_Q;","wire ${1:name}_Qn;","LTK_DLY ${1/(.*)/${1:/downcase}/} (.D(${2:data_in}), .Gn(${3:latch}), .Q(${1:name}_Q), .Qn(${1:name}_Qn));"],
+		"description": "1-bit Data Latch"
+	},
+
+	"LTL": {
+		"scope": "verilog",
+		"prefix": "#LTL",
+		"body":["wire ${1:name}_Q;","wire ${1:name}_Qn;","LTL_DLY ${1/(.*)/${1:/downcase}/} (.D(${2:data_in}), .Gn(${3:latch}), .CLn(${4:clear}), .Q(${1:name}_Q), .Qn(${1:name}_Qn));"],
+		"description": "1-bit Data Latch"
+	},
 }
+

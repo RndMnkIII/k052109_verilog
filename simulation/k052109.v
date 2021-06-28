@@ -1,10 +1,10 @@
 /*****************************************************************
  * Verilog simulation module of the k052109 Tile Layer Generator *
  * Based on @Furrtek schematics on 051962 die tracing:           *
- * https://github.com/furrtek/VGChips/tree/master/Konami/051962  *
+ * https://github.com/furrtek/VGChips/tree/master/Konami/052109  *
  * Author: @RndMnkIII                                            *
  * Repository: https://github.com/RndMnkIII/k052109_verilog      *
- * Version: 1.0 25/06/2021                                       *
+ * Version: 1.0 28/06/2021                                       *
  ****************************************************************/
 
 `default_nettype none
@@ -61,6 +61,13 @@ module k052109_DLY (
 
     //dummy output signals
     assign DBG = {64{1'b0}};
+    //*** PAGE 1: VRAM address ***
+    //* START Section 1.1. PXH1/PXH2 buffer signals *
+    wire N72; //Logic Cell V1N
+    assign #0.55 N72 = ~TEST_D8;
+
+
+    //* END Section 1.1. PXH1/PXH2 buffer signals *
 
     //*** PAGE 2: GFX ROM address ***
     //* START Section 2.1. Timings signals *
@@ -250,15 +257,15 @@ module k052109_DLY (
 
     //* START Section 3.5. Interrupt flags signals *
     wire P4_Q;
-    FDN_DLY p4(.D(1'b0), .Sn(€REG1D00_D2), .CK(TRIG_IRQ), .Q(P4_Q));
+    FDN_DLY p4(.D(1'b0), .Sn(REG1D00[2]), .CK(TRIG_IRQ), .Q(P4_Q));
     assign IRQ = P4_Q; //*** OUTPUT SIGNAL IRQ ***
 
     wire F27_Q;
-    FDN_DLY f27(.D(1'b0), .Sn(€REG1D00_D1), .CK(TRIG_FIRQ), .Q(F27_Q));
+    FDN_DLY f27(.D(1'b0), .Sn(REG1D00[1]), .CK(TRIG_FIRQ), .Q(F27_Q));
     assign FIRQ = F27_Q; //*** OUTPUT SIGNAL FIRQ ***
 
     wire CC52_Q;
-    FDN_DLY cc52(.D(1'b0), .Sn(€REG1D00_D0), .CK(TRIG_NMI), .Q(CC52_Q));
+    FDN_DLY cc52(.D(1'b0), .Sn(REG1D00[0]), .CK(TRIG_NMI), .Q(CC52_Q));
     assign NMI = CC52_Q; //*** OUTPUT SIGNAL NMI ***
     //* END Section 3.5. Interrupt flags signals *
 
@@ -279,15 +286,18 @@ module k052109_DLY (
     assign #0.55 PXH0n = ~PXH0;
 
     wire N16_CO;
-    wire N16_QD, N16_QC, PXH1, PXH2;
+    wire N16_QD, N16_QC, N16_QB, N16_QA;
+    wire PXH1, PXH2;
     C43_DLY n16(.CK(J121),
                 .CLn(RES_SYNC2n),
                 .Ln(LINE_ENDn),
                 .CI(H15),
                 .EN(H15),
                 .CO(N16_CO),
-                .Q({N16_QD,N16_QC,PXH2,PXH1}),
+                .Q({N16_QD,N16_QC,N16_QB, N16_QA}),
                 .D({4{1'b0}}));
+    assign PXH1 = N16_QA;
+    assign PXH2 = N16_QB;
 
     wire [3:0] G29_Q;
     C43_DLY g29(.CK(J121),
