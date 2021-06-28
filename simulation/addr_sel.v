@@ -1,6 +1,5 @@
 /****************************************************************
- * Support modules for use with generate blocks repetitive      *
- * hardware patterns.                                           *
+ * Support modules for address selection.                       *
  * @Furrtek schematics on 052109 die:                           *
  * https://github.com/furrtek/VGChips/tree/master/Konami/052109 *
  * Author: @RndMnkIII                                           *
@@ -10,7 +9,7 @@
 `default_nettype none
 `timescale 1ns/1ps
 
- module VRAM_ADRR_SEL ( input A1,
+ module ADRR_SEL ( input A1,
                         input A2,
                         input B1,
                         input B2,
@@ -37,7 +36,7 @@
     assign RA = SELABC;
 endmodule
 
- module VRAM_ADRR_SEL2 ( input A,
+ module ADRR_SEL2 ( input A,
                         input B,
                  input SELC,
                  input SELCn,
