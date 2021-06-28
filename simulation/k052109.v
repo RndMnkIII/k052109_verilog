@@ -66,8 +66,113 @@ module k052109_DLY (
     wire N72; //Logic Cell V1N
     assign #0.55 N72 = ~TEST_D8;
 
+    wire N73_X0n;
+    wire N73_X1n;
+    T2C_DLY n73 (.A1(PXH1), .A2(TEST_D9), .B1(PXH2), .B2(TEST_D10), .S1n(TEST_D8), .S2(N72), .X0n(N73_X0n), .X1n(N73_X1n));
 
+    wire N70; //Logic Cell V2B
+    wire N16_QA_BUF;
+    assign #0.64 N70 = ~N73_X0n;
+    assign N16_QA_BUF = N70;
+
+    wire N68; //Logic Cell V2B
+    wire N16_QB_BUF;
+    assign #0.64 N68 = ~N73_X1n;
+    assign N16_QB_BUF = N68;
+
+    wire N16_QA_BUF2; //Logic Cell K1B
+    assign #1.26 N16_QA_BUF2 = N70;
+
+    wire N16_QA_BUF3n; //Logic Cell V2B
+    assign #0.64 N16_QA_BUF3n = ~N70;
+
+    wire N16_QA_BUF2n; //Logic Cell V2B
+    assign #0.64 N16_QA_BUF2n = ~N70;
+
+    wire N16_QA_BUFn; //Logic Cell V2B
+    assign #0.64 N16_QA_BUFn = ~N70;
+
+    wire N16_QB_BUF2; //Logic Cell K1B
+    assign #1.26 N16_QB_BUF2 = N68;
+
+    wire N16_QB_BUF3n; //Logic Cell V2B
+    assign #0.64 N16_QB_BUF3n = ~N68;
+
+    wire N16_QB_BUF2n; //Logic Cell V2B
+    assign #0.64 N16_QB_BUF2n = ~N68;
+
+    wire N16_QB_BUFn; //Logic Cell V2B
+    assign #0.64 N16_QB_BUFn = ~N68;
     //* END Section 1.1. PXH1/PXH2 buffer signals *
+
+    //* START Section 1.2. TEST_D13 addresses selector signals *
+    /*
+    always @ * begin
+        case ({AA58,AA38})
+            2'bx1: begin
+                Y129=ROW5; Y78=ROW6; Y91=ROW7; Y80=1'b1; 
+            end     
+            2'bx0: begin
+                Y129=1'b0; Y78=1'b0; Y91=1'b0; Y80=1'b0; 
+            end 
+        endcase
+    end
+    */
+    wire Y69_X;
+    D24_DLY y69 (.A1(ROW5), .A2(AA38), .B1(1'b0), .B2(AA58), .X(Y69_X));
+    wire Y129; //Logic Cell V1N
+    assign #0.55 Y129 = ~Y69_X;
+
+    wire Y71_X;
+    D24_DLY y71 (.A1(ROW6), .A2(AA38), .B1(1'b0), .B2(AA58), .X(Y71_X));
+    wire Y78; //Logic Cell V1N
+    assign #0.55 Y78 = ~Y71_X;
+
+    wire Y73_X;
+    D24_DLY y73 (.A1(ROW7), .A2(AA38), .B1(1'b0), .B2(AA58), .X(Y73_X));
+    wire Y91; //Logic Cell V1N
+    assign #0.55 Y91 = ~Y73_X;
+
+    wire Y75_X;
+    D24_DLY y75 (.A1(1'b1), .A2(AA38), .B1(1'b0), .B2(AA58), .X(Y75_X));
+    wire Y80; //Logic Cell V1N
+    assign #0.55 Y80 = ~Y75_X;
+    //* END Section 1.2. TEST_D13 addresses selector signals *
+
+    //* START Section 1.3. VRAM address outputs selection: A=CPU B=Rendering C=TEST_D11 *
+    wire D50; //Logic Cell V1N
+    assign #0.55 D50 = ~TEST_D11;
+
+    wire D47_Xn;
+    T2B_DLY d47 (.A(TEST_D12), .B(J79), .S1n(TEST_D11), .S2(D50), .Xn(D47_Xn));
+    wire R113; //Logic Cell K2B
+    assign #1.83 R113 = D47_Xn;
+    wire R117; //Logic Cell V2B
+    assign #0.64 R117 = ~D47_Xn;
+
+    VRAM_ADRR_SEL ra_0 (.A1(SCROLL_RAM_A0), .A2(MAP_A0), .B1(PXH3F), .B2(MAP_B0), .C(AB[0]),  .SELA(N16_QA_BUF), .SELAn(N16_QA_BUFn), .SELB(N16_QB_BUF), .SELBn(N16_QB_BUFn), .SELC(R113), .SELCn(R117), .RA(RA[0]));
+    VRAM_ADRR_SEL ra_1 (.A1(SCROLL_RAM_A1), .A2(MAP_A1), .B1(PXH4F), .B2(MAP_B1), .C(AB[1]),  .SELA(N16_QA_BUF), .SELAn(N16_QA_BUFn), .SELB(N16_QB_BUF), .SELBn(N16_QB_BUFn), .SELC(R113), .SELCn(R117), .RA(RA[1]));
+    VRAM_ADRR_SEL ra_2 (.A1(SCROLL_RAM_A2), .A2(MAP_A2), .B1(PXH5),  .B2(MAP_B2), .C(AB[2]),  .SELA(N16_QA_BUF), .SELAn(N16_QA_BUFn), .SELB(N16_QB_BUF), .SELBn(N16_QB_BUFn), .SELC(R113), .SELCn(R117), .RA(RA[2]));
+    VRAM_ADRR_SEL ra_3 (.A1(SCROLL_RAM_A3), .A2(MAP_A3), .B1(PXH6),  .B2(MAP_B3), .C(AB[3]),  .SELA(N16_QA_BUF), .SELAn(N16_QA_BUFn), .SELB(N16_QB_BUF), .SELBn(N16_QB_BUFn), .SELC(R113), .SELCn(R117), .RA(RA[3]));
+    VRAM_ADRR_SEL ra_4 (.A1(SCROLL_RAM_A4), .A2(MAP_A4), .B1(PXH7),  .B2(MAP_B4), .C(AB[4]),  .SELA(N16_QA_BUF), .SELAn(N16_QA_BUFn), .SELB(N16_QB_BUF), .SELBn(N16_QB_BUFn), .SELC(R113), .SELCn(R117), .RA(RA[4]));
+    VRAM_ADRR_SEL ra_5 (.A1(SCROLL_RAM_A5), .A2(MAP_A5), .B1(PXH8),  .B2(MAP_B5), .C(AB[5]),  .SELA(N16_QA_BUF), .SELAn(N16_QA_BUFn), .SELB(N16_QB_BUF), .SELBn(N16_QB_BUFn), .SELC(R113), .SELCn(R117), .RA(RA[5]));
+    VRAM_ADRR_SEL ra_6 (.A1(Y129),          .A2(MAP_A6), .B1(ROW3),  .B2(MAP_B6), .C(AB[6]),  .SELA(N16_QA_BUF), .SELAn(N16_QA_BUFn), .SELB(N16_QB_BUF), .SELBn(N16_QB_BUFn), .SELC(R113), .SELCn(R117), .RA(RA[6]));
+    //----------------BUF2
+    VRAM_ADRR_SEL ra_7 (.A1(Y78),           .A2(MAP_A7), .B1(ROW4),  .B2(MAP_B7), .C(AB[7]),  .SELA(N16_QA_BUF), .SELAn(N16_QA_BUF2n), .SELB(N16_QB_BUF), .SELBn(N16_QB_BUF2n), .SELC(R113), .SELCn(R117), .RA(RA[7]));
+    VRAM_ADRR_SEL ra_8 (.A1(Y91),           .A2(MAP_A8), .B1(ROW5),  .B2(MAP_B8), .C(AB[8]),  .SELA(N16_QA_BUF), .SELAn(N16_QA_BUF2n), .SELB(N16_QB_BUF), .SELBn(N16_QB_BUF2n), .SELC(R113), .SELCn(R117), .RA(RA[8]));
+    VRAM_ADRR_SEL ra_9 (.A1(Y80),           .A2(MAP_A9), .B1(ROW6),  .B2(MAP_B9), .C(AB[9]),  .SELA(N16_QA_BUF), .SELAn(N16_QA_BUF2n), .SELB(N16_QB_BUF), .SELBn(N16_QB_BUF2n), .SELC(R113), .SELCn(R117), .RA(RA[9]));
+    VRAM_ADRR_SEL ra_A (.A1(1'b0),          .A2(MAP_A10),.B1(ROW7),  .B2(MAP_B10),.C(AB[10]), .SELA(N16_QA_BUF), .SELAn(N16_QA_BUF2n), .SELB(N16_QB_BUF), .SELBn(N16_QB_BUF2n), .SELC(R113), .SELCn(R117), .RA(RA[10]));
+    VRAM_ADRR_SEL ra_B (.A1(1'b1),          .A2(1'b1),   .B1(1'b0),  .B2(1'b0),   .C(AB[11]), .SELA(N16_QA_BUF), .SELAn(N16_QA_BUF2n), .SELB(N16_QB_BUF), .SELBn(N16_QB_BUF2n), .SELC(R113), .SELCn(R117), .RA(RA[11]));
+    VRAM_ADRR_SEL ra_C (.A1(1'b1),          .A2(1'b0),   .B1(1'b0),  .B2(1'b1),   .C(AB[12]), .SELA(N16_QA_BUF), .SELAn(N16_QA_BUF2n), .SELB(N16_QB_BUF), .SELBn(N16_QB_BUF2n), .SELC(R113), .SELCn(R117), .RA(RA[12]));
+
+    VRAM_ADRR_SEL2 roe_0(.A(RDEN), .B(J140_Qn), .SELC(R113)), .SELCn(R117), .VRAM_OE_CS(ROE[0]));
+    VRAM_ADRR_SEL2 roe_1(.A(RDEN), .B(J151), .SELC(R113)), .SELCn(R117), .VRAM_OE_CS(ROE[1]));
+    VRAM_ADRR_SEL2 roe_2(.A(RDEN), .B(1'b1), .SELC(R113)), .SELCn(R117), .VRAM_OE_CS(ROE[2]));
+    VRAM_ADRR_SEL2 rcs_0(.A(CPU_VRAM_CS0), .B(1'b0), .SELC(R113)), .SELCn(R117), .VRAM_OE_CS(RCS[0]));
+    VRAM_ADRR_SEL2 rcs_1(.A(CPU_VRAM_CS1), .B(1'b0), .SELC(R113)), .SELCn(R117), .VRAM_OE_CS(RCS[1]));
+    //* END Section 1.3. VRAM address outputs selection: A=CPU B=Rendering C=TEST_D11*
+
+
 
     //*** PAGE 2: GFX ROM address ***
     //* START Section 2.1. Timings signals *
