@@ -28,10 +28,10 @@ module k052109_DLY (
     input wire [15:0] AB, //CPU BUS ADDRESS
     inout wire [7:0] DB, //CPU BUS DATA
     
-    //ROM addressing interface
+    //ROM addressing interface  
     output wire [7:0] COL, //COL[5:0] -> GFX ROM ADDR[16:11] Aliens Sch.
     output wire [10:0] VC, //VC[10:0] -> GFX ROM ADDR[10:0] Aliens Sch.
-    output wire [1:0] CAB, //ROMBANK SELECTORS: CAB[0] -> GFX ROM ADDR[17] //FOR 512Kbx16bit GFX ROM Aliens Sch.
+    output wire [1:0] CAB, //ROMBANK SELECTORS: CAB[0] -> GFX ROM ADDR[17] //FOR 256Kx16-bit GFX ROM Aliens Sch.
                            //                   CAB[1] -> GFX ROM OEn  //FOR GFX ADDR 0x00000-0x3FFFF Aliens Sch.
                            //                  ~CAB[1] -> GFX ROM OEn  //FOR GFX ADDR 0x40000-0x5FFFF Aliens Sch. (Max. 0x7FFFF)
 
@@ -322,7 +322,7 @@ module k052109_DLY (
     wire C119; //Logic Cell BD3
     assign #11.80 C119 = C124;
     //---------------------------------------------
-    
+
     //* END Section 2.3. CPU(RMRD) ADDR -> GFX ROM *
 
 
