@@ -157,42 +157,42 @@
 	"FDE": {
 		"scope": "verilog",
 		"prefix": "#FDE",
-		"body":["wire ${1:name}_Q;","wire ${1:name}_Qn;","FDE_DLY ${1/(.*)/${1:/downcase}/} (.D(${2:D_in}), .CLn(${3:clear}), .CK(${4:clock}), .Q(${5:Q_out}),.Qn(${6:Qn_out}));"],
+		"body":["wire ${1:name}_Q;","wire ${1:name}_Qn;","FDE_DLY ${1/(.*)/${1:/downcase}/} (.D(${2:D_in}), .CLn(${3:clear}), .CK(${4:clock}), .Q(${1:name}_Q)),.Qn(${1:name}_Qn));"],
 		"description": "Positive Edge Clocked Power DFF with CLEAR to: 4.44-6.23ns"
 	},
 
 	"FDG": {
 		"scope": "verilog",
 		"prefix": "#FDG",
-		"body":["wire ${1:name}_Q;","wire ${1:name}_Qn;","FDG_DLY ${1/(.*)/${1:/downcase}/} (.D(${2:D_in}), .CLn(${3:clear}), .CK(${4:clock}), .Q(${5:Q_out}),.Qn(${6:Qn_out}));"],
+		"body":["wire ${1:name}_Q;","wire ${1:name}_Qn;","FDG_DLY ${1/(.*)/${1:/downcase}/} (.D(${2:D_in}), .CLn(${3:clear}), .CK(${4:clock}), .Q(${1:name}_Q),.Qn(${1:name}_Qn));"],
 		"description": "Positive Edge Clocked DFF with CLEAR to: 3.79-5.24ns"
 	},
 
 	"FDM": {
 		"scope": "verilog",
 		"prefix": "#FDM",
-		"body":["wire ${1:name}_Q;","wire ${1:name}_Qn;","FDM_DLY ${1/(.*)/${1:/downcase}/} (.D(${2:D_in}), .CK(${3:clock}), .Q(${4:Q_out}),.Qn(${5:Qn_out}));"],
+		"body":["wire ${1:name}_Q;","wire ${1:name}_Qn;","FDM_DLY ${1/(.*)/${1:/downcase}/} (.D(${2:D_in}), .CK(${3:clock}), .Q(${1:name}_Q),.Qn(${1:name}_Qn));"],
 		"description": "DFF to: 5.16-5.96ns"
 	},
 
 	"FDN": {
 		"scope": "verilog",
 		"prefix": "#FDN",
-		"body":["wire ${1:name}_Q;","wire ${1:name}_Qn;","FDN_DLY ${1/(.*)/${1:/downcase}/} (.D(${2:D_in}), .Sn(${3:set}), .CK(${4:clock}), .Q(${5:Q_out}),.Qn(${6:Qn_out}));"],
+		"body":["wire ${1:name}_Q;","wire ${1:name}_Qn;","FDN_DLY ${1/(.*)/${1:/downcase}/} (.D(${2:D_in}), .Sn(${3:set}), .CK(${4:clock}), .Q(${1:name}_Q),.Qn(${1:name}_Qn));"],
 		"description": "DFF with SET to: 5.16-6.10ns"
 	},
 
 	"FDO": {
 		"scope": "verilog",
 		"prefix": "#FDO",
-		"body":["wire ${1:name}_Q;","wire ${1:name}_Qn;","FDO_DLY ${1/(.*)/${1:/downcase}/} (.D(${2:D_in}), .Rn(${3:reset}), .CK(${4:clock}), .Q(${5:Q_out}),.Qn(${6:Qn_out}));"],
+		"body":["wire ${1:name}_Q;","wire ${1:name}_Qn;","FDO_DLY ${1/(.*)/${1:/downcase}/} (.D(${2:D_in}), .Rn(${3:reset}), .CK(${4:clock}), .Q(${1:name}_Q),.Qn(${1:name}_Qn));"],
 		"description": "DFF with RESET to: 5.96-5.16ns"
 	},
 
 	"FDQ": {
 		"scope": "verilog",
 		"prefix": "#FDQ",
-		"body":["wire [3:0] ${1:name}_Q;","FDQ_DLY ${1/(.*)/${1:/downcase}/} (.D(${2:D4bit_in}), .CK(${3:clock}), .Q(${1:name}_Q));"],
+		"body":["wire [3:0] ${1:name}_Q;","FDQ_DLY ${1/(.*)/${1:/downcase}/} (.D(${2:D4bit_in}), .CKn(${3:clock_n}), .Q(${1:name}_Q));"],
 		"description": "4-bit DFF falling edge clock to: 8.32-6.58ns"
 	},
 
@@ -201,6 +201,13 @@
 		"prefix": "#FDR",
 		"body":["wire [3:0] ${1:name}_Q;","FDR_DLY ${1/(.*)/${1:/downcase}/} (.D(${2:D4bit_in}), .CLn(${3:clear}), .CK(${4:clock}), .Q(${1:name}_Q));"],
 		"description": "4-bit DFF with clear to: 8.36-6.68ns"
+	},
+
+	"FDS": {
+		"scope": "verilog",
+		"prefix": "#FDS",
+		"body":["wire [3:0] ${1:name}_Q;","FDS_DLY ${1/(.*)/${1:/downcase}/} (.D(${2:D4bit_in}), .CK(${3:clock}), .Q(${1:name}_Q));"],
+		"description": "Positive Edge Clocked 4-bit DFF to: 5.96-7.66ns"
 	},
 
 	"H6T": {
@@ -229,6 +236,15 @@
 		"prefix": "#LTL",
 		"body":["wire ${1:name}_Q;","wire ${1:name}_Qn;","LTL_DLY ${1/(.*)/${1:/downcase}/} (.D(${2:data_in}), .Gn(${3:latch}), .CLn(${4:clear}), .Q(${1:name}_Q), .Qn(${1:name}_Qn));"],
 		"description": "1-bit Data Latch with Clear"
+	},
+
+	"LT4": {
+		"scope": "verilog",
+		"prefix": "#LT4",
+		"body":["wire [3:0] ${1:name}_P;",
+			    "wire [3:0] ${1:name}_N;",
+				"LT4_DLY ${1/(.*)/${1:/downcase}/} (.D(${2:data_in}), .Gn(${3:latch}),.P(${1:name}_P), .N(${1:name}_N));"],
+		"description": "4-bit Data Latch"
 	},
 
 	"T5A": {

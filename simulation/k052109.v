@@ -168,11 +168,11 @@ module k052109_DLY (
     ADRR_SEL ra_B (.A1(1'b1),          .A2(1'b1),   .B1(1'b0),  .B2(1'b0),   .C(AB[11]), .SELA(N16_QA_BUF), .SELAn(N16_QA_BUF2n), .SELB(N16_QB_BUF), .SELBn(N16_QB_BUF2n), .SELC(R113), .SELCn(R117), .RA(RA[11]));
     ADRR_SEL ra_C (.A1(1'b1),          .A2(1'b0),   .B1(1'b0),  .B2(1'b1),   .C(AB[12]), .SELA(N16_QA_BUF), .SELAn(N16_QA_BUF2n), .SELB(N16_QB_BUF), .SELBn(N16_QB_BUF2n), .SELC(R113), .SELCn(R117), .RA(RA[12]));
 
-    ADRR_SEL2 roe_0(.A(RDEN), .B(J140_Qn), .SELC(R113)), .SELCn(R117), .VRAM_OE_CS(ROE[0]));
-    ADRR_SEL2 roe_1(.A(RDEN), .B(J151), .SELC(R113)), .SELCn(R117), .VRAM_OE_CS(ROE[1]));
-    ADRR_SEL2 roe_2(.A(RDEN), .B(1'b1), .SELC(R113)), .SELCn(R117), .VRAM_OE_CS(ROE[2]));
-    ADRR_SEL2 rcs_0(.A(CPU_VRAM_CS0), .B(1'b0), .SELC(R113)), .SELCn(R117), .VRAM_OE_CS(RCS[0]));
-    ADRR_SEL2 rcs_1(.A(CPU_VRAM_CS1), .B(1'b0), .SELC(R113)), .SELCn(R117), .VRAM_OE_CS(RCS[1]));
+    ADRR_SEL2 roe_0(.A(RDEN), .B(J140_Qn), .SELC(R113)), .SELCn(R117), .X(ROE[0]));
+    ADRR_SEL2 roe_1(.A(RDEN), .B(J151), .SELC(R113)), .SELCn(R117), .X(ROE[1]));
+    ADRR_SEL2 roe_2(.A(RDEN), .B(1'b1), .SELC(R113)), .SELCn(R117), .X(ROE[2]));
+    ADRR_SEL2 rcs_0(.A(CPU_VRAM_CS0), .B(1'b0), .SELC(R113)), .SELCn(R117), .X(RCS[0]));
+    ADRR_SEL2 rcs_1(.A(CPU_VRAM_CS1), .B(1'b0), .SELC(R113)), .SELCn(R117), .X(RCS[1]));
     //* END Section 1.3. VRAM address outputs selection: A=CPU B=Rendering C=TEST_D11*
 
 
@@ -322,7 +322,123 @@ module k052109_DLY (
     wire C119; //Logic Cell BD3
     assign #11.80 C119 = C124;
     //---------------------------------------------
+    wire C64_Q;
+    FDO_DLY c64 (.D(DB_BUF[2]), .Rn(RES_SYNCn), .CK(BEN), .Q(C64_Q));
+    wire C81; //Logic Cell N2P
+    assign #1.41 C81 = C64_Q & COL[1];
+    
+    //VC[2]
+    wire CC59_Q;
+    FDG_DLY cc59 (.D(ROW2), .CLn(RES_SYNCn), .CK(PXH1), .Q(CC59_Q));
+    wire BB58_Xn;
+    T5A_DLY bb58 (.A1(CC59_Q), .A2(CC59_Q), .B1(ROW_B2), .B2(ROW_A2), .S1n(N16_QA_BUF2), .S2(N16_QA_BUF3n), .S3n(N16_QA_BUF3n), .S4(N16_QA_BUF2), .S5n(N16_QB_BUF2), .S6(N16_QB_BUF3n), .Xn(BB58_Xn));
+    wire M73; //Logic Cell V1N
+    assign #0.55 M73 = ~BB58_Xn;
+    wire C83; //Logic Cell X2B
+    assign #3.50 C83 = M73 ^ C81;
+    wire C99_Q;
+    LTK_DLY c99 (.D(C83), .Gn(J79), .Q(C99_Q));
+    wire C115_Xn;
+    T2B_DLY c115 (.A(B111), .B(C99_Q), .S1n(RMRD_BUF), .S2(RMRDn), .Xn(C115_Xn));
+    wire B118; //Logic Cell V2B
+    assign #0.64 B118 = ~C115_Xn;
+    assign VC[2] = B118;
 
+    //VC[1]
+    wire CC39; //Logic Cell BD5
+    assign #22.18 CC39 = ROW1; //DELAY CELL LOOK DEEPER
+    wire CC68_Q;
+    FDG_DLY cc68 (.D(CC39), .CLn(RES_SYNCn), .CK(PXH1), .Q(CC68_Q));
+    wire BB63_Xn;
+    T5A_DLY bb63 (.A1(CC68_Q), .A2(CC68_Q), .B1(ROW_B1), .B2(ROW_A1), .S1n(N16_QA_BUF2), .S2(N16_QA_BUF3n), .S3n(N16_QA_BUF3n), .S4(N16_QA_BUF2), .S5n(N16_QB_BUF2), .S6(N16_QB_BUF3n), .Xn(BB63_Xn));
+    wire M69; //Logic Cell V1N
+    assign #0.55 M69 = ~BB63_Xn;
+    wire C77; //Logic Cell X2B
+    assign #3.50 C77 = M69 ^ C81;
+    wire C93_Q;
+    LTK_DLY c93 (.D(C77), .Gn(J79), .Q(C93_Q));
+    wire C133_Xn;
+    T2B_DLY c133 (.A(C144), .B(C93_Q), .S1n(RMRD_BUF), .S2(RMRDn), .Xn(C133_Xn));
+    wire C137; //Logic Cell V2B
+    assign #0.64 C137 = ~C133_Xn;
+    assign VC[1] = C137;
+
+    //VC[0]
+    wire BB39_Q;
+    FDG_DLY bb39 (.D(ROW0), .CLn(RES_SYNCn), .CK(PXH1), .Q(BB39_Q));
+    wire BB68_Xn;
+    T5A_DLY bb68 (.A1(BB39_Q), .A2(CC68_Q), .B1(ROW_B0), .B2(ROW_A0), .S1n(N16_QA_BUF2), .S2(N16_QA_BUF3n), .S3n(N16_QA_BUF3n), .S4(N16_QA_BUF2), .S5n(N16_QB_BUF2), .S6(N16_QB_BUF3n), .Xn(BB68_Xn));
+    wire M71; //Logic Cell V1N
+    assign #0.55 M71 = ~BB68_Xn;
+    wire C87; //Logic Cell X2B
+    assign #3.50 C87 = M71 ^ C81;
+    wire C103_Q;
+    LTK_DLY c103 (.D(C87), .Gn(J79), .Q(C103_Q));
+    wire C117_Xn;
+    T2B_DLY c117 (.A(C119), .B(C103_Q), .S1n(RMRD_BUF), .S2(RMRDn), .Xn(C117_Xn));
+    wire C139; //Logic Cell V2B
+    assign #0.64 C139 = ~C117_Xn;
+    assign VC[0] = C139;
+    
+    //*** VC[6:3] ***
+    wire [3:0] E120_P;
+    LT4_DLY e120 (.D(AB[5:8]), .Gn(C92),.P(E120_P));
+    wire [3:0] D96_Q;
+    FDS_DLY d96 (.D({VD_IN[0:3]}), .CK(PXH0n), .Q(D96_Q));
+    //VC[6] 
+    wire D128_Xn;
+    T2B_DLY d128 (.A(E120_P[0]), .B(D96_Q[0]), .S1n(RMRD_BUF), .S2(RMRDn), .Xn(D128_Xn));
+    wire A144; //Logic Cell V2B
+    assign #0.64 A144 = ~D128_Xn;
+    assign VC[6] = A144;
+    //VC[5] 
+    wire D130_Xn;
+    T2B_DLY d130 (.A(E120_P[1]), .B(D96_Q[1]), .S1n(RMRD_BUF), .S2(RMRDn), .Xn(D130_Xn));
+    wire A146; //Logic Cell V2B
+    assign #0.64 A146 = ~D130_Xn;
+    assign VC[5] = A146;
+    //VC[4] 
+    wire D132_Xn;
+    T2B_DLY d132 (.A(E120_P[2]), .B(D96_Q[2]), .S1n(RMRD_BUF), .S2(RMRDn), .Xn(D132_Xn));
+    wire C143; //Logic Cell V2B
+    assign #0.64 C143 = ~D132_Xn;
+    assign VC[4] = C143;
+    //VC[3] 
+    wire D124_Xn;
+    T2B_DLY d124 (.A(E120_P[3]), .B(D96_Q[3]), .S1n(RMRD_BUF), .S2(RMRDn), .Xn(D124_Xn));
+    wire C141; //Logic Cell V2B
+    assign #0.64 C141 = ~D124_Xn;
+    assign VC[3] = C141;
+
+    //VC[7:10]
+    wire [3:0] D81_P;
+    LT4_DLY d81 (.D(AB[9:12]), .Gn(C92),.P(D81_P));
+    wire [3:0] D136_Q;
+    FDS_DLY d136 (.D({VD_IN[4:7]}), .CK(PXH0n), .Q(D136_Q));
+    //VC[7] 
+    wire D126_Xn;
+    T2B_DLY d126 (.A(D81_P[0]), .B(136_Q[3]), .S1n(RMRD_BUF), .S2(RMRDn), .Xn(D126_Xn));
+    wire A142; //Logic Cell V2B
+    assign #0.64 A142 = ~D126_Xn;
+    assign VC[7] = A142;
+    //VC[8] 
+    wire D122_Xn;
+    T2B_DLY d122 (.A(D81_P[1]), .B(136_Q[2]), .S1n(RMRD_BUF), .S2(RMRDn), .Xn(D122_Xn));
+    wire A124; //Logic Cell V2B
+    assign #0.64 A124 = ~D122_Xn;
+    assign VC[8] = A124;
+    //VC[9] 
+    wire D120_Xn;
+    T2B_DLY d120 (.A(D81_P[2]), .B(136_Q[1]), .S1n(RMRD_BUF), .S2(RMRDn), .Xn(D120_Xn));
+    wire A122; //Logic Cell V2B
+    assign #0.64 A122 = ~D120_Xn;
+    assign VC[9] = A122;
+    //VC[10] 
+    wire D118_Xn;
+    T2B_DLY d118 (.A(D81_P[3]), .B(136_Q[0]), .S1n(RMRD_BUF), .S2(RMRDn), .Xn(D118_Xn));
+    wire A120; //Logic Cell V2B
+    assign #0.64 A120 = ~D118_Xn;
+    assign VC[10] = A120;
     //* END Section 2.3. CPU(RMRD) ADDR -> GFX ROM *
 
 

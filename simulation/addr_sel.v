@@ -40,12 +40,12 @@ endmodule
                         input B,
                  input SELC,
                  input SELCn,
-                 output VRAM_OE_CS);
+                 output X);
     wire SELAB_Xn;
     D24_DLY SELABC (.A1(A), .A2(SELC), .B1(B), .B2(SELCn), .X(SELAB_Xn)); 
 
     wire SELAB; //Logic Cell V2B
     assign #0.64 SELAB = ~SELAB_Xn;
     
-    assign VRAM_OE_CS = SELAB;
+    assign X = SELAB;
 endmodule

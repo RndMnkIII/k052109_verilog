@@ -288,6 +288,19 @@ module FDR_DLY 	( input [3:0] D,
     end
 endmodule
 
+//Cell Name: FDS
+//Function: Positive Edge Clocked 4-bit DFF
+//to: 5.96-7.66ns
+module FDS_DLY 	( input [3:0] D,
+              input CK,
+              output reg [3:0] Q);
+
+	always @ (posedge CK) 
+        Q <= #7.66 D;
+endmodule
+
+
+
 //Cell Name: LT2
 //Function: 1-bit Data Latch
 //Gn->Q to: 1.84-3.09ns
@@ -314,6 +327,42 @@ module LT2_DLY ( input D,
             Q <= #3.94 D; 
         end
 endmodule
+
+
+
+//Cell Name: LT4
+//Function: 4-bit Data Latch
+//Gn->P to: 6.74-5.00ns
+//Gn->N to: 5.80-7.50ns
+//D->P to: 1.42-1.63ns
+//D->N to: 2.43-2.18ns
+
+//Function Table:
+//   Inputs      Outputs
+//-----------------------
+//|  D  Gn  |  P   N    | 
+//-----------------------
+//|  X  H  |  P0   N0   |
+//|  H  L  |  H    L    |
+//|  L  L  |  L    H    |
+//-----------------------
+module LT4_DLY ( input [3:0] D,
+                 input Gn,
+                 output [3:0] P,
+                 output [3:0] N);
+      assign N[0] = ~P[0];
+      assign N[1] = ~P[1];
+      assign N[2] = ~P[2];
+      assign N[3] = ~P[3];
+
+      always @*  
+        if (!Gn) begin
+            P <= #7.50 D; 
+        end
+endmodule
+
+
+
 
 
 //Cell Name: LTK
