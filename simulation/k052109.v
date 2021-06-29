@@ -158,12 +158,12 @@ module k052109_DLY (
     wire R117; //Logic Cell V2B
     assign #0.64 R117 = ~D47_Xn;
 
-    ADRR_SEL ra_0 (.A1(SCROLL_RAM_A0), .A2(MAP_A0), .B1(PXH3F), .B2(MAP_B0), .C(AB[0]),  .SELA(N16_QA_BUF), .SELAn(N16_QA_BUFn), .SELB(N16_QB_BUF), .SELBn(N16_QB_BUFn), .SELC(R113), .SELCn(R117), .RA(RA[0]));
-    ADRR_SEL ra_1 (.A1(SCROLL_RAM_A1), .A2(MAP_A1), .B1(PXH4F), .B2(MAP_B1), .C(AB[1]),  .SELA(N16_QA_BUF), .SELAn(N16_QA_BUFn), .SELB(N16_QB_BUF), .SELBn(N16_QB_BUFn), .SELC(R113), .SELCn(R117), .RA(RA[1]));
-    ADRR_SEL ra_2 (.A1(SCROLL_RAM_A2), .A2(MAP_A2), .B1(PXH5),  .B2(MAP_B2), .C(AB[2]),  .SELA(N16_QA_BUF), .SELAn(N16_QA_BUFn), .SELB(N16_QB_BUF), .SELBn(N16_QB_BUFn), .SELC(R113), .SELCn(R117), .RA(RA[2]));
-    ADRR_SEL ra_3 (.A1(SCROLL_RAM_A3), .A2(MAP_A3), .B1(PXH6),  .B2(MAP_B3), .C(AB[3]),  .SELA(N16_QA_BUF), .SELAn(N16_QA_BUFn), .SELB(N16_QB_BUF), .SELBn(N16_QB_BUFn), .SELC(R113), .SELCn(R117), .RA(RA[3]));
-    ADRR_SEL ra_4 (.A1(SCROLL_RAM_A4), .A2(MAP_A4), .B1(PXH7),  .B2(MAP_B4), .C(AB[4]),  .SELA(N16_QA_BUF), .SELAn(N16_QA_BUFn), .SELB(N16_QB_BUF), .SELBn(N16_QB_BUFn), .SELC(R113), .SELCn(R117), .RA(RA[4]));
-    ADRR_SEL ra_5 (.A1(SCROLL_RAM_A5), .A2(MAP_A5), .B1(PXH8),  .B2(MAP_B5), .C(AB[5]),  .SELA(N16_QA_BUF), .SELAn(N16_QA_BUFn), .SELB(N16_QB_BUF), .SELBn(N16_QB_BUFn), .SELC(R113), .SELCn(R117), .RA(RA[5]));
+    ADRR_SEL ra_0 (.A1(SCROLL_RAM_A[0]), .A2(MAP_A0), .B1(PXH3F), .B2(MAP_B0), .C(AB[0]),  .SELA(N16_QA_BUF), .SELAn(N16_QA_BUFn), .SELB(N16_QB_BUF), .SELBn(N16_QB_BUFn), .SELC(R113), .SELCn(R117), .RA(RA[0]));
+    ADRR_SEL ra_1 (.A1(SCROLL_RAM_A[1]), .A2(MAP_A1), .B1(PXH4F), .B2(MAP_B1), .C(AB[1]),  .SELA(N16_QA_BUF), .SELAn(N16_QA_BUFn), .SELB(N16_QB_BUF), .SELBn(N16_QB_BUFn), .SELC(R113), .SELCn(R117), .RA(RA[1]));
+    ADRR_SEL ra_2 (.A1(SCROLL_RAM_A[2]), .A2(MAP_A2), .B1(PXH5),  .B2(MAP_B2), .C(AB[2]),  .SELA(N16_QA_BUF), .SELAn(N16_QA_BUFn), .SELB(N16_QB_BUF), .SELBn(N16_QB_BUFn), .SELC(R113), .SELCn(R117), .RA(RA[2]));
+    ADRR_SEL ra_3 (.A1(SCROLL_RAM_A[3]), .A2(MAP_A3), .B1(PXH6),  .B2(MAP_B3), .C(AB[3]),  .SELA(N16_QA_BUF), .SELAn(N16_QA_BUFn), .SELB(N16_QB_BUF), .SELBn(N16_QB_BUFn), .SELC(R113), .SELCn(R117), .RA(RA[3]));
+    ADRR_SEL ra_4 (.A1(SCROLL_RAM_A[4]), .A2(MAP_A4), .B1(PXH7),  .B2(MAP_B4), .C(AB[4]),  .SELA(N16_QA_BUF), .SELAn(N16_QA_BUFn), .SELB(N16_QB_BUF), .SELBn(N16_QB_BUFn), .SELC(R113), .SELCn(R117), .RA(RA[4]));
+    ADRR_SEL ra_5 (.A1(SCROLL_RAM_A[5]), .A2(MAP_A5), .B1(PXH8),  .B2(MAP_B5), .C(AB[5]),  .SELA(N16_QA_BUF), .SELAn(N16_QA_BUFn), .SELB(N16_QB_BUF), .SELBn(N16_QB_BUFn), .SELC(R113), .SELCn(R117), .RA(RA[5]));
     ADRR_SEL ra_6 (.A1(Y129),          .A2(MAP_A6), .B1(ROW3),  .B2(MAP_B6), .C(AB[6]),  .SELA(N16_QA_BUF), .SELAn(N16_QA_BUFn), .SELB(N16_QB_BUF), .SELBn(N16_QB_BUFn), .SELC(R113), .SELCn(R117), .RA(RA[6]));
     //----------------BUF2
     ADRR_SEL ra_7 (.A1(Y78),           .A2(MAP_A7), .B1(ROW4),  .B2(MAP_B7), .C(AB[7]),  .SELA(N16_QA_BUF), .SELAn(N16_QA_BUF2n), .SELB(N16_QB_BUF), .SELBn(N16_QB_BUF2n), .SELC(R113), .SELCn(R117), .RA(RA[7]));
@@ -563,125 +563,251 @@ module k052109_DLY (
     wire B139; //Logic Cell N3N
     assign #0.83 B139 = ~(A154 & B134 & B142);
 
-   wire B149; //Logic Cell K3B
-   assign #1.45 B149 = B137 & B147;
+    wire B149; //Logic Cell K3B
+    assign #1.45 B149 = B137 & B147;
 
-   wire B152; //Logic Cell K3B
-   assign #1.45 B152 = B129 & B139;
+    wire B152; //Logic Cell K3B
+    assign #1.45 B152 = B129 & B139;
 
-   wire L143; //Logic Cell K3B
-   assign #1.45 L143 = B149 & B152;
+    wire L143; //Logic Cell K3B
+    assign #1.45 L143 = B149 & B152;
 
-   wire DB_DIR;
-   assign DB_DIR = L143; //*** CPU DATA BUS DIRECTION CONTROL ***
-   wire L147; //Logic Cell V2B
-   assign #0.64 L147 = ~B152; //** Selects VRAM DATA BYTE (HIGH OR LOW) SC. 3.10
-   wire L148; //Logic Cell K2B
-   assign #1.83 L148 = B152; //** Selects VRAM DATA BYTE (HIGH OR LOW) SC. 3.10
-   //* END Section 3.6. CPU data bus Tri-state control and VD_IN byte selector (high or low) signals *
+    wire DB_DIR;
+    assign DB_DIR = L143; //*** CPU DATA BUS DIRECTION CONTROL ***
+    wire L147; //Logic Cell V2B
+    assign #0.64 L147 = ~B152; //** Selects VRAM DATA BYTE (HIGH OR LOW) SC. 3.10
+    wire L148; //Logic Cell K2B
+    assign #1.83 L148 = B152; //** Selects VRAM DATA BYTE (HIGH OR LOW) SC. 3.10
+    //* END Section 3.6. CPU data bus Tri-state control and VD_IN byte selector (high or low) signals *
 
-   //* START Section 3.7. VRAM config and CS/RW control signals *
-   //Reg 1C00 bits 0 and 1 used for VRAM map and chip configuration
-   // ----------------------------------------------------
-   //| 1C00[1:0] | RWE1        | RWE2        | RWE0        |
-   //|-----------+-------------+-------------+-------------|
-   //|    0  0   | 0x0000-1FFF | 0x2000-3FFF | 0x4000-5FFF |
-   //|    0  1   | 0x2000-3FFF | 0x4000-5FFF | 0x6000-7FFF |
-   //|    1  0   | 0x4000-5FFF | 0x6000-7FFF | 0x8000-9FFF |
-   //|    1  1   | 0x6000-7FFF | 0x8000-9FFF | 0xA000-BFFF |
-   // -----------------------------------------------------
-   wire CC34; //Logic Cell V1N
-   assign #0.55 CC34 = ~AB[15];
-   wire A92; //Logic Cell V1N
-   assign #0.55 A92 = ~CC34;
+    //* START Section 3.7. VRAM config and CS/RW control signals *
+    //Reg 1C00 bits 0 and 1 used for VRAM map and chip configuration
+    // ----------------------------------------------------
+    //| 1C00[1:0] | RWE1        | RWE2        | RWE0        |
+    //|-----------+-------------+-------------+-------------|
+    //|    0  0   | 0x0000-1FFF | 0x2000-3FFF | 0x4000-5FFF |
+    //|    0  1   | 0x2000-3FFF | 0x4000-5FFF | 0x6000-7FFF |
+    //|    1  0   | 0x4000-5FFF | 0x6000-7FFF | 0x8000-9FFF |
+    //|    1  1   | 0x6000-7FFF | 0x8000-9FFF | 0xA000-BFFF |
+    // -----------------------------------------------------
+    wire CC34; //Logic Cell V1N
+    assign #0.55 CC34 = ~AB[15];
+    wire A92; //Logic Cell V1N
+    assign #0.55 A92 = ~CC34;
 
-   wire CC51; //Logic Cell V1N
-   assign #0.55 CC51 = ~AB[14];
-   wire A90; //Logic Cell V1N
-   assign #0.55 A90 = ~CC51;
+    wire CC51; //Logic Cell V1N
+    assign #0.55 CC51 = ~AB[14];
+    wire A90; //Logic Cell V1N
+    assign #0.55 A90 = ~CC51;
 
-   wire CC49; //Logic Cell V1N
-   assign #0.55 CC49 = ~AB[13];
-   wire A94; //Logic Cell V1N
-   assign #0.55 A94 = ~CC49;
+    wire CC49; //Logic Cell V1N
+    assign #0.55 CC49 = ~AB[13];
+    wire A94; //Logic Cell V1N
+    assign #0.55 A94 = ~CC49;
 
-   wire E34; //Logic Cell R2B
-   assign #1.97 E34 = ~(VCS | RMRD);
+    wire E34; //Logic Cell R2B
+    assign #1.97 E34 = ~(VCS | RMRD);
 
-   wire A77; //Logic Cell N4N
-   assign #0.96 A77 = ~(CC34 & E34 & CC49 & CC51); //RANGE 0X0000-0X1FFF
-   wire A83; //Logic Cell N4N
-   assign #0.96 A83 = ~(CC34 & E34 & A94 & CC51); //RANGE 0X2000-0X3FFF
-   wire A79; //Logic Cell N4N
-   assign #0.96 A79 = ~(CC34 & E34 & CC49 & A90); //RANGE 0X4000-0X5FFF
-   wire A85; //Logic Cell N4N
-   assign #0.96 A85 = ~(CC34 & E34 & A94 & A90); //RANGE 0X6000-0X7FFF
-   wire A81; //Logic Cell N4N
-   assign #0.96 A81 = ~(E34 & CC49 & CC51 & A92); //RANGE 0X8000-0X9FFF
-   wire A87; //Logic Cell N4N
-   assign #0.96 A87 = ~(E34 & A94 & CC51 & A92); //RANGE 0XA000-0XBFFF
+    wire A77; //Logic Cell N4N
+    assign #0.96 A77 = ~(CC34 & E34 & CC49 & CC51); //RANGE 0X0000-0X1FFF
+    wire A83; //Logic Cell N4N
+    assign #0.96 A83 = ~(CC34 & E34 & A94 & CC51); //RANGE 0X2000-0X3FFF
+    wire A79; //Logic Cell N4N
+    assign #0.96 A79 = ~(CC34 & E34 & CC49 & A90); //RANGE 0X4000-0X5FFF
+    wire A85; //Logic Cell N4N
+    assign #0.96 A85 = ~(CC34 & E34 & A94 & A90); //RANGE 0X6000-0X7FFF
+    wire A81; //Logic Cell N4N
+    assign #0.96 A81 = ~(E34 & CC49 & CC51 & A92); //RANGE 0X8000-0X9FFF
+    wire A87; //Logic Cell N4N
+    assign #0.96 A87 = ~(E34 & A94 & CC51 & A92); //RANGE 0XA000-0XBFFF
 
-   wire A128; //Logic Cell V1N
-   assign #0.55 A128 = ~REG1C00[1];
-   wire A130; //Logic Cell V1N
-   assign #0.55 A130 = ~A128;
-   wire A131; //Logic Cell K1B
-   assign #1.26 A131 = A128;
+    wire A128; //Logic Cell V1N
+    assign #0.55 A128 = ~REG1C00[1];
+    wire A130; //Logic Cell V1N
+    assign #0.55 A130 = ~A128;
+    wire A131; //Logic Cell K1B
+    assign #1.26 A131 = A128;
 
-   wire A136; //Logic Cell V1N
-   assign #0.55 A136 = ~REG1C00[0];
-   wire A148; //Logic Cell V1N
-   assign #0.55 A148 = ~A136;
-   wire A149; //Logic Cell K1B
-   assign #1.26 A149 = A136;
+    wire A136; //Logic Cell V1N
+    assign #0.55 A136 = ~REG1C00[0];
+    wire A148; //Logic Cell V1N
+    assign #0.55 A148 = ~A136;
+    wire A149; //Logic Cell K1B
+    assign #1.26 A149 = A136;
 
-   wire A101_Xn;
-   T5A_DLY a101 (.A1(A77), .A2(A83), .B1(A85), .B2(A79), .S1n(A149), .S2(A148), .S3n(A148), .S4(A149), .S5n(A131), .S6(A130), .Xn(A101_Xn));
-   wire A100; //Logic Cell V1N
-   assign #0.55 A100 = ~A101_Xn;
-   wire CPU_VRAM_CS1;
-   assign CPU_VRAM_CS1 = A100;
-   wire L12; //Logic Cell R2P
-   assign #1.97 L12 = CPU_VRAM_CS1 | WRP;
-   wire RWE1;
-   assign RWE1 = L12; //*** OUTPUT SIGNAL RWE1 ***
-   wire L15; //Logic Cell V2B
-   assign #0.64 L15 = ~L12;
+    wire A101_Xn;
+    T5A_DLY a101 (.A1(A77), .A2(A83), .B1(A85), .B2(A79), .S1n(A149), .S2(A148), .S3n(A148), .S4(A149), .S5n(A131), .S6(A130), .Xn(A101_Xn));
+    wire A100; //Logic Cell V1N
+    assign #0.55 A100 = ~A101_Xn;
+    wire CPU_VRAM_CS1;
+    assign CPU_VRAM_CS1 = A100;
+    wire L12; //Logic Cell R2P
+    assign #1.97 L12 = CPU_VRAM_CS1 | WRP;
+    wire RWE1;
+    assign RWE1 = L12; //*** OUTPUT SIGNAL RWE1 ***
+    wire L15; //Logic Cell V2B
+    assign #0.64 L15 = ~L12;
 
-   wire A106_Xn;
-   T5A_DLY a106 (.A1(A83), .A2(A79), .B1(A81), .B2(A85), .S1n(A149), .S2(A148), .S3n(A148), .S4(A149), .S5n(A131), .S6(A130), .Xn(A106_Xn));
-   wire A126; //Logic Cell V1N
-   assign #0.55 A126 = ~A106_Xn;
-   wire A44; //Logic Cell K4B
-   assign #1.45 A44 = A126 | WREN; 
-   wire VD_LOW_DIR;
-   assign VD_LOW_DIR = A44; //*** VD_LOW_DIR TRI-STATE CONTROL VD[7:0] ***
-   wire L10; //Logic Cell R2P
-   assign #1.97 L10 = A126 | WRP;
-   wire RWE2;
-   assign RWE2 = L10; //*** OUTPUT SIGNAL RWE2 ***
+    wire A106_Xn;
+    T5A_DLY a106 (.A1(A83), .A2(A79), .B1(A81), .B2(A85), .S1n(A149), .S2(A148), .S3n(A148), .S4(A149), .S5n(A131), .S6(A130), .Xn(A106_Xn));
+    wire A126; //Logic Cell V1N
+    assign #0.55 A126 = ~A106_Xn;
+    wire A44; //Logic Cell K4B
+    assign #1.45 A44 = A126 | WREN; 
+    wire VD_LOW_DIR;
+    assign VD_LOW_DIR = A44; //*** VD_LOW_DIR TRI-STATE CONTROL VD[7:0] ***
+    wire L10; //Logic Cell R2P
+    assign #1.97 L10 = A126 | WRP;
+    wire RWE2;
+    assign RWE2 = L10; //*** OUTPUT SIGNAL RWE2 ***
 
-   wire A111_Xn;
-   T5A_DLY a111 (.A1(A79), .A2(A85), .B1(A87), .B2(A81), .S1n(A149), .S2(A148), .S3n(A148), .S4(A149), .S5n(A131), .S6(A130), .Xn(A111_Xn));
-   wire A134; //Logic Cell V1N
-   assign #0.55 A134 = ~A11_Xn;
-   wire CPU_VRAM_CS0;
-   assign CPU_VRAM_CS0 = A134;
-   wire M35; //Logic Cell R2P
-   assign #1.97 M35 = CPU_VRAM_CS0 | WRP;
-   wire RWE0;
-   assign RWE0 = m35; //*** OUTPUT SIGNAL RWE0 ***
+    wire A111_Xn;
+    T5A_DLY a111 (.A1(A79), .A2(A85), .B1(A87), .B2(A81), .S1n(A149), .S2(A148), .S3n(A148), .S4(A149), .S5n(A131), .S6(A130), .Xn(A111_Xn));
+    wire A134; //Logic Cell V1N
+    assign #0.55 A134 = ~A11_Xn;
+    wire CPU_VRAM_CS0;
+    assign CPU_VRAM_CS0 = A134;
+    wire M35; //Logic Cell R2P
+    assign #1.97 M35 = CPU_VRAM_CS0 | WRP;
+    wire RWE0;
+    assign RWE0 = m35; //*** OUTPUT SIGNAL RWE0 ***
 
-   wire A39; //Logic Cell N2P
-   assign #1.41 A39 = CPU_VRAM_CS1 & CPU_VRAM_CS0;
+    wire A39; //Logic Cell N2P
+    assign #1.41 A39 = CPU_VRAM_CS1 & CPU_VRAM_CS0;
 
-   wire A41; //Logic Cell K4B
-   assign #1.45 A41 = A39 | WREN;
-   wire VD_HIGH_DIR = A41; //*** VD_HIGH_DIR TRI-STATE CONTROL VD[15:8] ***
-   //* END Section 3.7. VRAM config and CS/RW control signals *
+    wire A41; //Logic Cell K4B
+    assign #1.45 A41 = A39 | WREN;
+    wire VD_HIGH_DIR = A41; //*** VD_HIGH_DIR TRI-STATE CONTROL VD[15:8] ***
+    //* END Section 3.7. VRAM config and CS/RW control signals *
 
-   //* START Section 3.8. Set Scroll interval 32/256 *
-   //* END Section 3.8. Set Scroll interval 32/256 *
+    //* START Section 3.8. Set Scroll interval 32/256 *
+    wire E45; //Logic Cell V1N
+    assign #0.55 E45 = ~G29_Q[0]; //G29_QA
+
+    wire E38; //Logic Cell N2P
+    assign #1.41 E38 = REG1C80[0] & G29_Q[0];
+    wire E42; //Logic Cell N2P
+    assign #1.41 E42 = E45 & REG1C80[3];
+    wire E40; //Logic Cell R2P
+    assign #1.97 E40 = E38 | E42;
+
+    wire AA61; //Logic Cell N2P
+    assign #1.41 AA61 = ROW0 & E40;
+    wire AA59; //Logic Cell N2P
+    assign #1.41 AA59 = ROW1 & E40;
+    wire AA63; //Logic Cell N2P
+    assign #1.41 AA63 = ROW2 & E40;
+
+    wire [3:0] Z3_S;
+    wire Z3_CO;
+    A4H_DLY z3 (.A({PXH6,PXH5,PXH4F,PXH3F}),.B({4{FLIP_SCREEN}}), .CI(1'b0), .S(Z3_S), .CO(Z3_CO));
+    wire [1:0] Z53_S;
+    wire Z53_CO;
+    A2N_DLY z53 (.A({PXH8,PXH7}),.B({2{FLIP_SCREEN}}), .CI(Z3_CO), .S(Z53_S), .CO(Z53_CO));
+
+    //SCROLL RAM Address lines
+    wire [5:0] SCROLL_RAM_A;
+    //SCROLL_RAM_A[0]
+    wire AA75_X;
+    D24_DLY aa75 (.A1(PXH3), .A2(AA38), .B1(Z3_S[0]), .B2(AA58), .X(AA75_X));
+    wire AA80; //Logic Cell V1N
+    assign #0.55 AA80 = ~AA75_X;
+    assign SCROLL_RAM_A[0] = AA80;
+    //SCROLL_RAM_A[1]
+    wire AA65_X;
+    D24_DLY aa65 (.A1(AA61), .A2(AA38), .B1(Z3_S[1]), .B2(AA58), .X(AA65_X)); //ROW0
+    wire AA78; //Logic Cell V1N
+    assign #0.55 AA78 = ~AA65_X;
+    assign SCROLL_RAM_A[1] = AA78;
+    //SCROLL_RAM_A[2]
+    wire AA67_X;
+    D24_DLY aa67 (.A1(AA59), .A2(AA38), .B1(Z3_S[2]), .B2(AA58), .X(AA67_X)); //ROW0
+    wire Z154; //Logic Cell V1N
+    assign #0.55 Z154 = ~AA67_X;
+    assign SCROLL_RAM_A[2] = Z154;
+    //SCROLL_RAM_A[3]
+    wire AA69_X;
+    D24_DLY aa69 (.A1(AA63), .A2(AA38), .B1(Z3_S[3]), .B2(AA58), .X(AA69_X)); //ROW0
+    wire Z136; //Logic Cell V1N
+    assign #0.55 Z136 = ~AA69_X;
+    assign SCROLL_RAM_A[3] = Z136;
+    //SCROLL_RAM_A[4]
+    wire AA71_X;
+    D24_DLY aa71 (.A1(ROW3), .A2(AA38), .B1(Z53_S[0]), .B2(AA58), .X(AA71_X)); //ROW0
+    wire Z156; //Logic Cell V1N
+    assign #0.55 Z156 = ~AA71_X;
+    assign SCROLL_RAM_A[4] = Z156;
+    //SCROLL_RAM_A[5]
+    wire AA73_X;
+    D24_DLY aa73 (.A1(ROW4), .A2(AA38), .B1(Z53_S[1]), .B2(AA58), .X(AA73_X)); //ROW0
+    wire Z134; //Logic Cell V1N
+    assign #0.55 Z134 = ~AA73_X;
+    assign SCROLL_RAM_A[5] = Z134;
+    //* END Section 3.8. Set Scroll interval 32/256 *
+
+    //* START Section 3.9. VRAM read by CPU *
+    wire [7:0] DB_OUT; //DATA OUT K052109 -> CPU DATA BUS
+
+    wire [3:0] M77_P;
+    LT4_DLY m77 (.D(VD_IN[3:0]), .Gn(L82),.P(M77_P));
+    //DB_OUT[0]
+    wire M90_Xn;
+    T2B_DLY m90 (.A(L95_P[0]), .B(M77_P[0]), .S1n(L148), .S2(L147), .Xn(M90_Xn));
+    wire M144; //Logic Cell V2B
+    assign #0.64 M144 = ~M90_Xn;
+    assign DB_OUT[0] = M144;
+    //DB_OUT[1]
+    wire L86_Xn;
+    T2B_DLY l86 (.A(L95_P[1]), .B(M77_P[1]), .S1n(L148), .S2(L147), .Xn(L86_Xn));
+    wire L117; //Logic Cell V2B
+    assign #0.64 L117 = ~L86_Xn;
+    assign DB_OUT[1] = L117;
+    
+    wire [3:0] M100_P;
+    LT4_DLY m100 (.D(VD_IN[7:4]), .Gn(L82),.P(M100_P));
+    //DB_OUT[2]
+    wire M96_Xn;
+    T2B_DLY m96 (.A(L95_P[2]), .B(M77_P[2]), .S1n(L148), .S2(L147), .Xn(M96_Xn));
+    wire M146; //Logic Cell V2B
+    assign #0.64 M146 = ~M96_Xn;
+    assign DB_OUT[2] = M146;
+    //DB_OUT[3]
+    wire M98_Xn;
+    T2B_DLY m98 (.A(L95_P[3]), .B(M77_P[3]), .S1n(L148), .S2(L147), .Xn(M98_Xn));
+    wire M148; //Logic Cell V2B
+    assign #0.64 M148 = ~M98_Xn;
+    assign DB_OUT[3] = M148;
+    
+    wire [3:0] L95_P;
+    LT4_DLY l95 (.D(VD_IN[11:8]), .Gn(L82),.P(L95_P));
+    //DB_OUT[4]
+    wire M141_Xn;
+    T2B_DLY m141 (.A(M117_P[0]), .B(M100_P[0]), .S1n(L148), .S2(L147), .Xn(M141_Xn));
+    wire M150; //Logic Cell V2B
+    assign #0.64 M150 = ~M141_Xn;
+    assign DB_OUT[4] = M150;
+    //DB_OUT[5]
+    wire M132_Xn;
+    T2B_DLY m132 (.A(M117_P[1]), .B(M100_P[1]), .S1n(L148), .S2(L147), .Xn(M132_Xn));
+    wire M152; //Logic Cell V2B
+    assign #0.64 M152 = ~M132_Xn;
+    assign DB_OUT[5] = M152;
+    
+    wire [3:0] M117_P;  
+    LT4_DLY m117 (.D(VD_IN[15:12]), .Gn(L82),.P(M117_P));
+    //DB_OUT[6]
+    wire M134_Xn;
+    T2B_DLY m134 (.A(M117_P[2]), .B(M100_P[2]), .S1n(L148), .S2(L147), .Xn(M134_Xn));
+    wire M154; //Logic Cell V2B
+    assign #0.64 M154 = ~M134_Xn;
+    assign DB_OUT[6] = M154;
+    //DB_OUT[7]
+    wire M130_Xn;
+    T2B_DLY m130 (.A(M117_P[3]), .B(M100_P[3]), .S1n(L148), .S2(L147), .Xn(M130_Xn));
+    wire M118; //Logic Cell V2B
+    assign #0.64 M118 = ~M130_Xn;
+    assign DB_OUT[7] = M118;
+    //* END Section 3.9. VRAM read by CPU *
 
 
     //*** PAGE 4: H/V Counters ***
@@ -722,6 +848,7 @@ module k052109_DLY (
                 .EN(N16_CO),
                 .Q(G29_Q),
                 .D({3{1'b0},1'b1}));
+    //*** G29_Q[0] -> 3.8, 7.5             
 
     wire G44; //AND-OR-NAND
     assign #4 G44 = ~(((N16_CO & G29_Q[1]) | G4_Q) & LINE_ENDn);
@@ -870,10 +997,10 @@ module k052109_DLY (
     D24_DLY d39 (.A1(G4_Q), .A2(D42), .B1(TEST_D14), .B2(TEST_D13), .X(D39));
 
     wire AA38;//Logic Cell K2B
-    assign #1.83 AA38 = D39; //SECTION 3.9, PAGE 1 Y69
+    assign #1.83 AA38 = D39; //SECTION 3.8, PAGE 1 Y69
 
     wire AA58; //Logic Cell V2B
-    assign #0.64 AA58 = ~D39; //SECTION 3.9, PAGE 1 Y69
+    assign #0.64 AA58 = ~D39; //SECTION 3.8, PAGE 1 Y69
     //* END Section 4.3. TEST D13,D14 signals *
 
     //*** PAGE 5: REGISTERS ***
