@@ -680,6 +680,9 @@ module k052109_DLY (
    wire VD_HIGH_DIR = A41; //*** VD_HIGH_DIR TRI-STATE CONTROL VD[15:8] ***
    //* END Section 3.7. VRAM config and CS/RW control signals *
 
+   //* START Section 3.8. Set Scroll interval 32/256 *
+   //* END Section 3.8. Set Scroll interval 32/256 *
+
 
     //*** PAGE 4: H/V Counters ***
     //* START Section 4.1. HORIZONTAL COUNTER signals *

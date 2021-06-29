@@ -293,4 +293,31 @@
 			    "T2C_DLY ${1/(.*)/${1:/downcase}/} (.A1(${2}), .A2(${3}), .B1(${4}), .B2(${5}), .S1n(${6}), .S2(${7}), .X0n(${1:name}_X0n), .X1n(${1:name}_X1n));"],
 		"description": "Dual 2:1 Selector with inverted output"
 	},
+
+	"A1N": {
+		"scope": "verilog",
+		"prefix": "#A1N",
+		"body":["wire ${1:name}_S;",
+			    "wire ${1:name}_CO;",
+			    "A1N_DLY ${1/(.*)/${1:/downcase}/} (.A(${2}),.B(${3}), .CI(${4}), .S(${1:name}_S), .CO(${1:name}_CO));"],
+		"description": "1-BIT Full Adder"
+	},
+
+	"A2N": {
+		"scope": "verilog",
+		"prefix": "#A2N",
+		"body":["wire [1:0] ${1:name}_S;",
+			    "wire ${1:name}_CO;",
+			    "A2N_DLY ${1/(.*)/${1:/downcase}/} (.A(${2}),.B(${3}), .CI(${4}), .S(${1:name}_S), .CO(${1:name}_CO));"],
+		"description": "2-BIT Full Adder"
+	},
+
+	"A4H": {
+		"scope": "verilog",
+		"prefix": "#A4H",
+		"body":["wire [3:0] ${1:name}_S;",
+			    "wire ${1:name}_CO;",
+			    "A4H_DLY ${1/(.*)/${1:/downcase}/} (.A(${2}),.B(${3}), .CI(${4}), .S(${1:name}_S), .CO(${1:name}_CO));"],
+		"description": "2-BIT Full Adder"
+	}
 }

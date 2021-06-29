@@ -1,0 +1,68 @@
+[*]
+[*] GTKWave Analyzer v3.3.107 (w)1999-2020 BSI
+[*] Tue Jun 29 18:21:51 2021
+[*]
+[dumpfile] "/Users/javier/ARCADE_PCB/k052109_verilog/simulation/adder_tb.vcd"
+[dumpfile_mtime] "Tue Jun 29 18:21:45 2021"
+[dumpfile_size] 1578
+[savefile] "/Users/javier/ARCADE_PCB/k052109_verilog/simulation/adder_tb.gtkw"
+[timestart] 0
+[size] 1920 1027
+[pos] -1 -1
+*-16.661005 550200 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] adder_tb.
+[sst_width] 41
+[signals_width] 238
+[sst_expanded] 0
+[sst_vpaned_height] 317
+@200
+-4-bit full adder test
+@29
+adder_tb.clk24[0]
+@28
+adder_tb.clk12[0]
+adder_tb.clk6[0]
+adder_tb.clk3[0]
+@22
+[color] 3
+adder_tb.cin[0]
+[color] 3
+adder_tb.x[3:0]
+[color] 3
+adder_tb.y[3:0]
+[color] 2
+adder_tb.z[3:0]
+[color] 5
+adder_tb.cout[0]
+@200
+-
+-2-bit full adder test
+@22
+[color] 3
+adder_tb.cin[0]
+@28
+[color] 3
+adder_tb.x2[1:0]
+[color] 3
+adder_tb.y2[1:0]
+[color] 2
+adder_tb.z2[1:0]
+@22
+[color] 5
+adder_tb.cout2[0]
+@200
+-
+-1-bit full adder test
+@22
+[color] 3
+adder_tb.cin[0]
+[color] 3
+adder_tb.x1[0]
+[color] 3
+adder_tb.y1[0]
+[color] 2
+adder_tb.z1[0]
+[color] 5
+adder_tb.cout1[0]
+[pattern_trace] 1
+[pattern_trace] 0
