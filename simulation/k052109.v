@@ -269,7 +269,7 @@ module k052109_DLY (
     assign #0.64 L78 = ~ L80;
 
     wire L82; //Logic Cell V1N
-    assign #0.55 L82 = ~ L78;
+    assign #0.55 L82 = ~ L78; //** LATCH VRAM DATA  SC. 3.10 **
 
     wire L119; //Logic Cell V1N
     assign #0.55 L119 = ~ CRCS;
@@ -278,7 +278,7 @@ module k052109_DLY (
     assign #1.82 L83 = L78 & L119 & PQ;
 
     wire C92; //R2N
-    assign #0.87 C92 = ~(L83 | €REG1C00_D5);
+    assign #0.87 C92 = ~(L83 | REG1C00[5]);
     
     //----------------------------------------------------------------------
     
@@ -286,7 +286,7 @@ module k052109_DLY (
     FDO_DLY j140(.D(J121), .Rn(RES_SYNC3n), .CK(M12n), .Q(J140_Q), .Qn(J140_Qn));
 
     wire J151; //Logic Cell N2P
-    assign #1.41 J151 = €REG1C00_D5 & J140_Q;
+    assign #1.41 J151 = REG1C00[5] & J140_Q;
 
     wire H78; //Logic Cell V1N
     assign #0.55 H78 = ~PQ;
@@ -518,6 +518,63 @@ module k052109_DLY (
     assign NMI = CC52_Q; //*** OUTPUT SIGNAL NMI ***
     //* END Section 3.5. Interrupt flags signals *
 
+    //* START Section 3.6. CPU data bus Tri-state control and VD_IN byte selector (high or low) signals *
+    wire B125; //Logic Cell R2P
+    assign #1.97 B125 = CPU_VRAM_CS0 | RDEN;
+    wire C72; //Logic Cell V1N
+    assign #0.55 C72 = ~REG1C00[4];
+
+    wire B123; //Logic Cell R2P
+    assign #1.97 B123 = B125 | C72;
+    
+    wire B121; //Logic Cell N2P
+    assign #1.41 B121 = C72 & REG1C00[3];
+    wire B134; //Logic Cell V1N
+    assign #0.55 B134 = ~B121;
+    wire B146; //Logic Cell V1N
+    assign #0.55 B146 = ~B134;
+    
+    wire A151; //Logic Cell R2P
+    assign #1.97 A151 = CPU_VRAM_CS1 | RDEN;
+    wire A154; //Logic Cell V1N
+    assign #0.55 A154 = ~A151;
+
+    wire B119; //Logic Cell N2P
+    assign #1.41 B119 = C72 & REG1C00[2];
+    wire B132; //Logic Cell V1N
+    assign #0.55 B132 = ~B119;
+    wire B142; //Logic Cell V1N
+    assign #0.55 B142 = ~B132;
+
+    wire B127; //Logic Cell R2P
+    assign #1.97 B127 = A126 | RDEN;
+    wire B129; //Logic Cell R2P
+    assign #1.97 B129 = B127 | C72;
+
+    wire B137; //Logic Cell N3N
+    assign #0.83 B137 = ~(A154 & B132 & B134);
+    wire B143; //Logic Cell N3N
+    assign #0.83 B143 = ~(A154 & B132 & B146);
+    wire B139; //Logic Cell N3N
+    assign #0.83 B139 = ~(A154 & B134 & B142);
+
+   wire B149; //Logic Cell K3B
+   assign #1.45 B149 = B137 & B147;
+
+   wire B152; //Logic Cell K3B
+   assign #1.45 B152 = B129 & B139;
+
+   wire L143; //Logic Cell K3B
+   assign #1.45 L143 = B149 & B152;
+
+   wire DB_DIR;
+   assign DB_DIR = L143; //*** CPU DATA BUS DIRECTION CONTROL ***
+   wire L147; //Logic Cell V2B
+   assign #0.64 L147 = ~B152; //** Selects VRAM DATA BYTE (HIGH OR LOW) SC. 3.10
+   wire L148; //Logic Cell K2B
+   assign #1.83 L148 = B152; //** Selects VRAM DATA BYTE (HIGH OR LOW) SC. 3.10
+    //* END Section 3.6. CPU data bus Tri-state control and VD_IN byte selector (high or low) signals *
+
     //*** PAGE 4: H/V Counters ***
     //* START Section 4.1. HORIZONTAL COUNTER signals *
     wire H20_Q;
@@ -572,22 +629,22 @@ module k052109_DLY (
     assign PXH4 = N16_QD;
 
     wire PXH3F; //Logic Cell X2B
-    assign #3.50 PXH3F = €FLIP_SCREEN ^ N16_QC;
+    assign #3.50 PXH3F = FLIP_SCREEN ^ N16_QC;
 
     wire PXH4F; //Logic Cell X2B
-    assign #3.50 PXH4F = €FLIP_SCREEN ^ N16_QD;
+    assign #3.50 PXH4F = FLIP_SCREEN ^ N16_QD;
 
     wire PXH5; //Logic Cell X2B
-    assign #3.50 PXH5 = €FLIP_SCREEN ^ G29_Q[0];
+    assign #3.50 PXH5 = FLIP_SCREEN ^ G29_Q[0];
 
     wire PXH6; //Logic Cell X2B
-    assign #3.50 PXH6 = €FLIP_SCREEN ^ G29_Q[1];
+    assign #3.50 PXH6 = FLIP_SCREEN ^ G29_Q[1];
 
     wire PXH7; //Logic Cell X2B
-    assign #3.50 PXH7 = €FLIP_SCREEN ^ G29_Q[2];  
+    assign #3.50 PXH7 = FLIP_SCREEN ^ G29_Q[2];  
 
     wire PXH8; //Logic Cell X2B
-    assign #3.50 PXH8 = €FLIP_SCREEN ^ G29_Q[3];    
+    assign #3.50 PXH8 = FLIP_SCREEN ^ G29_Q[3];    
 
     wire LINE_END; //Logic Cell N3P
     assign #1.82 LINE_END = G29_Q[2] & G29_Q[3] & N16_CO;
@@ -652,30 +709,30 @@ module k052109_DLY (
 
     //--G20--
     wire ROW0; //Logic Cell X2B
-    assign #3.50 ROW0 = €FLIP_SCREEN ^ G20_Q;
+    assign #3.50 ROW0 = FLIP_SCREEN ^ G20_Q;
 
     //--J29--
     wire ROW1; //Logic Cell X2B
-    assign #3.50 ROW1 = €FLIP_SCREEN ^ J29_Q[0]; //QA
+    assign #3.50 ROW1 = FLIP_SCREEN ^ J29_Q[0]; //QA
 
     wire ROW2; //Logic Cell X2B
-    assign #3.50 ROW2 = €FLIP_SCREEN ^ J29_Q[1]; //QB
+    assign #3.50 ROW2 = FLIP_SCREEN ^ J29_Q[1]; //QB
 
     wire ROW3; //Logic Cell2X2B//QC
-    assign #3.50 ROW3 = €FLIP_SCREEN ^ J29_Q[2]; //QC
+    assign #3.50 ROW3 = FLIP_SCREEN ^ J29_Q[2]; //QC
 
     wire ROW4; //Logic Cell X2B
-    assign #3.50 ROW4 = €FLIP_SCREEN ^ J29_Q[3]; //QD
+    assign #3.50 ROW4 = FLIP_SCREEN ^ J29_Q[3]; //QD
 
     //--H29--
     wire ROW5; //Logic Cell X2B
-    assign #3.50 ROW5 = €FLIP_SCREEN ^ H29_Q[0]; //QA
+    assign #3.50 ROW5 = FLIP_SCREEN ^ H29_Q[0]; //QA
 
     wire ROW6; //Logic Cell X2B
-    assign #3.50 ROW6 = €FLIP_SCREEN ^ H29_Q[1]; //QB
+    assign #3.50 ROW6 = FLIP_SCREEN ^ H29_Q[1]; //QB
 
     wire ROW7; //Logic Cell X2B
-    assign #3.50 ROW7 = €FLIP_SCREEN ^ H29_Q[2; //QC
+    assign #3.50 ROW7 = FLIP_SCREEN ^ H29_Q[2; //QC
 
     wire CC13_Q, CC13_Qn;
     FDG_DLY cc13 (.D(CC13_Qn), .CLn(RES_SYNCn), .CK(J29_Q[1]), .Q(CC13_Q),.Qn(CC13_Qn));

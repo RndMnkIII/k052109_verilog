@@ -130,7 +130,8 @@
 	"K3B": {
 		"scope": "verilog",
 		"prefix": "#K3B",
-		"body": ["wire ${1:name}; //Logic Cell K3B","assign #1.45 ${1:name} = ${2:operator};"]
+		"body": ["wire ${1:name}; //Logic Cell K3B","assign #1.45 ${1:name} = ${2:A} & ${3:B};"],
+		"description": "Gated Clock Buffer (AND) X = A1 & A2, to: 1.34-1.45ns A->X"
 	},
 
 	"C43": {
