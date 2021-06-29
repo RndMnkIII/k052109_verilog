@@ -116,6 +116,14 @@ endmodule
 //Function: POWER 6-input NAND
 //to: 2.18-2.83ns A->X
 
+//Cell Name: R2B
+//Function: POWER 2-input NOR
+//to: 1.08-1.97ns A->X
+
+//Cell Name: R3B
+//Function: POWER 3-input NOR
+//to: 3.65-1.61ns A->X
+
 //Cell Name: R2P
 //Function: POWER 2-input OR
 //to: 1.08-1.97ns A->X
@@ -136,6 +144,9 @@ endmodule
 //Function: Gated Clock Buffer (AND) X = A1 & A2
 //to: 1.34-1.45ns A->X
 
+//Cell Name: K4B
+//Function: Gated Clock Buffer (OR) X = A1 | A2
+//to: 1.39-3.07ns A->X
 
 //Cell Name: C43
 //Function: 4-bit Binary Synchronous Up Counter

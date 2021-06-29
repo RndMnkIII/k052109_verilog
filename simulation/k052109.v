@@ -6,7 +6,12 @@
  * Repository: https://github.com/RndMnkIII/k052109_verilog      *
  * Version: 1.0 28/06/2021                                       *
  ****************************************************************/
-
+/* k052109 FACTS:
+ * The k052109 can address a maximum of 24Kbytes of VRAM divided in 3 banks
+ * The K052109 can read/write the VRAM in BYTE mode selecting the HIGH or LOW byte to be read by the CPU.
+ * The CPU is the responsible to compose each tilemap and to update the tilemaps on each screen update.
+ * The K052109 can read the VRAM in 16bit WORD mode when rendering the screen.
+*/
 `default_nettype none
 `timescale 1ns/10ps
 
@@ -573,7 +578,108 @@ module k052109_DLY (
    assign #0.64 L147 = ~B152; //** Selects VRAM DATA BYTE (HIGH OR LOW) SC. 3.10
    wire L148; //Logic Cell K2B
    assign #1.83 L148 = B152; //** Selects VRAM DATA BYTE (HIGH OR LOW) SC. 3.10
-    //* END Section 3.6. CPU data bus Tri-state control and VD_IN byte selector (high or low) signals *
+   //* END Section 3.6. CPU data bus Tri-state control and VD_IN byte selector (high or low) signals *
+
+   //* START Section 3.7. VRAM config and CS/RW control signals *
+   //Reg 1C00 bits 0 and 1 used for VRAM map and chip configuration
+   // ----------------------------------------------------
+   //| 1C00[1:0] | RWE1        | RWE2        | RWE0        |
+   //|-----------+-------------+-------------+-------------|
+   //|    0  0   | 0x0000-1FFF | 0x2000-3FFF | 0x4000-5FFF |
+   //|    0  1   | 0x2000-3FFF | 0x4000-5FFF | 0x6000-7FFF |
+   //|    1  0   | 0x4000-5FFF | 0x6000-7FFF | 0x8000-9FFF |
+   //|    1  1   | 0x6000-7FFF | 0x8000-9FFF | 0xA000-BFFF |
+   // -----------------------------------------------------
+   wire CC34; //Logic Cell V1N
+   assign #0.55 CC34 = ~AB[15];
+   wire A92; //Logic Cell V1N
+   assign #0.55 A92 = ~CC34;
+
+   wire CC51; //Logic Cell V1N
+   assign #0.55 CC51 = ~AB[14];
+   wire A90; //Logic Cell V1N
+   assign #0.55 A90 = ~CC51;
+
+   wire CC49; //Logic Cell V1N
+   assign #0.55 CC49 = ~AB[13];
+   wire A94; //Logic Cell V1N
+   assign #0.55 A94 = ~CC49;
+
+   wire E34; //Logic Cell R2B
+   assign #1.97 E34 = ~(VCS | RMRD);
+
+   wire A77; //Logic Cell N4N
+   assign #0.96 A77 = ~(CC34 & E34 & CC49 & CC51); //RANGE 0X0000-0X1FFF
+   wire A83; //Logic Cell N4N
+   assign #0.96 A83 = ~(CC34 & E34 & A94 & CC51); //RANGE 0X2000-0X3FFF
+   wire A79; //Logic Cell N4N
+   assign #0.96 A79 = ~(CC34 & E34 & CC49 & A90); //RANGE 0X4000-0X5FFF
+   wire A85; //Logic Cell N4N
+   assign #0.96 A85 = ~(CC34 & E34 & A94 & A90); //RANGE 0X6000-0X7FFF
+   wire A81; //Logic Cell N4N
+   assign #0.96 A81 = ~(E34 & CC49 & CC51 & A92); //RANGE 0X8000-0X9FFF
+   wire A87; //Logic Cell N4N
+   assign #0.96 A87 = ~(E34 & A94 & CC51 & A92); //RANGE 0XA000-0XBFFF
+
+   wire A128; //Logic Cell V1N
+   assign #0.55 A128 = ~REG1C00[1];
+   wire A130; //Logic Cell V1N
+   assign #0.55 A130 = ~A128;
+   wire A131; //Logic Cell K1B
+   assign #1.26 A131 = A128;
+
+   wire A136; //Logic Cell V1N
+   assign #0.55 A136 = ~REG1C00[0];
+   wire A148; //Logic Cell V1N
+   assign #0.55 A148 = ~A136;
+   wire A149; //Logic Cell K1B
+   assign #1.26 A149 = A136;
+
+   wire A101_Xn;
+   T5A_DLY a101 (.A1(A77), .A2(A83), .B1(A85), .B2(A79), .S1n(A149), .S2(A148), .S3n(A148), .S4(A149), .S5n(A131), .S6(A130), .Xn(A101_Xn));
+   wire A100; //Logic Cell V1N
+   assign #0.55 A100 = ~A101_Xn;
+   wire CPU_VRAM_CS1;
+   assign CPU_VRAM_CS1 = A100;
+   wire L12; //Logic Cell R2P
+   assign #1.97 L12 = CPU_VRAM_CS1 | WRP;
+   wire RWE1;
+   assign RWE1 = L12; //*** OUTPUT SIGNAL RWE1 ***
+   wire L15; //Logic Cell V2B
+   assign #0.64 L15 = ~L12;
+
+   wire A106_Xn;
+   T5A_DLY a106 (.A1(A83), .A2(A79), .B1(A81), .B2(A85), .S1n(A149), .S2(A148), .S3n(A148), .S4(A149), .S5n(A131), .S6(A130), .Xn(A106_Xn));
+   wire A126; //Logic Cell V1N
+   assign #0.55 A126 = ~A106_Xn;
+   wire A44; //Logic Cell K4B
+   assign #1.45 A44 = A126 | WREN; 
+   wire VD_LOW_DIR;
+   assign VD_LOW_DIR = A44; //*** VD_LOW_DIR TRI-STATE CONTROL VD[7:0] ***
+   wire L10; //Logic Cell R2P
+   assign #1.97 L10 = A126 | WRP;
+   wire RWE2;
+   assign RWE2 = L10; //*** OUTPUT SIGNAL RWE2 ***
+
+   wire A111_Xn;
+   T5A_DLY a111 (.A1(A79), .A2(A85), .B1(A87), .B2(A81), .S1n(A149), .S2(A148), .S3n(A148), .S4(A149), .S5n(A131), .S6(A130), .Xn(A111_Xn));
+   wire A134; //Logic Cell V1N
+   assign #0.55 A134 = ~A11_Xn;
+   wire CPU_VRAM_CS0;
+   assign CPU_VRAM_CS0 = A134;
+   wire M35; //Logic Cell R2P
+   assign #1.97 M35 = CPU_VRAM_CS0 | WRP;
+   wire RWE0;
+   assign RWE0 = m35; //*** OUTPUT SIGNAL RWE0 ***
+
+   wire A39; //Logic Cell N2P
+   assign #1.41 A39 = CPU_VRAM_CS1 & CPU_VRAM_CS0;
+
+   wire A41; //Logic Cell K4B
+   assign #1.45 A41 = A39 | WREN;
+   wire VD_HIGH_DIR = A41; //*** VD_HIGH_DIR TRI-STATE CONTROL VD[15:8] ***
+   //* END Section 3.7. VRAM config and CS/RW control signals *
+
 
     //*** PAGE 4: H/V Counters ***
     //* START Section 4.1. HORIZONTAL COUNTER signals *
