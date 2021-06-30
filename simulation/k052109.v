@@ -1250,6 +1250,22 @@ module k052109_DLY (
     //* END Section 7.1. col[1:0] Signals *
 
 
+
+    //* START Section 7.4. BB33 Signal *
+    wire AA14; //Logic Cell V1N
+    assign #0.55 AA14 = ~PXH6;
+
+    wire AA16; //Logic Cell V1N
+    assign #0.55 AA16 = ~PXH5;
+
+    wire AA32; //Logic Cell R6B
+    assign #3.80 AA32 = ~(PXH8 | PXH7 | AA14 | AA16 | PXH4F | PXH3);
+
+    wire BB33; //Logic Cell V1N
+    assign #0.55 BB33 = ~AA32;
+    //* END Section 7.4. BB33 Signal *
+
+
     //*** PAGE 8: LAYER A SCROLL ***
     //* START Section 8.1. Layer A Tilemap X Address generetor signals *
     wire AA2_Q;

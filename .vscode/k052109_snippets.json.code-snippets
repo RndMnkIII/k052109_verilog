@@ -117,6 +117,20 @@
 		"description": "Power 3-input NOR"
 	},
 
+	"R4B": {
+		"scope": "verilog",
+		"prefix": "#R4B",
+		"body": ["wire ${1:name}; //Logic Cell R4B","assign #4.66 ${1:name} = ~(${2:op1} | ${3:op2} | ${4:op3} | ${5:op4});"],
+		"description": "Power 4-input NOR"
+	},
+
+	"R6B": {
+		"scope": "verilog",
+		"prefix": "#R6B",
+		"body": ["wire ${1:name}; //Logic Cell R6B","assign #3.80 ${1:name} = ~(${2:op1} | ${3:op2} | ${4:op3} | ${5:op4} | ${6:op5} | ${7:op6});"],
+		"description": "Power 6-input NOR"
+	},
+
 	"R2P": {
 		"scope": "verilog",
 		"prefix": "#R2P",

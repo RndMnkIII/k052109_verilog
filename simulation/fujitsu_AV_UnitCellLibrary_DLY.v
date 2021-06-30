@@ -124,6 +124,14 @@ endmodule
 //Function: POWER 3-input NOR
 //to: 3.65-1.61ns A->X
 
+//Cell Name: R4B
+//Function: POWER 4-input NOR
+//to: 4.66-1.61ns A->X
+
+//Cell Name: R6B
+//Function: POWER 6-input NOR
+//to: 3.80-1.79ns A->X
+
 //Cell Name: R2P
 //Function: POWER 2-input OR
 //to: 1.08-1.97ns A->X
