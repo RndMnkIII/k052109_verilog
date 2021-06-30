@@ -497,14 +497,45 @@ module k052109_DLY (
     assign #1.45 AB_18xx = AB[12] & AB[12];
     //* END Section 3.3. Buffered,inverted and ANDed signals *
 
-    //* START Section 3.4. Buffered DB_IN[7:0] signals *
+    //* START Section 3.4. Buffered DB_IN[7:0], Tri-State ports for DB, VD signals *
     wire [7:0] DB_IN;
+    wire [7:0] DB_OUT; //DATA OUT K052109 -> CPU DATA BUS
     wire [7:0] DB_BUF;
+    wire [15:0] VD_IN;
+
+    //DB_BUF
     generate
         genvar i;
         for(i=0; i < 8; i=i+1) begin
             //Logic Cell K2B
             assign #1.83 DB_BUF[i] = DB_IN[i];
+        end
+    endgenerate
+    
+    //Port DB
+    generate
+        for(i=0; i < 8; i=i+1) begin: DB_IO_PORT
+            //H6T
+            assign #6.47 DB[i] = ~DB_DIR ? DB_OUT[i] : 1'bZ ;
+            assign #3.08 DB_IN[i] = DB[i];
+        end
+    endgenerate
+
+    //Port VD[15:8]
+    generate
+        for(i=15; i >= 8; i=i'1) begin: VD_HIGH_IO_PORT
+            //H6T
+            assign #6.47 VD[i] = ~VD_HIGH_DIR ? DB_BUF[i-8] : 1'bZ ;
+            assign #3.08 VD_IN[i] = VD[i];
+        end
+    endgenerate
+
+    //Port VD[7:0]
+    generate
+        for(i=7; i >= 0; i=i'1) begin: VD_LOW_IO_PORT
+            //H6T
+            assign #6.47 VD[i] = ~VD_LOW_DIR ? DB_BUF[i] : 1'bZ ;
+            assign #3.08 VD_IN[i] = VD[i];
         end
     endgenerate
     //* END Section 3.4. Buffered DB_IN[7:0] signals *
@@ -746,8 +777,6 @@ module k052109_DLY (
     //* END Section 3.8. Set Scroll interval 32/256 *
 
     //* START Section 3.9. VRAM read by CPU *
-    wire [7:0] DB_OUT; //DATA OUT K052109 -> CPU DATA BUS
-
     wire [3:0] M77_P;
     LT4_DLY m77 (.D(VD_IN[3:0]), .Gn(L82),.P(M77_P));
     //DB_OUT[0]
