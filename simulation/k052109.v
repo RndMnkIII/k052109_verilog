@@ -1326,6 +1326,40 @@ module k052109_DLY (
     assign CAB1 = A48; //*** OUTPUT SIGNAL CAB1 ***
     //* END Section 7.2. col[3:2], CAB1, CAB2 Signals *
 
+    //* START Section 7.3. col[7:4] *
+    wire [3:0] G77_Q;
+    FDS_DLY g77 (.D(VD_IN[12:15]), .CK(PXH0n), .Q(G77_Q));
+    wire [3:0] H92_Q;
+    FDS_DLY h92 (.D(VD_IN[12:15]), .CK(J140_Qn), .Q(H92_Q));
+    wire [3:0] F77_Q;
+    FDS_DLY f77 (.D(DB_BUF[4:7]), .CK(REG_1E00_WRn), .Q(F77_Q));
+
+    //COL[7]
+    wire G101_Xn;
+    T5A_DLY g101 (.A1(G77_Q[0]), .A2(H92_Q[0]), .B1(F77_Q[0]), .B2(F77_Q[0]), .S1n(F128), .S2(G100), .S3n(G100), .S4(F128), .S5n(F126), .S6(G133), .Xn(G101_Xn));
+    wire L140; //Logic Cell V1N
+    assign #0.55 L140 = ~G101_Xn;
+    assign COL[7] = L140;
+    //COL[6]
+    wire G106_Xn;
+    T5A_DLY g106 (.A1(G77_Q[1]), .A2(H92_Q[1]), .B1(F77_Q[1]), .B2(F77_Q[1]), .S1n(F128), .S2(G100), .S3n(G100), .S4(F128), .S5n(F126), .S6(G133), .Xn(G106_Xn));
+    wire L142; //Logic Cell V1N
+    assign #0.55 L142 = ~G106_Xn;
+    assign COL[6] = L142;
+    //COL[5]
+    wire G117_Xn;
+    T5A_DLY g117 (.A1(G77_Q[2]), .A2(H92_Q[2]), .B1(F77_Q[2]), .B2(F77_Q[2]), .S1n(F128), .S2(G100), .S3n(G100), .S4(F128), .S5n(F126), .S6(G133), .Xn(G117_Xn));
+    wire J150; //Logic Cell V1N
+    assign #0.55 J150 = ~G117_Xn;
+    assign COL[5] = J150;
+    //COL[4]
+    wire G111_Xn;
+    T5A_DLY g111 (.A1(G77_Q[2]), .A2(H92_Q[2]), .B1(F77_Q[2]), .B2(F77_Q[2]), .S1n(F128), .S2(G100), .S3n(G100), .S4(F128), .S5n(F126), .S6(G133), .Xn(G111_Xn));
+    wire J148; //Logic Cell V1N
+    assign #0.55 J148 = ~G111_Xn;
+    assign COL[4] = J148;
+    //* END Section 7.3. col[7:4]
+
     //* START Section 7.4. BB33 Signal *
     wire AA14; //Logic Cell V1N
     assign #0.55 AA14 = ~PXH6;
