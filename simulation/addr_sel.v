@@ -22,13 +22,13 @@
                  input SELCn,
                  output RA);
     wire SELAB_Xn;
-    T5A_DLY selab (.A1(A1), .A2(A2), .B1(B1), .B2(B2), .S1n(SELA), .S2(SELAn), .S3n(SELAn), .S4(SELA), .S5n(SELB), .S6(SELBn), .Xn(SELAB_Xn));
+    T5A_DLY sel_ab (.A1(A1), .A2(A2), .B1(B1), .B2(B2), .S1n(SELA), .S2(SELAn), .S3n(SELAn), .S4(SELA), .S5n(SELB), .S6(SELBn), .Xn(SELAB_Xn));
 
     wire SELAB; //Logic Cell V1N
     assign #0.55 SELAB = ~SELAB_Xn;
 
     wire SELABC_Xn;
-    D24_DLY SELABC (.A1(C), .A2(SELC), .B1(SELAB), .B2(SELCn), .X(SELABC_Xn)); 
+    D24_DLY sel_abc (.A1(C), .A2(SELC), .B1(SELAB), .B2(SELCn), .X(SELABC_Xn)); 
 
     wire SELABC; //Logic Cell V2B
     assign #0.64 SELABC = ~SELABC_Xn;
@@ -37,12 +37,12 @@
 endmodule
 
  module ADRR_SEL2 ( input A,
-                        input B,
-                 input SELC,
-                 input SELCn,
-                 output X);
+                    input B,
+                    input SELC,
+                    input SELCn,
+                    output X);
     wire SELAB_Xn;
-    D24_DLY SELABC (.A1(A), .A2(SELC), .B1(B), .B2(SELCn), .X(SELAB_Xn)); 
+    D24_DLY sel_abc (.A1(A), .A2(SELC), .B1(B), .B2(SELCn), .X(SELAB_Xn)); 
 
     wire SELAB; //Logic Cell V2B
     assign #0.64 SELAB = ~SELAB_Xn;

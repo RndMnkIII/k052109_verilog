@@ -385,7 +385,7 @@ endmodule
 //-----------------------
 module LT4_DLY ( input [3:0] D,
                  input Gn,
-                 output [3:0] P,
+                 output reg [3:0] P,
                  output [3:0] N);
       assign N[0] = ~P[0];
       assign N[1] = ~P[1];
@@ -498,7 +498,7 @@ module T5A_DLY ( input A1,
                  input S6,
                  output Xn);
     wire [5:0] sel;
-    wire out;
+    reg out;
 
     assign sel = {S6, S5n, S4, S3n, S2, S1n};
     always @ * begin
@@ -513,7 +513,7 @@ module T5A_DLY ( input A1,
             end
         endcase
     end
-    assign #3.22 Xn = out
+    assign #3.22 Xn = out;
 endmodule
 
 //Cell Name: T2B
@@ -539,7 +539,7 @@ module T2B_DLY ( input A,
                  input S2,
                  output Xn);
     wire [3:0] sel;
-    wire out;
+    reg out;
 
     assign sel = {S2, S1n, B, A};
     always @ * begin
@@ -568,7 +568,7 @@ module T2B_DLY ( input A,
             end 
         endcase
     end
-    assign #3.09 Xn = out
+    assign #3.09 Xn = out;
 endmodule
 
 //Cell Name: T2C
@@ -591,13 +591,13 @@ endmodule
 module T2C_DLY ( input A1,
                  input A2,
                  input B1,
-                 input A2,
+                 input B2,
                  input S1n,
                  input S2,
                  output X0n,
                  output X1n);
     wire [1:0] sel;
-    wire out0, out1;
+    reg out0, out1;
 
     assign sel = {S2, S1n};
     always @ * begin
@@ -617,8 +617,8 @@ module T2C_DLY ( input A1,
             end
         endcase
     end
-    assign #3.09 Xn0 = out0
-    assign #3.09 Xn1 = out1
+    assign #3.09 X0n = out0;
+    assign #3.09 X1n = out1;
 endmodule
 
 //Cell Name: A1N
