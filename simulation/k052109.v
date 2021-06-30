@@ -1162,6 +1162,134 @@ module k052109_DLY (
     //* END Section 6.1. Layer B Tilemap X Address generetor signals *
 
     //* START Section 6.2. Layer B Tilemap Y Address generetor signals *
+    wire M28; //Logic Cell V1N
+    assign #0.55 M28 = ~REG1C80[5];
+
+    wire BB34; //Logic Cell N2P
+    assign #1.41 BB34 = BB33 & M28;
+
+    wire BB37; //Logic Cell R2N
+    assign #0.87 BB37 = ~(PXH2 | BB34);
+
+    wire C22; //Logic Cell N2P
+    assign #1.41 C22 = BB37 & RES_SYNCn;
+
+    wire CC3_Qn;
+    FDE_DLY cc3 (.D(1'b1), .CLn(C22), .CK(PXH1), .Qn(CC3_Qn));
+
+    wire CC37_X;
+    D24_DLY cc37 (.A1(CC3_Qn), .A2(TEST_EN2n), .B1(AB3_REG), .B2(TEST_EN), .X(CC37_X));
+
+    wire [3:0] BB77_Q;
+    FDR_DLY bb77 (.D(VD_IN[0:3]), .CLn(RES_SYNCn), .CK(CC37_X), .Q(BB77_Q)); //inverted data port D
     
+    wire [3:0] V77_Q;
+    FDR_DLY v77 (.D(VD_IN[4:7]), .CLn(RES_SYNCn), .CK(CC37_X), .Q(V77_Q)); //inverted data port D
+
+    wire [3:0] BB107_S;
+    wire BB107_CO;
+    A4H_DLY bb107 (.A(BB77_Q[0:3]) ,.B(ROW[3:0]), .CI(1'b0), .S(BB107_S), .CO(BB107_CO)); //inverted port A
+
+    wire [3:0] X107_S;
+    A4H_DLY x107 (.A(V77_Q[0:3]),.B(ROW[7:4]), .CI(BB107_CO), .S(X107_S)); //inverted port A
+    
+    assign MAP_B[10:6] = {X107_S,BB107_S[3]};
+    
+    wire [2:0] ROW_B; //*** declare bus for ROW_B signals ***
+    assign ROW_B = BB107_S[2:0];
     //* END Section 6.2. Layer B Tilemap Y Address generetor signals *
+
+
+        //*** PAGE 8: LAYER A SCROLL ***
+    //* START Section 8.1. Layer A Tilemap X Address generetor signals *
+    wire AA2_Q;
+    FDN_DLY aa2 (.D(PXH3), .Sn(READ_SCROLL_A), .CK(PXH1), .Q(AA2_Q));
+    wire X55_X;
+    D24_DLY x55 (.A1(AA2_Q), .A2(TEST_ENn), .B1(AB1_REG), .B2(TEST_EN), .X(X55_X));
+
+    wire AA22_Qn;
+    FDE_DLY aa22 (.D(PXH3), .CLn(READ_SCROLL_A), .CK(PXH1), .Qn(AA22_Qn));
+    wire AA53_X;
+    D24_DLY aa53 (.A1(AA22_Qn), .A2(TEST_EN2n), .B1(AB2_REG), .B2(TEST_EN), .X(AA53_X));
+
+    wire [3:0] T51_Q;
+    FDR_DLY t51 (.D(VD_IN[8:11]), .CLn(RES_SYNCn), .CK(X55_X), .Q(T51_Q)); //inverted data port D
+    wire [3:0] S51_Q;
+    FDR_DLY s51 (.D(VD_IN[12:15]), .CLn(clear), .CK(clock), .Q(S51_Q)); //inverted data port D
+
+    wire AA41_Q;
+    FDE_DLY aa41 (.D(VD_IN[8]), .CLn(RES_SYNCn), .CK(AA53_X), .Q(AA41_Q));
+
+    wire [3:0] X4_S;
+    wire X4_CO;
+    A4H_DLY x4 (.A({T51_Q[0:3]}),.B({FLIP_SCREEN_BUF,1'b0,2{FLIP_SCREEN_BUF}}), .CI(1'b0), .S(X4_S), .CO(X4_CO)); //inverted data port D
+    wire [3:0] W3_S;
+    wire W3_CO;
+    A4H_DLY w3 (.A(S51_Q[0:3]),.B({4{FLIP_SCREEN_BUF}}), .CI(X4_CO), .S(W3_S), .CO(W3_CO)); //inverted data port D
+    wire Z69_S;
+    A1N_DLY z69 (.A(AA41),.B(FLIP_SCREEN_BUF), .CI(W3_CO), .S(Z69_S)); //.B(FLIP_SCREEN)
+
+    wire X73; //Logic Cell X2B
+    assign #3.50 X73 = FLIP_SCREEN_BUF ^ X4_S[0]; //FLIP_SCREEN ^ X4_S[0]
+    wire X65; //Logic Cell X2B
+    assign #3.50 X65 = FLIP_SCREEN_BUF ^ X4_S[1]; //FLIP_SCREEN ^ X4_S[1]
+    wire X69; //Logic Cell X2B
+    assign #3.50 X69 = FLIP_SCREEN_BUF ^ X4_S[2]; //FLIP_SCREEN ^ X4_S[2]
+
+    wire W53_S;
+    wire W53_CO;
+    A1N_DLY w53 (.A(PXH0),.B(X73), .CI(1'b0), .S(W53_S), .CO(W53_CO));
+    assign ZA1H = W53_S; //*** OUTPUT SIGNAL ZA1H ***
+
+    wire [1:0] W61_S;
+    A2N_DLY w61 (.A({PXH2,PXH1}),.B({X69,X65}), .CI(W99_CO), .S(W61_S));
+    assign {ZA4H,ZA2H} = W61_S; //*** OUTPUT SIGNALS ZA4H, ZA2H ***
+
+    wire [10:0] MAP_A; //*** declare bus for MAP_A signals ***
+    wire [3:0] Y3_S;
+    wire Y3_CO;
+    A4H_DLY y3 (.A({W3_S[2:0],X4_S[3]}),.B({PXH6,PXH5,PXH4F,PXH3F}), .CI(1'b0), .S(Y3_S), .CO(Y3_CO));
+    wire [1:0] Y53_S;
+    A2N_DLY Y53 (.A({Z69_S,W3_S[3]}),.B({PXH8,PXH7Q}), .CI(Y3_CO), .S(Y53_S));
+    
+    assign MAP_A[5:0] = {Y53_S,Y3_S};
+    //* END Section 8.1. Layer A Tilemap X Address generetor signals *
+
+    //* START Section 8.2. Layer A Tilemap Y Address generetor signals *
+    wire M49; //Logic Cell V1N
+    assign #0.55 M49 = ~REG1C80[2];
+
+    wire BB56; //Logic Cell N2P
+    assign #1.41 BB56 = BB33 & M49;
+
+    wire BB55; //Logic Cell R2N
+    assign #0.87 BB55 = ~(PXH2 | BB56);
+
+    wire BB30; //Logic Cell N2P
+    assign #1.41 BB30 = BB55 & RES_SYNCn;
+
+    wire BB20_Qn;
+    FDE_DLY bb20 (.D(1'b1), .CLn(BB30), .CK(PXH1), .Qn(BB20_Qn));
+
+    wire AA55_X;
+    D24_DLY aa55 (.A1(BB20_Qn), .A2(TEST_ENn), .B1(AB3_REG), .B2(TEST_EN), .X(AA55_X));
+
+    wire [3:0] T77_Q;
+    FDR_DLY t77 (.D(VD_IN[8:11]), .CLn(RES_SYNCn), .CK(AA55_X), .Q(T77_Q)); //inverted data port D
+    
+    wire [3:0] P77_Q;
+    FDR_DLY p77 (.D(VD_IN[12:15]), .CLn(RES_SYNCn), .CK(AA55_X), .Q(P77_Q)); //inverted data port D
+
+    wire [3:0] W107_S;
+    wire W107_CO;
+    A4H_DLY w107 (.A(T77_Q[0:3]) ,.B(ROW[3:0]), .CI(1'b0), .S(W107_S), .CO(W107_CO)); //inverted port A
+
+    wire [3:0] V106_S;
+    A4H_DLY v106 (.A(P77_Q[0:3]),.B(ROW[7:4]), .CI(W107_CO), .S(V106_S)); //inverted port A
+    
+    assign MAP_A[10:6] = {V106_S,W107_S[3]};
+    
+    wire [2:0] ROW_A; //*** declare bus for ROW_A signals ***
+    assign ROW_A = W107_S[2:0];
+    //* END Section 8.2. Layer A Tilemap Y Address generetor signals *
 endmodule
