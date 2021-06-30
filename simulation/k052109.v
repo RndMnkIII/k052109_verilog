@@ -1200,7 +1200,57 @@ module k052109_DLY (
     //* END Section 6.2. Layer B Tilemap Y Address generetor signals *
 
 
-        //*** PAGE 8: LAYER A SCROLL ***
+    //*** PAGE 7: COL OUTPUTS ***
+    //* START Section 7.1. col[1:0] Signals *
+    wire F130; //Logic Cell N3P
+    assign #1.82 F130 = J121 & REG1C00[5] & PXH0n;
+
+    wire [3:0] H127_Q;
+    FDS_DLY h127 (.D(VD_IN[8:11]), .CK(J140_Qn), .Q(H127_Q));
+
+    wire [3:0] G136_Q;
+    FDS_DLY g136 (.D(VD_IN[8:11]), .CK(clock), .Q(G136_Q));
+
+    wire F126; //Logic Cell K1B
+    assign #1.26 F126 = RMRD;
+
+    wire F128; //Logic Cell K1B
+    assign #1.26 F128 = F130;
+
+    wire G100; //Logic Cell V2B
+    assign #0.64 G100 = ~F128;
+
+    wire G133; //Logic Cell V2B
+    assign #0.64 G133 = ~F126;
+
+    wire F147; //Logic Cell V1N
+    assign #0.55 F147 = ~F128;
+
+    wire F144_Xn;
+    T2B_DLY f144 (.A(H127_Q[0]), .B(G136_Q[0]), .S1n(F128), .S2(F147), .Xn(F144_Xn));
+    wire F24; //Logic Cell V1N
+    assign #0.55 F24 = ~F144_Xn;
+
+    wire F142_Xn;
+    T2B_DLY f142 (.A(H127_Q[1]), .B(G136_Q[1]), .S1n(F128), .S2(F147), .Xn(F142_Xn));
+    wire F41; //Logic Cell V1N
+    assign #0.55 F41 = ~F142_Xn;
+
+    wire G122_Xn;
+    T5A_DLY g122 (.A1(G136_Q[2]), .A2(H127_Q[2]), .B1(E77_Q[2]), .B2(E77_Q[2]), .S1n(F128), .S2(G100), .S3n(G100), .S4(F128), .S5n(F126), .S6(G133), .Xn(G122_Xn));
+    wire F125; //Logic Cell V1N
+    assign #0.55 F125 = ~G122_Xn;
+    assign COL[1] = F125;
+    
+    wire G127_Xn;
+    T5A_DLY g127 (.A1(G136_Q[3]), .A2(H127_Q[3]), .B1(E77_Q[3]), .B2(E77_Q[3]), .S1n(F128), .S2(G100), .S3n(G100), .S4(F128), .S5n(F126), .S6(G133), .Xn(G127_Xn));
+    wire F141; //Logic Cell V1N
+    assign #0.55 F141 = ~G127_Xn;
+    assign COL[0] = F141;
+    //* END Section 7.1. col[1:0] Signals *
+
+
+    //*** PAGE 8: LAYER A SCROLL ***
     //* START Section 8.1. Layer A Tilemap X Address generetor signals *
     wire AA2_Q;
     FDN_DLY aa2 (.D(PXH3), .Sn(READ_SCROLL_A), .CK(PXH1), .Q(AA2_Q));
