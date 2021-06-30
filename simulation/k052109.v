@@ -118,7 +118,7 @@ module k052109_DLY (
     always @ * begin
         case ({AA58,AA38})
             2'bx1: begin
-                Y129=ROW5; Y78=ROW6; Y91=ROW7; Y80=1'b1; 
+                Y129=ROW[5]; Y78=ROW[6]; Y91=ROW[7]; Y80=1'b1; 
             end     
             2'bx0: begin
                 Y129=1'b0; Y78=1'b0; Y91=1'b0; Y80=1'b0; 
@@ -127,17 +127,17 @@ module k052109_DLY (
     end
     */
     wire Y69_X;
-    D24_DLY y69 (.A1(ROW5), .A2(AA38), .B1(1'b0), .B2(AA58), .X(Y69_X));
+    D24_DLY y69 (.A1(ROW[5]), .A2(AA38), .B1(1'b0), .B2(AA58), .X(Y69_X));
     wire Y129; //Logic Cell V1N
     assign #0.55 Y129 = ~Y69_X;
 
     wire Y71_X;
-    D24_DLY y71 (.A1(ROW6), .A2(AA38), .B1(1'b0), .B2(AA58), .X(Y71_X));
+    D24_DLY y71 (.A1(ROW[6]), .A2(AA38), .B1(1'b0), .B2(AA58), .X(Y71_X));
     wire Y78; //Logic Cell V1N
     assign #0.55 Y78 = ~Y71_X;
 
     wire Y73_X;
-    D24_DLY y73 (.A1(ROW7), .A2(AA38), .B1(1'b0), .B2(AA58), .X(Y73_X));
+    D24_DLY y73 (.A1(ROW[7]), .A2(AA38), .B1(1'b0), .B2(AA58), .X(Y73_X));
     wire Y91; //Logic Cell V1N
     assign #0.55 Y91 = ~Y73_X;
 
@@ -158,21 +158,21 @@ module k052109_DLY (
     wire R117; //Logic Cell V2B
     assign #0.64 R117 = ~D47_Xn;
 
-    ADRR_SEL ra_0 (.A1(SCROLL_RAM_A[0]), .A2(MAP_A0), .B1(PXH3F), .B2(MAP_B0), .C(AB[0]),  .SELA(N16_QA_BUF), .SELAn(N16_QA_BUFn), .SELB(N16_QB_BUF), .SELBn(N16_QB_BUFn), .SELC(R113), .SELCn(R117), .RA(RA[0]));
-    ADRR_SEL ra_1 (.A1(SCROLL_RAM_A[1]), .A2(MAP_A1), .B1(PXH4F), .B2(MAP_B1), .C(AB[1]),  .SELA(N16_QA_BUF), .SELAn(N16_QA_BUFn), .SELB(N16_QB_BUF), .SELBn(N16_QB_BUFn), .SELC(R113), .SELCn(R117), .RA(RA[1]));
-    ADRR_SEL ra_2 (.A1(SCROLL_RAM_A[2]), .A2(MAP_A2), .B1(PXH5),  .B2(MAP_B2), .C(AB[2]),  .SELA(N16_QA_BUF), .SELAn(N16_QA_BUFn), .SELB(N16_QB_BUF), .SELBn(N16_QB_BUFn), .SELC(R113), .SELCn(R117), .RA(RA[2]));
-    ADRR_SEL ra_3 (.A1(SCROLL_RAM_A[3]), .A2(MAP_A3), .B1(PXH6),  .B2(MAP_B3), .C(AB[3]),  .SELA(N16_QA_BUF), .SELAn(N16_QA_BUFn), .SELB(N16_QB_BUF), .SELBn(N16_QB_BUFn), .SELC(R113), .SELCn(R117), .RA(RA[3]));
-    ADRR_SEL ra_4 (.A1(SCROLL_RAM_A[4]), .A2(MAP_A4), .B1(PXH7),  .B2(MAP_B4), .C(AB[4]),  .SELA(N16_QA_BUF), .SELAn(N16_QA_BUFn), .SELB(N16_QB_BUF), .SELBn(N16_QB_BUFn), .SELC(R113), .SELCn(R117), .RA(RA[4]));
-    ADRR_SEL ra_5 (.A1(SCROLL_RAM_A[5]), .A2(MAP_A5), .B1(PXH8),  .B2(MAP_B5), .C(AB[5]),  .SELA(N16_QA_BUF), .SELAn(N16_QA_BUFn), .SELB(N16_QB_BUF), .SELBn(N16_QB_BUFn), .SELC(R113), .SELCn(R117), .RA(RA[5]));
-    ADRR_SEL ra_6 (.A1(Y129),          .A2(MAP_A6), .B1(ROW3),  .B2(MAP_B6), .C(AB[6]),  .SELA(N16_QA_BUF), .SELAn(N16_QA_BUFn), .SELB(N16_QB_BUF), .SELBn(N16_QB_BUFn), .SELC(R113), .SELCn(R117), .RA(RA[6]));
+    ADRR_SEL ra_0 (.A1(SCROLL_RAM_A[0]), .A2(MAP_A[0]), .B1(PXH3F), .B2(MAP_B[0]), .C(AB[0]),  .SELA(N16_QA_BUF), .SELAn(N16_QA_BUFn), .SELB(N16_QB_BUF), .SELBn(N16_QB_BUFn), .SELC(R113), .SELCn(R117), .RA(RA[0]));
+    ADRR_SEL ra_1 (.A1(SCROLL_RAM_A[1]), .A2(MAP_A[1]), .B1(PXH4F), .B2(MAP_B[1]), .C(AB[1]),  .SELA(N16_QA_BUF), .SELAn(N16_QA_BUFn), .SELB(N16_QB_BUF), .SELBn(N16_QB_BUFn), .SELC(R113), .SELCn(R117), .RA(RA[1]));
+    ADRR_SEL ra_2 (.A1(SCROLL_RAM_A[2]), .A2(MAP_A[2]), .B1(PXH5),  .B2(MAP_B[2]), .C(AB[2]),  .SELA(N16_QA_BUF), .SELAn(N16_QA_BUFn), .SELB(N16_QB_BUF), .SELBn(N16_QB_BUFn), .SELC(R113), .SELCn(R117), .RA(RA[2]));
+    ADRR_SEL ra_3 (.A1(SCROLL_RAM_A[3]), .A2(MAP_A[3]), .B1(PXH6),  .B2(MAP_B[3]), .C(AB[3]),  .SELA(N16_QA_BUF), .SELAn(N16_QA_BUFn), .SELB(N16_QB_BUF), .SELBn(N16_QB_BUFn), .SELC(R113), .SELCn(R117), .RA(RA[3]));
+    ADRR_SEL ra_4 (.A1(SCROLL_RAM_A[4]), .A2(MAP_A[4]), .B1(PXH7),  .B2(MAP_B[4]), .C(AB[4]),  .SELA(N16_QA_BUF), .SELAn(N16_QA_BUFn), .SELB(N16_QB_BUF), .SELBn(N16_QB_BUFn), .SELC(R113), .SELCn(R117), .RA(RA[4]));
+    ADRR_SEL ra_5 (.A1(SCROLL_RAM_A[5]), .A2(MAP_A[5]), .B1(PXH8),  .B2(MAP_B[5]), .C(AB[5]),  .SELA(N16_QA_BUF), .SELAn(N16_QA_BUFn), .SELB(N16_QB_BUF), .SELBn(N16_QB_BUFn), .SELC(R113), .SELCn(R117), .RA(RA[5]));
+    ADRR_SEL ra_6 (.A1(Y129),            .A2(MAP_A[6]), .B1(ROW[3]),  .B2(MAP_B[6]), .C(AB[6]),  .SELA(N16_QA_BUF), .SELAn(N16_QA_BUFn), .SELB(N16_QB_BUF), .SELBn(N16_QB_BUFn), .SELC(R113), .SELCn(R117), .RA(RA[6]));
     //----------------BUF2
-    ADRR_SEL ra_7 (.A1(Y78),           .A2(MAP_A7), .B1(ROW4),  .B2(MAP_B7), .C(AB[7]),  .SELA(N16_QA_BUF), .SELAn(N16_QA_BUF2n), .SELB(N16_QB_BUF), .SELBn(N16_QB_BUF2n), .SELC(R113), .SELCn(R117), .RA(RA[7]));
-    ADRR_SEL ra_8 (.A1(Y91),           .A2(MAP_A8), .B1(ROW5),  .B2(MAP_B8), .C(AB[8]),  .SELA(N16_QA_BUF), .SELAn(N16_QA_BUF2n), .SELB(N16_QB_BUF), .SELBn(N16_QB_BUF2n), .SELC(R113), .SELCn(R117), .RA(RA[8]));
-    ADRR_SEL ra_9 (.A1(Y80),           .A2(MAP_A9), .B1(ROW6),  .B2(MAP_B9), .C(AB[9]),  .SELA(N16_QA_BUF), .SELAn(N16_QA_BUF2n), .SELB(N16_QB_BUF), .SELBn(N16_QB_BUF2n), .SELC(R113), .SELCn(R117), .RA(RA[9]));
-    ADRR_SEL ra_A (.A1(1'b0),          .A2(MAP_A10),.B1(ROW7),  .B2(MAP_B10),.C(AB[10]), .SELA(N16_QA_BUF), .SELAn(N16_QA_BUF2n), .SELB(N16_QB_BUF), .SELBn(N16_QB_BUF2n), .SELC(R113), .SELCn(R117), .RA(RA[10]));
-    ADRR_SEL ra_B (.A1(1'b1),          .A2(1'b1),   .B1(1'b0),  .B2(1'b0),   .C(AB[11]), .SELA(N16_QA_BUF), .SELAn(N16_QA_BUF2n), .SELB(N16_QB_BUF), .SELBn(N16_QB_BUF2n), .SELC(R113), .SELCn(R117), .RA(RA[11]));
-    ADRR_SEL ra_C (.A1(1'b1),          .A2(1'b0),   .B1(1'b0),  .B2(1'b1),   .C(AB[12]), .SELA(N16_QA_BUF), .SELAn(N16_QA_BUF2n), .SELB(N16_QB_BUF), .SELBn(N16_QB_BUF2n), .SELC(R113), .SELCn(R117), .RA(RA[12]));
-
+    ADRR_SEL ra_7 (.A1(Y78),             .A2(MAP_A[7]), .B1(ROW[4]),  .B2(MAP_B[7]), .C(AB[7]),  .SELA(N16_QA_BUF), .SELAn(N16_QA_BUF2n), .SELB(N16_QB_BUF), .SELBn(N16_QB_BUF2n), .SELC(R113), .SELCn(R117), .RA(RA[7]));
+    ADRR_SEL ra_8 (.A1(Y91),             .A2(MAP_A[8]), .B1(ROW[5]),  .B2(MAP_B[8]), .C(AB[8]),  .SELA(N16_QA_BUF), .SELAn(N16_QA_BUF2n), .SELB(N16_QB_BUF), .SELBn(N16_QB_BUF2n), .SELC(R113), .SELCn(R117), .RA(RA[8]));
+    ADRR_SEL ra_9 (.A1(Y80),             .A2(MAP_A[9]), .B1(ROW[6]),  .B2(MAP_B[9]), .C(AB[9]),  .SELA(N16_QA_BUF), .SELAn(N16_QA_BUF2n), .SELB(N16_QB_BUF), .SELBn(N16_QB_BUF2n), .SELC(R113), .SELCn(R117), .RA(RA[9]));
+    ADRR_SEL ra_A (.A1(1'b0),            .A2(MAP_A[10]),.B1(ROW[7]),  .B2(MAP_B[10]),.C(AB[10]), .SELA(N16_QA_BUF), .SELAn(N16_QA_BUF2n), .SELB(N16_QB_BUF), .SELBn(N16_QB_BUF2n), .SELC(R113), .SELCn(R117), .RA(RA[10]));
+    ADRR_SEL ra_B (.A1(1'b1),            .A2(1'b1),    .B1(1'b0),  .B2(1'b0),    .C(AB[11]), .SELA(N16_QA_BUF), .SELAn(N16_QA_BUF2n), .SELB(N16_QB_BUF), .SELBn(N16_QB_BUF2n), .SELC(R113), .SELCn(R117), .RA(RA[11]));
+    ADRR_SEL ra_C (.A1(1'b1),            .A2(1'b0),    .B1(1'b0),  .B2(1'b1),    .C(AB[12]), .SELA(N16_QA_BUF), .SELAn(N16_QA_BUF2n), .SELB(N16_QB_BUF), .SELBn(N16_QB_BUF2n), .SELC(R113), .SELCn(R117), .RA(RA[12]));
+ 
     ADRR_SEL2 roe_0(.A(RDEN), .B(J140_Qn), .SELC(R113)), .SELCn(R117), .X(ROE[0]));
     ADRR_SEL2 roe_1(.A(RDEN), .B(J151), .SELC(R113)), .SELCn(R117), .X(ROE[1]));
     ADRR_SEL2 roe_2(.A(RDEN), .B(1'b1), .SELC(R113)), .SELCn(R117), .X(ROE[2]));
@@ -334,9 +334,9 @@ module k052109_DLY (
     
     //VC[2]
     wire CC59_Q;
-    FDG_DLY cc59 (.D(ROW2), .CLn(RES_SYNCn), .CK(PXH1), .Q(CC59_Q));
+    FDG_DLY cc59 (.D(ROW[2]), .CLn(RES_SYNCn), .CK(PXH1), .Q(CC59_Q));
     wire BB58_Xn;
-    T5A_DLY bb58 (.A1(CC59_Q), .A2(CC59_Q), .B1(ROW_B2), .B2(ROW_A2), .S1n(N16_QA_BUF2), .S2(N16_QA_BUF3n), .S3n(N16_QA_BUF3n), .S4(N16_QA_BUF2), .S5n(N16_QB_BUF2), .S6(N16_QB_BUF3n), .Xn(BB58_Xn));
+    T5A_DLY bb58 (.A1(CC59_Q), .A2(CC59_Q), .B1(ROW_B[2]), .B2(ROW_A[2]), .S1n(N16_QA_BUF2), .S2(N16_QA_BUF3n), .S3n(N16_QA_BUF3n), .S4(N16_QA_BUF2), .S5n(N16_QB_BUF2), .S6(N16_QB_BUF3n), .Xn(BB58_Xn));
     wire M73; //Logic Cell V1N
     assign #0.55 M73 = ~BB58_Xn;
     wire C83; //Logic Cell X2B
@@ -351,11 +351,11 @@ module k052109_DLY (
 
     //VC[1]
     wire CC39; //Logic Cell BD5
-    assign #22.18 CC39 = ROW1; //DELAY CELL LOOK DEEPER
+    assign #22.18 CC39 = ROW[1]; //DELAY CELL LOOK DEEPER
     wire CC68_Q;
     FDG_DLY cc68 (.D(CC39), .CLn(RES_SYNCn), .CK(PXH1), .Q(CC68_Q));
     wire BB63_Xn;
-    T5A_DLY bb63 (.A1(CC68_Q), .A2(CC68_Q), .B1(ROW_B1), .B2(ROW_A1), .S1n(N16_QA_BUF2), .S2(N16_QA_BUF3n), .S3n(N16_QA_BUF3n), .S4(N16_QA_BUF2), .S5n(N16_QB_BUF2), .S6(N16_QB_BUF3n), .Xn(BB63_Xn));
+    T5A_DLY bb63 (.A1(CC68_Q), .A2(CC68_Q), .B1(ROW_B[1]), .B2(ROW_A[1]), .S1n(N16_QA_BUF2), .S2(N16_QA_BUF3n), .S3n(N16_QA_BUF3n), .S4(N16_QA_BUF2), .S5n(N16_QB_BUF2), .S6(N16_QB_BUF3n), .Xn(BB63_Xn));
     wire M69; //Logic Cell V1N
     assign #0.55 M69 = ~BB63_Xn;
     wire C77; //Logic Cell X2B
@@ -370,9 +370,9 @@ module k052109_DLY (
 
     //VC[0]
     wire BB39_Q;
-    FDG_DLY bb39 (.D(ROW0), .CLn(RES_SYNCn), .CK(PXH1), .Q(BB39_Q));
+    FDG_DLY bb39 (.D(ROW[0]), .CLn(RES_SYNCn), .CK(PXH1), .Q(BB39_Q));
     wire BB68_Xn;
-    T5A_DLY bb68 (.A1(BB39_Q), .A2(CC68_Q), .B1(ROW_B0), .B2(ROW_A0), .S1n(N16_QA_BUF2), .S2(N16_QA_BUF3n), .S3n(N16_QA_BUF3n), .S4(N16_QA_BUF2), .S5n(N16_QB_BUF2), .S6(N16_QB_BUF3n), .Xn(BB68_Xn));
+    T5A_DLY bb68 (.A1(BB39_Q), .A2(CC68_Q), .B1(ROW_B[0]), .B2(ROW_A[0]), .S1n(N16_QA_BUF2), .S2(N16_QA_BUF3n), .S3n(N16_QA_BUF3n), .S4(N16_QA_BUF2), .S5n(N16_QB_BUF2), .S6(N16_QB_BUF3n), .Xn(BB68_Xn));
     wire M71; //Logic Cell V1N
     assign #0.55 M71 = ~BB68_Xn;
     wire C87; //Logic Cell X2B
@@ -692,11 +692,11 @@ module k052109_DLY (
     assign #1.97 E40 = E38 | E42;
 
     wire AA61; //Logic Cell N2P
-    assign #1.41 AA61 = ROW0 & E40;
+    assign #1.41 AA61 = ROW[0] & E40;
     wire AA59; //Logic Cell N2P
-    assign #1.41 AA59 = ROW1 & E40;
+    assign #1.41 AA59 = ROW[1] & E40;
     wire AA63; //Logic Cell N2P
-    assign #1.41 AA63 = ROW2 & E40;
+    assign #1.41 AA63 = ROW[2] & E40;
 
     wire [3:0] Z3_S;
     wire Z3_CO;
@@ -715,31 +715,31 @@ module k052109_DLY (
     assign SCROLL_RAM_A[0] = AA80;
     //SCROLL_RAM_A[1]
     wire AA65_X;
-    D24_DLY aa65 (.A1(AA61), .A2(AA38), .B1(Z3_S[1]), .B2(AA58), .X(AA65_X)); //ROW0
+    D24_DLY aa65 (.A1(AA61), .A2(AA38), .B1(Z3_S[1]), .B2(AA58), .X(AA65_X)); //ROW[0]
     wire AA78; //Logic Cell V1N
     assign #0.55 AA78 = ~AA65_X;
     assign SCROLL_RAM_A[1] = AA78;
     //SCROLL_RAM_A[2]
     wire AA67_X;
-    D24_DLY aa67 (.A1(AA59), .A2(AA38), .B1(Z3_S[2]), .B2(AA58), .X(AA67_X)); //ROW0
+    D24_DLY aa67 (.A1(AA59), .A2(AA38), .B1(Z3_S[2]), .B2(AA58), .X(AA67_X)); //ROW[1]
     wire Z154; //Logic Cell V1N
     assign #0.55 Z154 = ~AA67_X;
     assign SCROLL_RAM_A[2] = Z154;
     //SCROLL_RAM_A[3]
     wire AA69_X;
-    D24_DLY aa69 (.A1(AA63), .A2(AA38), .B1(Z3_S[3]), .B2(AA58), .X(AA69_X)); //ROW0
+    D24_DLY aa69 (.A1(AA63), .A2(AA38), .B1(Z3_S[3]), .B2(AA58), .X(AA69_X)); //ROW[2]
     wire Z136; //Logic Cell V1N
     assign #0.55 Z136 = ~AA69_X;
     assign SCROLL_RAM_A[3] = Z136;
     //SCROLL_RAM_A[4]
     wire AA71_X;
-    D24_DLY aa71 (.A1(ROW3), .A2(AA38), .B1(Z53_S[0]), .B2(AA58), .X(AA71_X)); //ROW0
+    D24_DLY aa71 (.A1(ROW[3]), .A2(AA38), .B1(Z53_S[0]), .B2(AA58), .X(AA71_X)); //ROW[3]
     wire Z156; //Logic Cell V1N
     assign #0.55 Z156 = ~AA71_X;
     assign SCROLL_RAM_A[4] = Z156;
     //SCROLL_RAM_A[5]
     wire AA73_X;
-    D24_DLY aa73 (.A1(ROW4), .A2(AA38), .B1(Z53_S[1]), .B2(AA58), .X(AA73_X)); //ROW0
+    D24_DLY aa73 (.A1(ROW[4]), .A2(AA38), .B1(Z53_S[1]), .B2(AA58), .X(AA73_X)); //ROW[4]
     wire Z134; //Logic Cell V1N
     assign #0.55 Z134 = ~AA73_X;
     assign SCROLL_RAM_A[5] = Z134;
@@ -944,31 +944,26 @@ module k052109_DLY (
     assign HVOT = R19; //*** OUTPUT SIGNAL HVOT ***
 
     //--G20--
-    wire ROW0; //Logic Cell X2B
-    assign #3.50 ROW0 = FLIP_SCREEN ^ G20_Q;
+    wire [7:0] ROW; //Logic Cell X2B
+    assign #3.50 ROW[0] = FLIP_SCREEN ^ G20_Q;
 
     //--J29--
-    wire ROW1; //Logic Cell X2B
-    assign #3.50 ROW1 = FLIP_SCREEN ^ J29_Q[0]; //QA
 
-    wire ROW2; //Logic Cell X2B
-    assign #3.50 ROW2 = FLIP_SCREEN ^ J29_Q[1]; //QB
+    assign #3.50 ROW[1] = FLIP_SCREEN ^ J29_Q[0]; //QA
 
-    wire ROW3; //Logic Cell2X2B//QC
-    assign #3.50 ROW3 = FLIP_SCREEN ^ J29_Q[2]; //QC
+    assign #3.50 ROW[2] = FLIP_SCREEN ^ J29_Q[1]; //QB
 
-    wire ROW4; //Logic Cell X2B
-    assign #3.50 ROW4 = FLIP_SCREEN ^ J29_Q[3]; //QD
+    assign #3.50 ROW[3] = FLIP_SCREEN ^ J29_Q[2]; //QC
+
+    assign #3.50 ROW[4] = FLIP_SCREEN ^ J29_Q[3]; //QD
 
     //--H29--
-    wire ROW5; //Logic Cell X2B
-    assign #3.50 ROW5 = FLIP_SCREEN ^ H29_Q[0]; //QA
 
-    wire ROW6; //Logic Cell X2B
-    assign #3.50 ROW6 = FLIP_SCREEN ^ H29_Q[1]; //QB
+    assign #3.50 ROW[5] = FLIP_SCREEN ^ H29_Q[0]; //QA
 
-    wire ROW7; //Logic Cell X2B
-    assign #3.50 ROW7 = FLIP_SCREEN ^ H29_Q[2; //QC
+    assign #3.50 ROW[6] = FLIP_SCREEN ^ H29_Q[1]; //QB
+
+    assign #3.50 ROW[7] = FLIP_SCREEN ^ H29_Q[2]; //QC
 
     wire CC13_Q, CC13_Qn;
     FDG_DLY cc13 (.D(CC13_Qn), .CLn(RES_SYNCn), .CK(J29_Q[1]), .Q(CC13_Q),.Qn(CC13_Qn));
@@ -1102,8 +1097,71 @@ module k052109_DLY (
     assign #1.26 FLIP_SCREEN_BUF = FLIP_SCREEN;
     //* END Section 5.7. REGISTER 0x1E80 *
 
-        //* START Section 5.8. REGISTER 0x1E00 *
+    //* START Section 5.8. REGISTER 0x1E00 *
     wire reg_1E00_WRn; //Logic Cell N6B
     assign #2.83 reg_1E00_WRn = ~(€L15 & AB9_BUF & AB[10] & AB7_INV & AB8_INV & AB_18XX); //L15 FROM SECTION 3.8
     //* END Section 5.8. REGISTER 0x1E00 *
+
+
+    //*** PAGE 6: LAYER B SCROLL ***
+    //* START Section 6.1. Layer B Tilemap X Address generetor signals *
+    wire BB2_Q;
+    FDN_DLY bb2 (.D(PXH3), .Sn(READ_SCROLL_B), .CK(PXH1), .Q(BB2_Q));
+    wire BB50_X;
+    D24_DLY bb50 (.A1(BB2_Q), .A2(TEST_EN2n), .B1(AB1_REG), .B2(TEST_EN), .X(BB50_X));
+
+    wire BB9_Qn;
+    FDE_DLY bb9 (.D(PXH3), .CLn(READ_SCROLL_B), .CK(PXH1), .Qn(BB9_Qn));
+    wire BB52_X;
+    D24_DLY bb52 (.A1(BB9_Qn), .A2(TEST_EN2n), .B1(AB2_REG), .B2(TEST_EN), .X(BB52_X));
+
+    wire [3:0] CC77_Q;
+    FDR_DLY cc77 (.D(VD_IN[0:3]), .CLn(RES_SYNCn), .CK(BB50_X), .Q(CC77_Q)); //inverted data port D
+    wire [3:0] Y131_Q;
+    FDR_DLY y131 (.D(VD_IN[4:7]), .CLn(clear), .CK(clock), .Q(Y131_Q)); //inverted data port D
+
+    wire AA81_Q;
+    FDE_DLY aa81 (.D(VD_IN[0]), .CLn(RES_SYNCn), .CK(BB52_X), .Q(AA81_Q));
+
+    wire AA91; //Logic Cell K1B
+    assign #1.26 AA91 = FLIP_SCREEN;
+
+    wire [3:0] CC107_S;
+    wire CC107_CO;
+    A4H_DLY cc107 (.A({CC77_Q[0:3]}),.B({AA91,1'b0,2{AA91}}), .CI(1'b0), .S(CC107_S), .CO(CC107_CO)); //inverted data port D
+    wire [3:0] AA106_S;
+    wire AA106_CO;
+    A4H_DLY aa106 (.A(Y131_Q[0:3]),.B({4{AA91}}), .CI(CC107_CO), .S(AA106_S), .CO(AA106_CO)); //inverted data port D
+    wire AA98_S;
+    A1N_DLY aa98 (.A(AA81),.B(AA91), .CI(AA106_CO), .S(AA98_S)); //.B(FLIP_SCREEN)
+
+    wire CC103; //Logic Cell X2B
+    assign #3.50 CC103 = AA91 ^ CC107_S[0]; //FLIP_SCREEN ^ CC107_S[0]
+    wire AA93; //Logic Cell X2B
+    assign #3.50 AA93 = AA91 ^ CC107_S[1]; //FLIP_SCREEN ^ CC107_S[1]
+    wire BB103; //Logic Cell X2B
+    assign #3.50 BB103 = AA91 ^ CC107_S[2]; //FLIP_SCREEN ^ CC107_S[2]
+
+    wire W99_S;
+    wire W99_CO;
+    A1N_DLY w99 (.A(PXH0),.B(CC103), .CI(1'b0), .S(W99_S), .CO(W99_CO));
+    assign ZB1H = W99_S; //*** OUTPUT SIGNAL ZB1H ***
+
+    wire [1:0] W81_S;
+    A2N_DLY w81 (.A({PXH2,PXH1}),.B({BB103,AA93}), .CI(W99_CO), .S(W81_S));
+    assign {ZB4H,ZB2H} = W81_S; //*** OUTPUT SIGNALS ZB4H, ZB2H ***
+
+    wire [10:0] MAP_B; //*** declare bus for MAP_B signals ***
+    wire [3:0] Z77_S;
+    wire Z77_CO;
+    A4H_DLY z77 (.A({AA106_S[2:0],CC107_S[3]}),.B({PXH6,PXH5,PXH4F,PXH3F}), .CI(1'b0), .S(Z77_S), .CO(Z77_CO));
+    wire [1:0] Z137_S;
+    A2N_DLY z137 (.A({AA98_S,AA106_S[3]}),.B({PXH8,PXH7Q}), .CI(Z77_CO), .S(Z137_S));
+    
+    assign MAP_B[5:0] = {Z137_S,Z77_S};
+    //* END Section 6.1. Layer B Tilemap X Address generetor signals *
+
+    //* START Section 6.2. Layer B Tilemap Y Address generetor signals *
+    
+    //* END Section 6.2. Layer B Tilemap Y Address generetor signals *
 endmodule

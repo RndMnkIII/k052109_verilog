@@ -179,7 +179,7 @@
 	"FDE": {
 		"scope": "verilog",
 		"prefix": "#FDE",
-		"body":["wire ${1:name}_Q;","wire ${1:name}_Qn;","FDE_DLY ${1/(.*)/${1:/downcase}/} (.D(${2:D_in}), .CLn(${3:clear}), .CK(${4:clock}), .Q(${1:name}_Q)),.Qn(${1:name}_Qn));"],
+		"body":["wire ${1:name}_Q;","wire ${1:name}_Qn;","FDE_DLY ${1/(.*)/${1:/downcase}/} (.D(${2:D_in}), .CLn(${3:clear}), .CK(${4:clock}), .Q(${1:name}_Q),.Qn(${1:name}_Qn));"],
 		"description": "Positive Edge Clocked Power DFF with CLEAR to: 4.44-6.23ns"
 	},
 
