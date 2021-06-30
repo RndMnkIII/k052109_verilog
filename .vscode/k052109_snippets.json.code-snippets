@@ -203,6 +203,20 @@
 		"description": "2-wide 2-AND 4-input AND-OR-Inverter"
 	},
 
+	"T24": {
+		"scope": "verilog",
+		"prefix": "#T24",
+		"body": ["wire ${1:name}_X;","T24_DLY ${1/(.*)/${1:/downcase}/} (.A1(${2:a1}), .A2(${3:a2}), .B1(${4:b1}), .B2(${5:b2}), .C1(${6:c1}), .C2(${7:c2}), .D1(${8:d1}), .D2(${9:d2}), .X(${1:x}_X));"],
+		"description": "Power 2-AND 4-wide Multiplexer"
+	},
+
+	"T34": {
+		"scope": "verilog",
+		"prefix": "#T34",
+		"body": ["wire ${1:name}_X;","T34_DLY ${1/(.*)/${1:/downcase}/} (.A1(${2:a1}), .A2(${3:a2}), .A3(${4:a2}), .B1(${5:b1}), .B2(${6:b2}), .B3(${7:a2}), .C1(${8:c1}), .C2(${9:c2}), .C3(${10:a2}), .D1(${11:d1}), .D2(${12:d2}), .D3(${13:a2}), .X(${1:x}_X));"],
+		"description": "Power 3-AND 4-wide Multiplexer"
+	},
+
 	"FDE": {
 		"scope": "verilog",
 		"prefix": "#FDE",

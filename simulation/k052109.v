@@ -36,9 +36,9 @@ module k052109_DLY (
     //ROM addressing interface  
     output wire [7:0] COL, //COL[5:0] -> GFX ROM ADDR[16:11] Aliens Sch.
     output wire [10:0] VC, //VC[10:0] -> GFX ROM ADDR[10:0] Aliens Sch.
-    output wire [1:0] CAB, //ROMBANK SELECTORS: CAB[0] -> GFX ROM ADDR[17] //FOR 256Kx16-bit GFX ROM Aliens Sch.
-                           //                   CAB[1] -> GFX ROM OEn  //FOR GFX ADDR 0x00000-0x3FFFF Aliens Sch.
-                           //                  ~CAB[1] -> GFX ROM OEn  //FOR GFX ADDR 0x40000-0x5FFFF Aliens Sch. (Max. 0x7FFFF)
+    output wire CAB1, CAB2, //ROMBANK SELECTORS: CAB1 -> GFX ROM ADDR[17] //FOR 256Kx16-bit GFX ROM Aliens Sch.
+                           //                   CAB2 -> GFX ROM OEn  //FOR GFX ADDR 0x00000-0x3FFFF Aliens Sch.
+                           //                  ~CAB2 -> GFX ROM OEn  //FOR GFX ADDR 0x40000-0x5FFFF Aliens Sch. (Max. 0x7FFFF)
 
     //VRAM interface
     output wire [12:0] RA, //VRAM ADDRESS
@@ -1028,12 +1028,12 @@ module k052109_DLY (
     assign #0.55 TEST_ENn = ~V51_QD;
     assign #1.26 TEST_EN = V51_QD;
 
-    FDR_DLY d51(.D({DB_BUF[4],DB_BUF[5],DB_BUF[6],DB_BUF[7]}), 
+    FDR_DLY d51(.D(DB_BUF[4:7]),  
             .CLn(RES_SYNCn),
             .CK(TEST), 
             .Q({TEST_D12,TEST_D13,TEST_D14,TEST_D15}));
 
-    FDR_DLY l51(.D({DB_BUF[0],DB_BUF[1],DB_BUF[2],DB_BUF[3]}), 
+    FDR_DLY l51(.D(DB_BUF[0:3]), 
             .CLn(RES_SYNCn),
             .CK(TEST), 
             .Q({TEST_D8,TEST_D9,TEST_D10,TEST_D11}));
@@ -1118,7 +1118,7 @@ module k052109_DLY (
     wire [3:0] CC77_Q;
     FDR_DLY cc77 (.D(VD_IN[0:3]), .CLn(RES_SYNCn), .CK(BB50_X), .Q(CC77_Q)); //inverted data port D
     wire [3:0] Y131_Q;
-    FDR_DLY y131 (.D(VD_IN[4:7]), .CLn(clear), .CK(clock), .Q(Y131_Q)); //inverted data port D
+    FDR_DLY y131 (.D(VD_IN[4:7]), .CLn(RES_SYNCn), .CK(BB50_X), .Q(Y131_Q)); //inverted data port D
 
     wire AA81_Q;
     FDE_DLY aa81 (.D(VD_IN[0]), .CLn(RES_SYNCn), .CK(BB52_X), .Q(AA81_Q));
@@ -1240,16 +1240,91 @@ module k052109_DLY (
     T5A_DLY g122 (.A1(G136_Q[2]), .A2(H127_Q[2]), .B1(E77_Q[2]), .B2(E77_Q[2]), .S1n(F128), .S2(G100), .S3n(G100), .S4(F128), .S5n(F126), .S6(G133), .Xn(G122_Xn));
     wire F125; //Logic Cell V1N
     assign #0.55 F125 = ~G122_Xn;
-    assign COL[1] = F125;
+    assign COL[1] = F125; //*** OUTPUT SIGNAL COL[1] ***
     
     wire G127_Xn;
     T5A_DLY g127 (.A1(G136_Q[3]), .A2(H127_Q[3]), .B1(E77_Q[3]), .B2(E77_Q[3]), .S1n(F128), .S2(G100), .S3n(G100), .S4(F128), .S5n(F126), .S6(G133), .Xn(G127_Xn));
     wire F141; //Logic Cell V1N
     assign #0.55 F141 = ~G127_Xn;
-    assign COL[0] = F141;
+    assign COL[0] = F141; //*** OUTPUT SIGNAL COL[0] ***
     //* END Section 7.1. col[1:0] Signals *
 
+    //* START Section 7.2. col[3:2], CAB1, CAB2 Signals *
+    wire B14; //Logic Cell K2B
+    assign #1.83 B14 = F41;
+    wire B13; //Logic Cell V2B
+    assign #0.64 B13 = ~F41;
 
+    wire A35; //Logic Cell V1N
+    assign #0.55 A35 = ~F24;
+    wire A31; //Logic Cell K2B
+    assign #1.83 A31 = F24;
+
+    wire C74; //Logic Cell V1N
+    assign #0.55 C74 = ~REG1C00[5];
+
+    wire E149; //Logic Cell V1N
+    assign #0.55 E149 = ~RMRD;
+
+    wire [3:0] E77_Q;
+    FDR_DLY e77 (.D(DB_BUF[0:3]), .CLn(RES_SYNCn), .CK(reg_1E00_WRn), .Q(E77_Q));
+
+    wire E149; //Logic Cell V1N
+    assign #0.55 E149 = ~RMRD;
+
+    //COL2
+    wire B3_X;
+    T34_DLY b3 (.A1(REG1D80[0]), .A2(A35), .A3(B13), .B1(REG1D80[4]), .B2(A35), .B3(B14), .C1(REG1F00[0]), .C2(A31), .C3(B13), .D1(REG1F00[4]), .D2(A31), .D3(B14), .X(B3_X));
+    
+    wire C36; //Logic Cell V1N
+    assign #0.55 C36 = ~B3_X;
+    
+    wire C29_X;
+    D24_DLY c29 (.A1(C36), .A2(C74), .B1(B14), .B2(REG1C00[6]), .X(C29_X));
+    
+    wire E150; //Logic Cell V2B
+    assign #0.64 E150 = ~C29_X;
+    
+    wire E145_Xn;
+    T2B_DLY e145 (.A(E77_Q[1]), .B(E150), .S1n(RMRD), .S2(E149), .Xn(E145_Xn));
+    
+    wire F149; //Logic Cell V1N
+    assign #0.55 F149 = ~E145;
+    assign COL[2] = F149; //*** OUTPUT SIGNAL COL[2] ***
+    //COL3
+    wire B19_X;
+    T34_DLY b19 (.A1(REG1D80[1]), .A2(A35), .A3(B13), .B1(REG1D80[5]), .B2(A35), .B3(B14), .C1(REG1F00[1]), .C2(A31), .C3(B13), .D1(REG1F00[5]), .D2(A31), .D3(B14), .X(B19_X));
+    
+    wire B39; //Logic Cell V1N
+    assign #0.55 B39 = ~B19_X;
+    
+    wire C75_X;
+    D24_DLY c75 (.A1(B39), .A2(C74), .B1(A31), .B2(REG1C00[6]), .X(C75_X));
+    
+    wire C155; //Logic Cell V2B
+    assign #0.64 C155 = ~C75_X;
+    
+    wire E141_Xn;
+    T2B_DLY e141 (.A(E77_Q[0]), .B(C155), .S1n(RMRD), .S2(E149), .Xn(E141_Xn));
+    
+    wire H124; //Logic Cell V1N
+    assign #0.55 H124 = ~E141;
+    assign COL[3] = H124; //*** OUTPUT SIGNAL COL[3] ***
+    //CAB1
+    wire B40_X;
+    T34_DLY b40 (.A1(REG1D80[2]), .A2(A35), .A3(B13), .B1(REG1D80[6]), .B2(A35), .B3(B14), .C1(REG1F00[2]), .C2(A31), .C3(B13), .D1(REG1F00[6]), .D2(A31), .D3(B14), .X(B40_X));
+    
+    wire A38; //Logic Cell V1N
+    assign #0.55 A38 = ~B40_X;
+    assign CAB1 = A38; //*** OUTPUT SIGNAL CAB1 ***
+    //CAB2
+    wire B28_X;
+    T34_DLY b28 (.A1(REG1D80[3]), .A2(A35), .A3(B13), .B1(REG1D80[7]), .B2(A35), .B3(B14), .C1(REG1F00[3]), .C2(A31), .C3(B13), .D1(REG1F00[7]), .D2(A31), .D3(B14), .X(B28_X));
+    
+    wire A48; //Logic Cell V1N
+    assign #0.55 A48 = ~B28_X;
+    assign CAB1 = A48; //*** OUTPUT SIGNAL CAB1 ***
+    //* END Section 7.2. col[3:2], CAB1, CAB2 Signals *
 
     //* START Section 7.4. BB33 Signal *
     wire AA14; //Logic Cell V1N
@@ -1310,7 +1385,7 @@ module k052109_DLY (
     wire [3:0] T51_Q;
     FDR_DLY t51 (.D(VD_IN[8:11]), .CLn(RES_SYNCn), .CK(X55_X), .Q(T51_Q)); //inverted data port D
     wire [3:0] S51_Q;
-    FDR_DLY s51 (.D(VD_IN[12:15]), .CLn(clear), .CK(clock), .Q(S51_Q)); //inverted data port D
+    FDR_DLY s51 (.D(VD_IN[12:15]), .CLn(RES_SYNCn), .CK(X55_X), .Q(S51_Q)); //inverted data port D
 
     wire AA41_Q;
     FDE_DLY aa41 (.D(VD_IN[8]), .CLn(RES_SYNCn), .CK(AA53_X), .Q(AA41_Q));

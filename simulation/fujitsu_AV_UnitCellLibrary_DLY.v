@@ -201,6 +201,20 @@ module D24_DLY (input A1, input A2, input B1, input B2, output X);
     assign #1.66 X = ~((A1 & A2) | (B1 & B2));
 endmodule
 
+//Cell Name: T24
+//Function: Power 2-AND 4-wide Multiplexer
+//Propagation delay: A,B -> X to: 3.51-2.10ns
+module T24_DLY (input A1, input A2, input B1, input B2, input C1, input C2, input D1, input D2, output X);
+    assign #3.51 X = ~((A1 & A2) | (B1 & B2) | (C1 & C2) | (D1 & D2));
+endmodule
+
+//Cell Name: T34
+//Function: Power 3-AND 4-wide Multiplexer
+//Propagation delay: A,B -> X to: 3.25-2.58ns
+module T34_DLY (input A1, input A2, input A3, input B1, input B2, input B3, input C1, input C2, input C3, input D1, input D2, input D3, output X);
+    assign #3.25 X = ~((A1 & A2 & A3) | (B1 & B2 & B3) | (C1 & C2 & C3) | (D1 & D2 & D3));
+endmodule
+
 //Cell Name: FDE
 //Function: Positive Edge Clocked Power DFF with CLEAR
 //to: 4.44-6.23ns
@@ -326,8 +340,6 @@ module FDS_DLY 	( input [3:0] D,
         Q <= #7.66 D;
 endmodule
 
-
-
 //Cell Name: LT2
 //Function: 1-bit Data Latch
 //Gn->Q to: 1.84-3.09ns
@@ -354,8 +366,6 @@ module LT2_DLY ( input D,
             Q <= #3.94 D; 
         end
 endmodule
-
-
 
 //Cell Name: LT4
 //Function: 4-bit Data Latch
@@ -387,10 +397,6 @@ module LT4_DLY ( input [3:0] D,
             P <= #7.50 D; 
         end
 endmodule
-
-
-
-
 
 //Cell Name: LTK
 //Function: 1-bit Data Latch
