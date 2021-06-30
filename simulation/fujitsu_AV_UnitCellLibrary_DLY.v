@@ -104,6 +104,10 @@ endmodule
 //Function: POWER 3-input AND
 //to: 1.82-1.61ns A->X
 
+//Cell Name: N4P
+//Function: POWER 4-input AND
+//to: 2.15-1.72ns A->X
+
 //Cell Name: N2B
 //Function: POWER 2-input NAND
 //to: 2.03-1.73ns A->X
@@ -131,6 +135,10 @@ endmodule
 //Cell Name: R6B
 //Function: POWER 6-input NOR
 //to: 3.80-1.79ns A->X
+
+//Cell Name: R8B
+//Function: POWER 8-input NOR
+//to: 4.81-1.79ns A->X
 
 //Cell Name: R2P
 //Function: POWER 2-input OR

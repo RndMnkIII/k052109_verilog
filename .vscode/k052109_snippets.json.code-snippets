@@ -61,6 +61,12 @@
 		"body": ["wire ${1:name}; //Logic Cell N2P","assign #1.41 ${1:name} = ${2:op1} & ${3:op2};"]
 	},
 
+	"N4P": {
+		"scope": "verilog",
+		"prefix": "#N4P",
+		"body": ["wire ${1:name}; //Logic Cell N4P","assign #2.15 ${1:name} = ${2:op1} & ${3:op2} & ${4:op3} & ${5:op4};"]
+	},
+
 	"N3N": {
 		"scope": "verilog",
 		"prefix": "#N3N",
@@ -129,6 +135,13 @@
 		"prefix": "#R6B",
 		"body": ["wire ${1:name}; //Logic Cell R6B","assign #3.80 ${1:name} = ~(${2:op1} | ${3:op2} | ${4:op3} | ${5:op4} | ${6:op5} | ${7:op6});"],
 		"description": "Power 6-input NOR"
+	},
+
+	"R8B": {
+		"scope": "verilog",
+		"prefix": "#R8B",
+		"body": ["wire ${1:name}; //Logic Cell R8B","assign #4.81 ${1:name} = ~(${2:op1} | ${3:op2} | ${4:op3} | ${5:op4} | ${6:op5} | ${7:op6} | ${8:op7} | ${9:op8});"],
+		"description": "Power 8-input NOR"
 	},
 
 	"R2P": {

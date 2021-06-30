@@ -1265,6 +1265,35 @@ module k052109_DLY (
     assign #0.55 BB33 = ~AA32;
     //* END Section 7.4. BB33 Signal *
 
+    //* START Section 7.5. Scroll RAM read triggers *
+    wire X57; //Logic Cell R8B
+    assign #4.81 X57 = ~(ROW[0] | ROW[4] | ROW[3] | ROW[2] | ROW[1] | ROW[7] | ROW[6] | ROW[5]);
+
+    wire F8; //Logic Cell R2P
+    assign #1.97 F8 = REG1C80[4] | X57;
+    
+    wire F25; //Logic Cell R2P
+    assign #1.97 F25 = REG1C80[1] | X57;
+    
+    wire F7; //Logic Cell V1N
+    assign #0.55 F7 = ~G4_Q;
+    
+    wire F14; //Logic Cell V1N
+    assign #0.55 F14 = ~G29_Q[0]; //G29_QA
+    
+    wire F10; //Logic Cell N4P
+    assign #2.15 F10 = F7 & F14 & F8 & RES_SYNCn;
+    
+    wire F36; //Logic Cell N4P
+    assign #2.15 F36 = F7 & G29_Q[0] & F25 & RES_SYNCn;
+    
+    wire READ_SCROLL_B;
+    assign READ_SCROLL_B = F10; //*** TO 6.1 Layer B Tilemap X address Gen.
+    
+    wire READ_SCROLL_A;
+    assign READ_SCROLL_A = F36; //*** TO 8.1 Layer A Tilemap X address Gen.
+    //* END Section 7.5. Scroll RAM read triggers *
+
 
     //*** PAGE 8: LAYER A SCROLL ***
     //* START Section 8.1. Layer A Tilemap X Address generetor signals *
