@@ -1353,7 +1353,7 @@ module k052109_DLY (
     
     wire A48; //Logic Cell V1N
     assign #0.55 A48 = ~B28_X;
-    assign CAB1 = A48; //*** OUTPUT SIGNAL CAB1 ***
+    assign CAB2 = A48; //*** OUTPUT SIGNAL CAB2 ***
     //* END Section 7.2. col[3:2], CAB1, CAB2 Signals *
 
     //* START Section 7.3. col[7:4] *
