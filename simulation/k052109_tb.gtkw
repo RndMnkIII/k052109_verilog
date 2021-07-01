@@ -1,19 +1,19 @@
 [*]
 [*] GTKWave Analyzer v3.3.107 (w)1999-2020 BSI
-[*] Thu Jul  1 12:30:01 2021
+[*] Thu Jul  1 18:47:12 2021
 [*]
 [dumpfile] "/Users/javier/ARCADE_PCB/k052109_verilog/simulation/k052109_tb.lxt"
-[dumpfile_mtime] "Thu Jul  1 12:27:25 2021"
-[dumpfile_size] 55002
+[dumpfile_mtime] "Thu Jul  1 18:40:05 2021"
+[dumpfile_size] 634394
 [savefile] "/Users/javier/ARCADE_PCB/k052109_verilog/simulation/k052109_tb.gtkw"
 [timestart] 0
 [size] 1920 1027
-[pos] -2 -69
-*-17.000000 364000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[pos] -1 -1
+*-18.000000 208330 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] k052109_tb.
 [treeopen] k052109_tb.K052109_inst.
 [sst_width] 193
-[signals_width] 279
+[signals_width] 429
 [sst_expanded] 1
 [sst_vpaned_height] 788
 @200
@@ -21,6 +21,75 @@
 @28
 k052109_tb.clk24[0]
 k052109_tb.RES[0]
+[color] 7
+k052109_tb.K052109_inst.M12[0]
+[color] 2
+k052109_tb.K052109_inst.M12n[0]
+[color] 2
+k052109_tb.K052109_inst.PE[0]
+[color] 5
+k052109_tb.K052109_inst.PQ[0]
+@200
+-
+@c00200
+-Debug PQ, PE
+@200
+-Debug PQ, PE
+@28
+k052109_tb.K052109_inst.N122_Q[0]
+k052109_tb.K052109_inst.RES_SYNC3n[0]
+k052109_tb.K052109_inst.K141_Q[0]
+k052109_tb.K052109_inst.K141_Qn[0]
+[color] 2
+k052109_tb.K052109_inst.M12n[0]
+k052109_tb.K052109_inst.J110[0]
+k052109_tb.K052109_inst.J114_Q[0]
+k052109_tb.K052109_inst.J114_Qn[0]
+[color] 2
+k052109_tb.K052109_inst.J121[0]
+[color] 6
+k052109_tb.K052109_inst.M12[0]
+@200
+------------------
+@28
+[color] 7
+k052109_tb.K052109_inst.K141_Qn[0]
+[color] 7
+k052109_tb.K052109_inst.J114_Qn[0]
+k052109_tb.K052109_inst.J109[0]
+[color] 6
+k052109_tb.K052109_inst.J94_Q[0]
+k052109_tb.K052109_inst.J101[0]
+[color] 6
+k052109_tb.K052109_inst.J94_Q[0]
+[color] 3
+k052109_tb.K052109_inst.J94_Qn[0]
+[color] 3
+k052109_tb.K052109_inst.K117[0]
+@200
+------------------
+@28
+[color] 7
+k052109_tb.K052109_inst.K148_Q[0]
+[color] 7
+k052109_tb.K052109_inst.L120_Q[0]
+[color] 1
+k052109_tb.K052109_inst.PE[0]
+@200
+------------------
+@800022
+k052109_tb.K052109_inst.K77_Q[3:0]
+@28
+[color] 7
+(3)k052109_tb.K052109_inst.K77_Q[3:0]
+@1001200
+-group_end
+@28
+k052109_tb.K052109_inst.K110[0]
+[color] 1
+k052109_tb.K052109_inst.PQ[0]
+@1401200
+-Debug PQ, PE
 @200
 -
 @c00200
@@ -29,7 +98,9 @@ k052109_tb.RES[0]
 -Timing, Clocking, interrupts
 @28
 k052109_tb.M12[0]
+[color] 3
 k052109_tb.PE[0]
+[color] 2
 k052109_tb.PQ[0]
 k052109_tb.NMI[0]
 k052109_tb.IRQ[0]
@@ -89,8 +160,24 @@ k052109_tb.VC[10:0]
 -VRAM interface
 @200
 -VRAM interface
-@22
+@c00022
 k052109_tb.RA[12:0]
+@28
+(0)k052109_tb.RA[12:0]
+(1)k052109_tb.RA[12:0]
+(2)k052109_tb.RA[12:0]
+(3)k052109_tb.RA[12:0]
+(4)k052109_tb.RA[12:0]
+(5)k052109_tb.RA[12:0]
+(6)k052109_tb.RA[12:0]
+(7)k052109_tb.RA[12:0]
+(8)k052109_tb.RA[12:0]
+(9)k052109_tb.RA[12:0]
+(10)k052109_tb.RA[12:0]
+(11)k052109_tb.RA[12:0]
+(12)k052109_tb.RA[12:0]
+@1401200
+-group_end
 @c00022
 k052109_tb.VD[15:0]
 @28
@@ -112,12 +199,12 @@ k052109_tb.VD[15:0]
 (15)k052109_tb.VD[15:0]
 @1401200
 -group_end
-@c00028
+@800028
 #{RCSn} k052109_tb.RCS1n[0] k052109_tb.RCS0n[0]
 @28
 k052109_tb.RCS1n[0]
 k052109_tb.RCS0n[0]
-@1401200
+@1001200
 -group_end
 @c00028
 #{ROEn} k052109_tb.ROE2n[0] k052109_tb.ROE1n[0] k052109_tb.ROE0n[0]
@@ -162,14 +249,15 @@ k052109_tb.ZA2H[0]
 k052109_tb.ZA1H[0]
 @1401200
 -group_end
-@c00028
+@800028
 #{LayerB_SCR} k052109_tb.ZB4H[0] k052109_tb.ZB2H[0] k052109_tb.ZB1H[0]
 @28
 k052109_tb.ZB4H[0]
 k052109_tb.ZB2H[0]
 k052109_tb.ZB1H[0]
-@1401200
+@1001200
 -group_end
+@1401200
 -k051962 interface
 @200
 -
@@ -195,18 +283,20 @@ k052109_tb.VDE[0]
 -Misc.
 @200
 -
+@800200
 -Debug M12
-@29
-k052109_tb.clk24[0]
+@200
+-Debug M12
 @28
+k052109_tb.clk24[0]
+k052109_tb.RES[0]
 k052109_tb.K052109_inst.RES_SYNC3n[0]
 k052109_tb.K052109_inst.K141_Q[0]
 k052109_tb.K052109_inst.M15[0]
 k052109_tb.K052109_inst.K141_Qn[0]
+@1000200
+-Debug M12
 @200
 -
-@28
-k052109_tb.fde_q[0]
-k052109_tb.fdn_q[0]
 [pattern_trace] 1
 [pattern_trace] 0

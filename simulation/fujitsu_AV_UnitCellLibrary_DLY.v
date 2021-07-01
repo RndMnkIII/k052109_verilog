@@ -224,11 +224,12 @@ module FDE_DLY 	( input D,
               output reg Q,
               output Qn);
 	
-    assign #0.55 Qn = ~Q;
+    //assign #0.55 Qn = ~Q;
+    assign Qn = ~Q;
 
 	always @ (posedge CK or negedge CLn) 
         if (!CLn)
-            Q <= #6.23 1'b0;
+            Q <= #5.13 1'b0;
         else
             Q <= #6.23 D;
 endmodule
@@ -274,11 +275,12 @@ module FDN_DLY 	( input D,
               output reg Q,
               output Qn);
 	
-    assign #0.55 Qn = ~Q;
+    //assign #0.55 Qn = ~Q;
+    assign Qn = ~Q;
 
 	always @ (posedge CK or negedge Sn) 
         if (!Sn)
-            Q <= #6.10 1;
+            Q <= #2.82 1'b1;
         else
             Q <= #6.10 D;
 endmodule
@@ -292,7 +294,8 @@ module FDO_DLY 	( input D,
               output reg Q,
               output Qn);
 	
-    assign #0.55 Qn = ~Q;
+    //assigN #0.55 Qn = ~Q;
+    assign Qn = ~Q;
 
 	always @ (posedge CK or negedge Rn) 
         if (!Rn)
@@ -323,7 +326,7 @@ module FDR_DLY 	( input [3:0] D,
 	
 	always @ (posedge CK or negedge CLn) begin
         if (!CLn)
-            Q <= #3.52 1'b0;
+            Q <= #3.52 4'b0000;
         else
             Q <= #8.36 D;
     end

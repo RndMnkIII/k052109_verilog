@@ -235,22 +235,17 @@ module k052109_DLY (
     FDN_DLY k141(.D(K141_Qn), .Sn(RES_SYNC3n), .CK(M24), .Q(K141_Q), .Qn(K141_Qn));
     wire M15; //Logic Cell K1B
     assign #1.26 M15 = K141_Q;
-    assign M12 = M15; //*** OUTPUT SIGNAL M12 ***
 
-    // wire Z4_Q, Z4_Qn;
-    // FDN_DLY z4( .D(Z4_Qn), .Sn(BB8_BOT), .CK(M24), .Q(Z4_Q), .Qn(Z4_Qn)); //outputs to M12 bypass Z11 buffer
-    // wire Z11; //Logic Cell K1B
-    // assign #1.26 Z11 = Z4_Q;
-    // assign M12 = Z11; //*** M12 Output Signal ***
+    assign M12 = M15; //*** OUTPUT SIGNAL M12 ***
+    wire M12n;
+    assign M12n = K141_Qn;
+ 
 
     wire J110; //Logic Cell X2B
     assign #3.50 J110 = K141_Qn ^ J114_Qn;
 
     wire J114_Q, J114_Qn;
     FDN_DLY j114(.D(J110), .Sn(RES_SYNC3n), .CK(M24), .Q(J114_Q), .Qn(J114_Qn));
-
-    wire M12n;
-    assign M12n = K141_Qn;
 
     wire J109; //Logic Cell N2N
     assign #0.71 J109 = ~(K141_Qn & J114_Qn);
@@ -271,19 +266,19 @@ module k052109_DLY (
     FDE_DLY j79(.D(J94_Qn), .CLn(RES_SYNC3n), .CK(J78), .Q(J79));
 
     wire K117; //Logic Cell V1N
-    assign #0.55 K117 = ~ J94_Qn;
+    assign #0.55 K117 = ~J94_Qn;
 
     wire L80; //Logic Cell V2B
-    assign #0.64 L80 = ~ K117;
+    assign #0.64 L80 = ~K117;
 
     wire L78; //Logic Cell V2B
-    assign #0.64 L78 = ~ L80;
+    assign #0.64 L78 = ~L80;
 
     wire L82; //Logic Cell V1N
-    assign #0.55 L82 = ~ L78; //** LATCH VRAM DATA  SC. 3.10 **
+    assign #0.55 L82 = ~L78; //** LATCH VRAM DATA  SC. 3.10 **
 
     wire L119; //Logic Cell V1N
-    assign #0.55 L119 = ~ CRCS;
+    assign #0.55 L119 = ~CRCS;
 
     wire L83; //Logic Cell N3P
     assign #1.82 L83 = L78 & L119 & PQ;
