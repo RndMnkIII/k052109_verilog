@@ -8,6 +8,7 @@
  ***************************************************************/
 //Test Bench Usage:
 //iverilog -g2005-sv -o k052109_tb.vvp k052109_tb.v k052109.v addr_sel.v fujitsu_AV_UnitCellLibrary_DLY.v
+//iverilog -o k052109_tb.vvp k052109_tb.v k052109.v addr_sel.v fujitsu_AV_UnitCellLibrary_DLY.v
 //vvp k052109_tb.vvp -lxt2
 //gtkwave k052109_tb.lxt&
 

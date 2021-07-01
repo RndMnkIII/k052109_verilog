@@ -1,0 +1,34 @@
+[*]
+[*] GTKWave Analyzer v3.3.107 (w)1999-2020 BSI
+[*] Thu Jul  1 11:48:56 2021
+[*]
+[dumpfile] "/Users/javier/ARCADE_PCB/k052109_verilog/simulation/k052109_tb.lxt"
+[dumpfile_mtime] "Thu Jul  1 11:41:01 2021"
+[dumpfile_size] 54927
+[savefile] "/Users/javier/ARCADE_PCB/k052109_verilog/simulation/debug_k141.gtkw"
+[timestart] 0
+[size] 565 372
+[pos] 1924 3
+*-18.000000 193598 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] k052109_tb.
+[treeopen] k052109_tb.K052109_inst.
+[sst_width] 41
+[signals_width] 126
+[sst_expanded] 0
+[sst_vpaned_height] 86
+@28
+k052109_tb.K052109_inst.M24[0]
+k052109_tb.K052109_inst.RES[0]
+k052109_tb.K052109_inst.N122_Q[0]
+k052109_tb.K052109_inst.K141_Qn[0]
+@200
+-
+-K141 Signals
+@28
+k052109_tb.K052109_inst.k141.CK[0]
+k052109_tb.K052109_inst.k141.D[0]
+k052109_tb.K052109_inst.k141.Q[0]
+k052109_tb.K052109_inst.k141.Qn[0]
+k052109_tb.K052109_inst.k141.Sn[0]
+[pattern_trace] 1
+[pattern_trace] 0

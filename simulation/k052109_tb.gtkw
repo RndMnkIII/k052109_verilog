@@ -1,26 +1,31 @@
 [*]
 [*] GTKWave Analyzer v3.3.107 (w)1999-2020 BSI
-[*] Thu Jul  1 09:05:31 2021
+[*] Thu Jul  1 10:13:32 2021
 [*]
 [dumpfile] "/Users/javier/ARCADE_PCB/k052109_verilog/simulation/k052109_tb.lxt"
-[dumpfile_mtime] "Thu Jul  1 09:04:44 2021"
-[dumpfile_size] 12366
+[dumpfile_mtime] "Thu Jul  1 10:13:21 2021"
+[dumpfile_size] 54927
 [savefile] "/Users/javier/ARCADE_PCB/k052109_verilog/simulation/k052109_tb.gtkw"
 [timestart] 0
 [size] 1920 1080
 [pos] -1 -1
 *-18.000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
-[sst_width] 193
-[signals_width] 254
+[treeopen] k052109_tb.
+[treeopen] k052109_tb.K052109_inst.
+[sst_width] 355
+[signals_width] 475
 [sst_expanded] 1
-[sst_vpaned_height] 335
+[sst_vpaned_height] 498
 @200
--System Clock
+-System
 @28
 k052109_tb.clk24[0]
 k052109_tb.RES[0]
 @200
 -
+@c00200
+-Timing, clocks, int.
+@200
 -Timing, Clocking, interrupts
 @28
 k052109_tb.M12[0]
@@ -29,8 +34,13 @@ k052109_tb.PQ[0]
 k052109_tb.NMI[0]
 k052109_tb.IRQ[0]
 k052109_tb.FIRQ[0]
+@1401200
+-Timing, clocks, int.
 @200
 -
+@c00200
+-CPU interface
+@200
 -CPU interface
 @28
 k052109_tb.RST[0]
@@ -43,8 +53,13 @@ k052109_tb.DB[7:0]
 @28
 k052109_tb.VRAMCSn[0]
 k052109_tb.RMRD[0]
+@1401200
+-CPU interface
 @200
 -
+@c00200
+-GFX ROM Addr. interface
+@200
 -GFX ROM Address interface
 @28
 k052109_tb.CAB2[0]
@@ -67,12 +82,36 @@ k052109_tb.VC[10:0]
 (10)k052109_tb.VC[10:0]
 @1401200
 -group_end
+-GFX ROM Addr. interface
 @200
 -
+@c00200
+-VRAM interface
+@200
 -VRAM interface
 @22
 k052109_tb.RA[12:0]
+@c00022
 k052109_tb.VD[15:0]
+@28
+(0)k052109_tb.VD[15:0]
+(1)k052109_tb.VD[15:0]
+(2)k052109_tb.VD[15:0]
+(3)k052109_tb.VD[15:0]
+(4)k052109_tb.VD[15:0]
+(5)k052109_tb.VD[15:0]
+(6)k052109_tb.VD[15:0]
+(7)k052109_tb.VD[15:0]
+(8)k052109_tb.VD[15:0]
+(9)k052109_tb.VD[15:0]
+(10)k052109_tb.VD[15:0]
+(11)k052109_tb.VD[15:0]
+(12)k052109_tb.VD[15:0]
+(13)k052109_tb.VD[15:0]
+(14)k052109_tb.VD[15:0]
+(15)k052109_tb.VD[15:0]
+@1401200
+-group_end
 @c00028
 #{RCSn} k052109_tb.RCS1n[0] k052109_tb.RCS0n[0]
 @28
@@ -96,13 +135,22 @@ k052109_tb.RWE1n[0]
 k052109_tb.RWE0n[0]
 @1401200
 -group_end
+-VRAM interface
 @200
 -
+@c00200
+-Sprite engine interface
+@200
 -Sprite engine interface
 @28
 k052109_tb.HVOT[0]
+@1401200
+-Sprite engine interface
 @200
 -
+@c00200
+-k051962 interface
+@200
 -K051962 interface
 @28
 k052109_tb.BEN[0]
@@ -122,17 +170,38 @@ k052109_tb.ZB2H[0]
 k052109_tb.ZB1H[0]
 @1401200
 -group_end
+-k051962 interface
 @200
 -
+@c00200
+-CRAM interface
+@200
 -CRAM interface
 @28
 k052109_tb.WRP[0]
+@1401200
+-CRAM interface
 @200
 -
+@c00200
+-Misc.
+@200
 -Misc.
 @28
 k052109_tb.RDEN[0]
 k052109_tb.WREN[0]
 k052109_tb.VDE[0]
+@1401200
+-Misc.
+@200
+-
+-Debug M12
+@28
+k052109_tb.K052109_inst.RES_SYNC3n[0]
+@29
+k052109_tb.K052109_inst.K141_Q[0]
+@28
+k052109_tb.K052109_inst.M15[0]
+k052109_tb.K052109_inst.K141_Qn[0]
 [pattern_trace] 1
 [pattern_trace] 0

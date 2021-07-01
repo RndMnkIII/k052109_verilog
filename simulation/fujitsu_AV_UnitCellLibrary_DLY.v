@@ -228,7 +228,7 @@ module FDE_DLY 	( input D,
 
 	always @ (posedge CK or negedge CLn) 
         if (!CLn)
-            Q <= #6.23 0;
+            Q <= #6.23 1'b0;
         else
             Q <= #6.23 D;
 endmodule
@@ -246,7 +246,7 @@ module FDG_DLY 	( input D,
 
 	always @ (posedge CK or negedge CLn) 
         if (!CLn)
-            Q <= #5.24 0;
+            Q <= #5.24 1'b0;
         else
             Q <= #5.24 D;
 endmodule
@@ -296,7 +296,7 @@ module FDO_DLY 	( input D,
 
 	always @ (posedge CK or negedge Rn) 
         if (!Rn)
-            Q <= #5.96 0;
+            Q <= #5.96 1'b0;
         else
             Q <= #5.96 D;
 endmodule
@@ -323,7 +323,7 @@ module FDR_DLY 	( input [3:0] D,
 	
 	always @ (posedge CK or negedge CLn) begin
         if (!CLn)
-            Q <= #3.52 0;
+            Q <= #3.52 1'b0;
         else
             Q <= #8.36 D;
     end

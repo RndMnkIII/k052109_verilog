@@ -13,7 +13,7 @@
  * The K052109 can read the VRAM in 16bit WORD mode when rendering the screen.
 */
 `default_nettype none
-`timescale 1ns/10ps
+`timescale 1ns/1ps
 //iverilog -g2005-sv -s k052109_DLY k052109.v addr_sel.v fujitsu_AV_UnitCellLibrary_DLY.v
 
 module k052109_DLY (
@@ -233,16 +233,21 @@ module k052109_DLY (
     //* START Section 2.2. More timings signals *
     wire K141_Q, K141_Qn;
     FDN_DLY k141(.D(K141_Qn), .Sn(RES_SYNC3n), .CK(M24), .Q(K141_Q), .Qn(K141_Qn));
+    wire M15; //Logic Cell K1B
+    assign #1.26 M15 = K141_Q;
+    assign M12 = M15; //*** OUTPUT SIGNAL M12 ***
+
+    // wire Z4_Q, Z4_Qn;
+    // FDN_DLY z4( .D(Z4_Qn), .Sn(BB8_BOT), .CK(M24), .Q(Z4_Q), .Qn(Z4_Qn)); //outputs to M12 bypass Z11 buffer
+    // wire Z11; //Logic Cell K1B
+    // assign #1.26 Z11 = Z4_Q;
+    // assign M12 = Z11; //*** M12 Output Signal ***
 
     wire J110; //Logic Cell X2B
     assign #3.50 J110 = K141_Qn ^ J114_Qn;
 
     wire J114_Q, J114_Qn;
     FDN_DLY j114(.D(J110), .Sn(RES_SYNC3n), .CK(M24), .Q(K141_Q), .Qn(K141_Qn));
-
-    wire M15; //Logic Cell K1B
-    assign #1.26 M15 = K141_Q;
-    assign M12 = M15; //*** OUTPUT SIGNAL M12 ***
 
     wire M12n;
     assign M12n = K141_Qn;
@@ -456,9 +461,12 @@ module k052109_DLY (
 
     //*** PAGE 3: CPU Stuff ***
     //* START Section 3.1. Reset synchronizer signals *
-    wire N122_Q, RES_SYNC3n;
+    
+ 
+    wire N122_Q,RES_SYNC3n;
     FDE_DLY n122 (.D(1'b1), .CLn(RES), .CK(M24), .Q(N122_Q));
     assign RES_SYNC3n = N122_Q;
+
 
     wire M74; //Logic Cell K2B
     wire RES_SYNCn;
@@ -684,7 +692,6 @@ module k052109_DLY (
     assign CPU_VRAM_CS1 = A100;
     wire L12; //Logic Cell R2P
     assign #1.97 L12 = CPU_VRAM_CS1 | WRP;
-    wire RWE[1];
     assign RWE[1] = L12; //*** OUTPUT SIGNAL RWE[1] ***
     wire L15; //Logic Cell V2B
     assign #0.64 L15 = ~L12;
@@ -699,7 +706,6 @@ module k052109_DLY (
     assign VD_LOW_DIR = A44; //*** VD_LOW_DIR TRI-STATE CONTROL VD[7:0] ***
     wire L10; //Logic Cell R2P
     assign #1.97 L10 = A126 | WRP;
-    wire RWE[2];
     assign RWE[2] = L10; //*** OUTPUT SIGNAL RWE[2] ***
 
     wire A111_Xn;
@@ -710,7 +716,6 @@ module k052109_DLY (
     assign CPU_VRAM_CS0 = A134;
     wire M35; //Logic Cell R2P
     assign #1.97 M35 = CPU_VRAM_CS0 | WRP;
-    wire RWE[0];
     assign RWE[0] = M35; //*** OUTPUT SIGNAL RWE[0] ***
 
     wire A39; //Logic Cell N2P
@@ -1490,7 +1495,7 @@ module k052109_DLY (
     wire Y3_CO;
     A4H_DLY y3 (.A({W3_S[2:0],X4_S[3]}),.B({PXH6,PXH5,PXH4F,PXH3F}), .CI(1'b0), .S(Y3_S), .CO(Y3_CO));
     wire [1:0] Y53_S;
-    A2N_DLY Y53 (.A({Z69_S,W3_S[3]}),.B({PXH8,PXH7}), .CI(Y3_CO), .S(Y53_S));
+    A2N_DLY y53 (.A({Z69_S,W3_S[3]}),.B({PXH8,PXH7}), .CI(Y3_CO), .S(Y53_S));
     
     assign MAP_A[5:0] = {Y53_S,Y3_S};
     //* END Section 8.1. Layer A Tilemap X Address generetor signals *
