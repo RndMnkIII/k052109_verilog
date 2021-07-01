@@ -337,6 +337,9 @@ module k052109_DLY (
     wire CC59_Q;
     FDG_DLY cc59 (.D(ROW[2]), .CLn(RES_SYNCn), .CK(PXH1), .Q(CC59_Q));
     wire BB58_Xn;
+    always @* begin
+        if ((N16_QA_BUF2 === N16_QA_BUF3n) || (N16_QA_BUF3n === N16_QA_BUF2) || (N16_QB_BUF2 === N16_QB_BUF3n)) $display("*** BAD BB58 Sxx INPUT ***");
+    end
     T5A_DLY bb58 (.A1(CC59_Q), .A2(CC59_Q), .B1(ROW_B[2]), .B2(ROW_A[2]), .S1n(N16_QA_BUF2), .S2(N16_QA_BUF3n), .S3n(N16_QA_BUF3n), .S4(N16_QA_BUF2), .S5n(N16_QB_BUF2), .S6(N16_QB_BUF3n), .Xn(BB58_Xn));
     wire M73; //Logic Cell V1N
     assign #0.55 M73 = ~BB58_Xn;
@@ -356,6 +359,9 @@ module k052109_DLY (
     wire CC68_Q;
     FDG_DLY cc68 (.D(CC39), .CLn(RES_SYNCn), .CK(PXH1), .Q(CC68_Q));
     wire BB63_Xn;
+    always @* begin
+        if ((N16_QA_BUF2 === N16_QA_BUF3n) || (N16_QA_BUF3n === N16_QA_BUF2) || (N16_QB_BUF2 === N16_QB_BUF3n)) $display("*** BAD BB63 Sxx INPUT ***");
+    end
     T5A_DLY bb63 (.A1(CC68_Q), .A2(CC68_Q), .B1(ROW_B[1]), .B2(ROW_A[1]), .S1n(N16_QA_BUF2), .S2(N16_QA_BUF3n), .S3n(N16_QA_BUF3n), .S4(N16_QA_BUF2), .S5n(N16_QB_BUF2), .S6(N16_QB_BUF3n), .Xn(BB63_Xn));
     wire M69; //Logic Cell V1N
     assign #0.55 M69 = ~BB63_Xn;
@@ -618,7 +624,7 @@ module k052109_DLY (
     //* START Section 3.7. VRAM config and CS/RW control signals *
     //Reg 1C00 bits 0 and 1 used for VRAM map and chip configuration
     // ----------------------------------------------------
-    //| 1C00[1:0] | RWE1        | RWE2        | RWE0        |
+    //| 1C00[1:0] | RWE[1]        | RWE[2]        | RWE[0]        |
     //|-----------+-------------+-------------+-------------|
     //|    0  0   | 0x0000-1FFF | 0x2000-3FFF | 0x4000-5FFF |
     //|    0  1   | 0x2000-3FFF | 0x4000-5FFF | 0x6000-7FFF |
@@ -678,8 +684,8 @@ module k052109_DLY (
     assign CPU_VRAM_CS1 = A100;
     wire L12; //Logic Cell R2P
     assign #1.97 L12 = CPU_VRAM_CS1 | WRP;
-    wire RWE1;
-    assign RWE1 = L12; //*** OUTPUT SIGNAL RWE1 ***
+    wire RWE[1];
+    assign RWE[1] = L12; //*** OUTPUT SIGNAL RWE[1] ***
     wire L15; //Logic Cell V2B
     assign #0.64 L15 = ~L12;
 
@@ -693,8 +699,8 @@ module k052109_DLY (
     assign VD_LOW_DIR = A44; //*** VD_LOW_DIR TRI-STATE CONTROL VD[7:0] ***
     wire L10; //Logic Cell R2P
     assign #1.97 L10 = A126 | WRP;
-    wire RWE2;
-    assign RWE2 = L10; //*** OUTPUT SIGNAL RWE2 ***
+    wire RWE[2];
+    assign RWE[2] = L10; //*** OUTPUT SIGNAL RWE[2] ***
 
     wire A111_Xn;
     T5A_DLY a111 (.A1(A79), .A2(A85), .B1(A87), .B2(A81), .S1n(A149), .S2(A148), .S3n(A148), .S4(A149), .S5n(A131), .S6(A130), .Xn(A111_Xn));
@@ -704,8 +710,8 @@ module k052109_DLY (
     assign CPU_VRAM_CS0 = A134;
     wire M35; //Logic Cell R2P
     assign #1.97 M35 = CPU_VRAM_CS0 | WRP;
-    wire RWE0;
-    assign RWE0 = M35; //*** OUTPUT SIGNAL RWE0 ***
+    wire RWE[0];
+    assign RWE[0] = M35; //*** OUTPUT SIGNAL RWE[0] ***
 
     wire A39; //Logic Cell N2P
     assign #1.41 A39 = CPU_VRAM_CS1 & CPU_VRAM_CS0;

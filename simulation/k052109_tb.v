@@ -151,7 +151,7 @@ module k052109_tb;
             #mc_p; #mc_p; #mc_p; #mc_qp;
             RES=1'b1;
             //#SIMULATION_TIME; //For test the RST signal, needs 8 NVBK cycles
-            #10000;
+            #100000;
             $finish;
         end
 endmodule
