@@ -388,9 +388,9 @@ module k052109_DLY (
     
     //*** VC[6:3] ***
     wire [3:0] E120_P;
-    LT4_DLY e120 (.D(AB[5:8]), .Gn(C92),.P(E120_P));
+    LT4_DLY e120 (.D({AB[5],AB[6],AB[7],AB[8]}), .Gn(C92),.P(E120_P));
     wire [3:0] D96_Q;
-    FDS_DLY d96 (.D({VD_IN[0:3]}), .CK(PXH0n), .Q(D96_Q));
+    FDS_DLY d96 (.D({{VD_IN[0],VD_IN[1],VD_IN[2],VD_IN[3]}}), .CK(PXH0n), .Q(D96_Q));
     //VC[6] 
     wire D128_Xn;
     T2B_DLY d128 (.A(E120_P[0]), .B(D96_Q[0]), .S1n(RMRD_BUF), .S2(RMRDn), .Xn(D128_Xn));
@@ -418,9 +418,9 @@ module k052109_DLY (
 
     //VC[7:10]
     wire [3:0] D81_P;
-    LT4_DLY d81 (.D(AB[9:12]), .Gn(C92),.P(D81_P));
+    LT4_DLY d81 (.D({AB[9],AB[10],AB[11],AB[12]}), .Gn(C92),.P(D81_P));
     wire [3:0] D136_Q;
-    FDS_DLY d136 (.D({VD_IN[4:7]}), .CK(PXH0n), .Q(D136_Q));
+    FDS_DLY d136 (.D({{VD_IN[4],VD_IN[5],VD_IN[6],VD_IN[7]}}), .CK(PXH0n), .Q(D136_Q));
     //VC[7] 
     wire D126_Xn;
     T2B_DLY d126 (.A(D81_P[0]), .B(D136_Q[3]), .S1n(RMRD_BUF), .S2(RMRDn), .Xn(D126_Xn));
@@ -1061,12 +1061,12 @@ module k052109_DLY (
     assign #0.55 TEST_ENn = ~V51_QD;
     assign #1.26 TEST_EN = V51_QD;
 
-    FDR_DLY d51(.D(DB_BUF[4:7]),  
+    FDR_DLY d51(.D({DB_BUF[4],DB_BUF[5],DB_BUF[6],DB_BUF[7]}),  
             .CLn(RES_SYNCn),
             .CK(TEST), 
             .Q({TEST_D12,TEST_D13,TEST_D14,TEST_D15}));
 
-    FDR_DLY l51(.D(DB_BUF[0:3]), 
+    FDR_DLY l51(.D({DB_BUF[0],DB_BUF[1],DB_BUF[2],DB_BUF[3]}), 
             .CLn(RES_SYNCn),
             .CK(TEST), 
             .Q({TEST_D8,TEST_D9,TEST_D10,TEST_D11}));
@@ -1077,8 +1077,8 @@ module k052109_DLY (
     assign #2.83 D12 = ~(L15 & AB9_INV & AB[10] & AB7_BUF & AB8_BUF & AB_18XX); //L15 FROM SECTION 3.8
 
     wire [7:0] REG1D80;
-    FDR_DLY a5 (.D(DB_BUF[4:7]), .CLn(RES_SYNCn), .CK(D12), .Q(REG1D80[4:7]));
-    FDR_DLY c3 (.D(DB_BUF[0:3]), .CLn(RES_SYNCn), .CK(D12), .Q(REG1D80[0:3]));
+    FDR_DLY a5 (.D({DB_BUF[4],DB_BUF[5],DB_BUF[6],DB_BUF[7]}), .CLn(RES_SYNCn), .CK(D12), .Q({REG1D80[4],REG1D80[5],REG1D80[6],REG1D80[7]}));
+    FDR_DLY c3 (.D({DB_BUF[0],DB_BUF[1],DB_BUF[2],DB_BUF[3]}), .CLn(RES_SYNCn), .CK(D12), .Q({REG1D80[0],REG1D80[1],REG1D80[2],REG1D80[3]}));
     //* END Section 5.2. REGISTER 0x1D80 *
 
     //* START Section 5.3. REGISTER 0x1D00 *
@@ -1086,7 +1086,7 @@ module k052109_DLY (
     assign #2.83 D18 = ~(L15 & AB9_INV & AB[10] & AB7_INV & AB8_BUF & AB_18XX); //L15 FROM SECTION 3.8
 
     wire [3:0] REG1D00;
-    FDR_DLY f51 (.D(DB_BUF[0:3]), .CLn(RES_SYNCn), .CK(D18), .Q(REG1D00[0:3]));
+    FDR_DLY f51 (.D({DB_BUF[0],DB_BUF[1],DB_BUF[2],DB_BUF[3]}), .CLn(RES_SYNCn), .CK(D18), .Q({REG1D00[0],REG1D00[1],REG1D00[2],REG1D00[3]}));
     //* END Section 5.3. REGISTER 0x1D00 *
 
     //* START Section 5.4. REGISTER 0x1C00 *
@@ -1094,8 +1094,8 @@ module k052109_DLY (
     assign #2.83 D23 = ~(L15 & AB9_INV & AB[10] & AB7_INV & AB8_INV & AB_18XX); //L15 FROM SECTION 3.8
 
     wire [7:0] REG1C00;
-    FDR_DLY c38 (.D(DB_BUF[4:7]), .CLn(RES_SYNCn), .CK(D23), .Q(REG1C00[4:7]));
-    FDR_DLY b77 (.D(DB_BUF[0:3]), .CLn(RES_SYNCn), .CK(D23), .Q(REG1C00[0:3]));
+    FDR_DLY c38 (.D({DB_BUF[4],DB_BUF[5],DB_BUF[6],DB_BUF[7]}), .CLn(RES_SYNCn), .CK(D23), .Q({REG1C00[4],REG1C00[5],REG1C00[6],REG1C00[7]}));
+    FDR_DLY b77 (.D({DB_BUF[0],DB_BUF[1],DB_BUF[2],DB_BUF[3]}), .CLn(RES_SYNCn), .CK(D23), .Q({REG1C00[0],REG1C00[1],REG1C00[2],REG1C00[3]}));
     //* END Section 5.4. REGISTER 0x1C00 *
 
     //* START Section 5.5. REGISTER 0x1C80 *
@@ -1103,8 +1103,8 @@ module k052109_DLY (
     assign #2.83 D7 = ~(L15 & AB9_INV & AB[10] & AB7_BUF & AB8_INV & AB_18XX); //L15 FROM SECTION 3.8
 
     wire [7:0] REG1C80;
-    FDR_DLY e4 (.D(DB_BUF[4:7]), .CLn(RES_SYNCn), .CK(D7), .Q(REG1C80[4:7]));
-    FDR_DLY e51 (.D(DB_BUF[0:3]), .CLn(RES_SYNCn), .CK(D7), .Q(REG1C80[0:3]));
+    FDR_DLY e4 (.D({DB_BUF[4],DB_BUF[5],DB_BUF[6],DB_BUF[7]}), .CLn(RES_SYNCn), .CK(D7), .Q({REG1C80[4],REG1C80[5],REG1C80[6],REG1C80[7]}));
+    FDR_DLY e51 (.D({DB_BUF[0],DB_BUF[1],DB_BUF[2],DB_BUF[3]}), .CLn(RES_SYNCn), .CK(D7), .Q({REG1C80[0],REG1C80[1],REG1C80[2],REG1C80[3]}));
     //* END Section 5.5. REGISTER 0x1C80 *
 
     //* START Section 5.6. REGISTER 0x1F00 *
@@ -1112,8 +1112,8 @@ module k052109_DLY (
     assign #2.83 D33 = ~(L15 & AB9_BUF & AB[10] & AB7_INV & AB8_BUF & AB_18XX); //L15 FROM SECTION 3.8
 
     wire [7:0] REG1F00;
-    FDR_DLY a51 (.D(DB_BUF[4:7]), .CLn(RES_SYNCn), .CK(D33), .Q(REG1F00[4:7]));
-    FDR_DLY b51 (.D(DB_BUF[0:3]), .CLn(RES_SYNCn), .CK(D33), .Q(REG1F00[0:3]));
+    FDR_DLY a51 (.D({DB_BUF[4],DB_BUF[5],DB_BUF[6],DB_BUF[7]}), .CLn(RES_SYNCn), .CK(D33), .Q({REG1F00[4],REG1F00[5],REG1F00[6],REG1F00[7]}));
+    FDR_DLY b51 (.D({DB_BUF[0],DB_BUF[1],DB_BUF[2],DB_BUF[3]}), .CLn(RES_SYNCn), .CK(D33), .Q({REG1F00[0],REG1F00[1],REG1F00[2],REG1F00[3]}));
     //* END Section 5.6. REGISTER 0x1F00 *
 
     //* START Section 5.7. REGISTER 0x1E80 *
@@ -1149,9 +1149,9 @@ module k052109_DLY (
     D24_DLY bb52 (.A1(BB9_Qn), .A2(TEST_EN2n), .B1(AB2_REG), .B2(TEST_EN), .X(BB52_X));
 
     wire [3:0] CC77_Q;
-    FDR_DLY cc77 (.D(VD_IN[0:3]), .CLn(RES_SYNCn), .CK(BB50_X), .Q(CC77_Q)); //inverted data port D
+    FDR_DLY cc77 (.D({VD_IN[0],VD_IN[1],VD_IN[2],VD_IN[3]}), .CLn(RES_SYNCn), .CK(BB50_X), .Q(CC77_Q)); //inverted data port D
     wire [3:0] Y131_Q;
-    FDR_DLY y131 (.D(VD_IN[4:7]), .CLn(RES_SYNCn), .CK(BB50_X), .Q(Y131_Q)); //inverted data port D
+    FDR_DLY y131 (.D({VD_IN[4],VD_IN[5],VD_IN[6],VD_IN[7]}), .CLn(RES_SYNCn), .CK(BB50_X), .Q(Y131_Q)); //inverted data port D
 
     wire AA81_Q;
     FDE_DLY aa81 (.D(VD_IN[0]), .CLn(RES_SYNCn), .CK(BB52_X), .Q(AA81_Q));
@@ -1161,10 +1161,10 @@ module k052109_DLY (
 
     wire [3:0] CC107_S;
     wire CC107_CO;
-    A4H_DLY cc107 (.A({CC77_Q[0:3]}),.B({AA91,1'b0,{2{AA91}}}), .CI(1'b0), .S(CC107_S), .CO(CC107_CO)); //inverted data port D
+    A4H_DLY cc107 (.A({{CC77_Q[0],CC77_Q[1],CC77_Q[2],CC77_Q[3]}}),.B({AA91,1'b0,{2{AA91}}}), .CI(1'b0), .S(CC107_S), .CO(CC107_CO)); //inverted data port D
     wire [3:0] AA106_S;
     wire AA106_CO;
-    A4H_DLY aa106 (.A(Y131_Q[0:3]),.B({4{AA91}}), .CI(CC107_CO), .S(AA106_S), .CO(AA106_CO)); //inverted data port D
+    A4H_DLY aa106 (.A({Y131_Q[0],Y131_Q[1],Y131_Q[2],Y131_Q[3]}),.B({4{AA91}}), .CI(CC107_CO), .S(AA106_S), .CO(AA106_CO)); //inverted data port D
     wire AA98_S;
     A1N_DLY aa98 (.A(AA81_Q),.B(AA91), .CI(AA106_CO), .S(AA98_S)); //.B(FLIP_SCREEN)
 
@@ -1214,17 +1214,17 @@ module k052109_DLY (
     D24_DLY cc37 (.A1(CC3_Qn), .A2(TEST_EN2n), .B1(AB3_REG), .B2(TEST_EN), .X(CC37_X));
 
     wire [3:0] BB77_Q;
-    FDR_DLY bb77 (.D(VD_IN[0:3]), .CLn(RES_SYNCn), .CK(CC37_X), .Q(BB77_Q)); //inverted data port D
+    FDR_DLY bb77 (.D({VD_IN[0],VD_IN[1],VD_IN[2],VD_IN[3]}), .CLn(RES_SYNCn), .CK(CC37_X), .Q(BB77_Q)); //inverted data port D
     
     wire [3:0] V77_Q;
-    FDR_DLY v77 (.D(VD_IN[4:7]), .CLn(RES_SYNCn), .CK(CC37_X), .Q(V77_Q)); //inverted data port D
+    FDR_DLY v77 (.D({VD_IN[4],VD_IN[5],VD_IN[6],VD_IN[7]}), .CLn(RES_SYNCn), .CK(CC37_X), .Q(V77_Q)); //inverted data port D
 
     wire [3:0] BB107_S;
     wire BB107_CO;
-    A4H_DLY bb107 (.A(BB77_Q[0:3]) ,.B(ROW[3:0]), .CI(1'b0), .S(BB107_S), .CO(BB107_CO)); //inverted port A
+    A4H_DLY bb107 (.A({BB77_Q[0],BB77_Q[1],BB77_Q[2],BB77_Q[3]}) ,.B(ROW[3:0]), .CI(1'b0), .S(BB107_S), .CO(BB107_CO)); //inverted port A
 
     wire [3:0] X107_S;
-    A4H_DLY x107 (.A(V77_Q[0:3]),.B(ROW[7:4]), .CI(BB107_CO), .S(X107_S)); //inverted port A
+    A4H_DLY x107 (.A({V77_Q[0],V77_Q[1],V77_Q[2],V77_Q[3]}),.B(ROW[7:4]), .CI(BB107_CO), .S(X107_S)); //inverted port A
     
     assign MAP_B[10:6] = {X107_S,BB107_S[3]};
     
@@ -1239,10 +1239,10 @@ module k052109_DLY (
     assign #1.82 F130 = J121 & REG1C00[5] & PXH0n;
 
     wire [3:0] H127_Q;
-    FDS_DLY h127 (.D(VD_IN[8:11]), .CK(J140_Qn), .Q(H127_Q));
+    FDS_DLY h127 (.D({VD_IN[8],VD_IN[9],VD_IN[10],VD_IN[11]}), .CK(J140_Qn), .Q(H127_Q));
 
     wire [3:0] G136_Q;
-    FDS_DLY g136 (.D(VD_IN[8:11]), .CK(PXH0n), .Q(G136_Q));
+    FDS_DLY g136 (.D({VD_IN[8],VD_IN[9],VD_IN[10],VD_IN[11]}), .CK(PXH0n), .Q(G136_Q));
 
     wire F126; //Logic Cell K1B
     assign #1.26 F126 = RMRD;
@@ -1297,7 +1297,7 @@ module k052109_DLY (
     assign #0.55 C74 = ~REG1C00[5];
 
     wire [3:0] E77_Q;
-    FDR_DLY e77 (.D(DB_BUF[0:3]), .CLn(RES_SYNCn), .CK(REG_1E00_WRn), .Q(E77_Q));
+    FDR_DLY e77 (.D({DB_BUF[0],DB_BUF[1],DB_BUF[2],DB_BUF[3]}), .CLn(RES_SYNCn), .CK(REG_1E00_WRn), .Q(E77_Q));
 
     wire E149; //Logic Cell V1N
     assign #0.55 E149 = ~RMRD;
@@ -1358,11 +1358,11 @@ module k052109_DLY (
 
     //* START Section 7.3. col[7:4] *
     wire [3:0] G77_Q;
-    FDS_DLY g77 (.D(VD_IN[12:15]), .CK(PXH0n), .Q(G77_Q));
+    FDS_DLY g77 (.D({VD_IN[12],VD_IN[13],VD_IN[14],VD_IN[15]}), .CK(PXH0n), .Q(G77_Q));
     wire [3:0] H92_Q;
-    FDS_DLY h92 (.D(VD_IN[12:15]), .CK(J140_Qn), .Q(H92_Q));
+    FDS_DLY h92 (.D({VD_IN[12],VD_IN[13],VD_IN[14],VD_IN[15]}), .CK(J140_Qn), .Q(H92_Q));
     wire [3:0] F77_Q;
-    FDS_DLY f77 (.D(DB_BUF[4:7]), .CK(REG_1E00_WRn), .Q(F77_Q));
+    FDS_DLY f77 (.D({DB_BUF[4],DB_BUF[5],DB_BUF[6],DB_BUF[7]}), .CK(REG_1E00_WRn), .Q(F77_Q));
 
     //COL[7]
     wire G101_Xn;
@@ -1447,19 +1447,19 @@ module k052109_DLY (
     D24_DLY aa53 (.A1(AA22_Qn), .A2(TEST_EN2n), .B1(AB2_REG), .B2(TEST_EN), .X(AA53_X));
 
     wire [3:0] T51_Q;
-    FDR_DLY t51 (.D(VD_IN[8:11]), .CLn(RES_SYNCn), .CK(X55_X), .Q(T51_Q)); //inverted data port D
+    FDR_DLY t51 (.D({VD_IN[8],VD_IN[9],VD_IN[10],VD_IN[11]}), .CLn(RES_SYNCn), .CK(X55_X), .Q(T51_Q)); //inverted data port D
     wire [3:0] S51_Q;
-    FDR_DLY s51 (.D(VD_IN[12:15]), .CLn(RES_SYNCn), .CK(X55_X), .Q(S51_Q)); //inverted data port D
+    FDR_DLY s51 (.D({VD_IN[12],VD_IN[13],VD_IN[14],VD_IN[15]}), .CLn(RES_SYNCn), .CK(X55_X), .Q(S51_Q)); //inverted data port D
 
     wire AA41_Qn;
     FDE_DLY aa41 (.D(VD_IN[8]), .CLn(RES_SYNCn), .CK(AA53_X), .Q(AA41_Qn));
 
     wire [3:0] X4_S;
     wire X4_CO;
-    A4H_DLY x4 (.A({T51_Q[0:3]}),.B({FLIP_SCREEN_BUF,1'b0,{2{FLIP_SCREEN_BUF}}}), .CI(1'b0), .S(X4_S), .CO(X4_CO)); //inverted data port D
+    A4H_DLY x4 (.A({{T51_Q[0],T51_Q[1],T51_Q[2],T51_Q[3]}}),.B({FLIP_SCREEN_BUF,1'b0,{2{FLIP_SCREEN_BUF}}}), .CI(1'b0), .S(X4_S), .CO(X4_CO)); //inverted data port D
     wire [3:0] W3_S;
     wire W3_CO;
-    A4H_DLY w3 (.A(S51_Q[0:3]),.B({4{FLIP_SCREEN_BUF}}), .CI(X4_CO), .S(W3_S), .CO(W3_CO)); //inverted data port D
+    A4H_DLY w3 (.A({S51_Q[0],S51_Q[1],S51_Q[2],S51_Q[3]}),.B({4{FLIP_SCREEN_BUF}}), .CI(X4_CO), .S(W3_S), .CO(W3_CO)); //inverted data port D
     wire Z69_S;
     A1N_DLY z69 (.A(AA41_Qn),.B(FLIP_SCREEN_BUF), .CI(W3_CO), .S(Z69_S)); //.B(FLIP_SCREEN)
 
@@ -1509,17 +1509,17 @@ module k052109_DLY (
     D24_DLY aa55 (.A1(BB20_Qn), .A2(TEST_ENn), .B1(AB3_REG), .B2(TEST_EN), .X(AA55_X));
 
     wire [3:0] T77_Q;
-    FDR_DLY t77 (.D(VD_IN[8:11]), .CLn(RES_SYNCn), .CK(AA55_X), .Q(T77_Q)); //inverted data port D
+    FDR_DLY t77 (.D({VD_IN[8],VD_IN[9],VD_IN[10],VD_IN[11]}), .CLn(RES_SYNCn), .CK(AA55_X), .Q(T77_Q)); //inverted data port D
     
     wire [3:0] P77_Q;
-    FDR_DLY p77 (.D(VD_IN[12:15]), .CLn(RES_SYNCn), .CK(AA55_X), .Q(P77_Q)); //inverted data port D
+    FDR_DLY p77 (.D({VD_IN[12],VD_IN[13],VD_IN[14],VD_IN[15]}), .CLn(RES_SYNCn), .CK(AA55_X), .Q(P77_Q)); //inverted data port D
 
     wire [3:0] W107_S;
     wire W107_CO;
-    A4H_DLY w107 (.A(T77_Q[0:3]) ,.B(ROW[3:0]), .CI(1'b0), .S(W107_S), .CO(W107_CO)); //inverted port A
+    A4H_DLY w107 (.A({T77_Q[0],T77_Q[1],T77_Q[2],T77_Q[3]}) ,.B(ROW[3:0]), .CI(1'b0), .S(W107_S), .CO(W107_CO)); //inverted port A
 
     wire [3:0] V106_S;
-    A4H_DLY v106 (.A(P77_Q[0:3]),.B(ROW[7:4]), .CI(W107_CO), .S(V106_S)); //inverted port A
+    A4H_DLY v106 (.A({P77_Q[0],P77_Q[1],P77_Q[2],P77_Q[3]}),.B(ROW[7:4]), .CI(W107_CO), .S(V106_S)); //inverted port A
     
     assign MAP_A[10:6] = {V106_S,W107_S[3]};
     
