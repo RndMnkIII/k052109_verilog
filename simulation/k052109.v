@@ -247,7 +247,7 @@ module k052109_DLY (
     assign #3.50 J110 = K141_Qn ^ J114_Qn;
 
     wire J114_Q, J114_Qn;
-    FDN_DLY j114(.D(J110), .Sn(RES_SYNC3n), .CK(M24), .Q(K141_Q), .Qn(K141_Qn));
+    FDN_DLY j114(.D(J110), .Sn(RES_SYNC3n), .CK(M24), .Q(K114_Q), .Qn(K114_Qn));
 
     wire M12n;
     assign M12n = K141_Qn;

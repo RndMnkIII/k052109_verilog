@@ -1,21 +1,21 @@
 [*]
 [*] GTKWave Analyzer v3.3.107 (w)1999-2020 BSI
-[*] Thu Jul  1 10:13:32 2021
+[*] Thu Jul  1 12:30:01 2021
 [*]
 [dumpfile] "/Users/javier/ARCADE_PCB/k052109_verilog/simulation/k052109_tb.lxt"
-[dumpfile_mtime] "Thu Jul  1 10:13:21 2021"
-[dumpfile_size] 54927
+[dumpfile_mtime] "Thu Jul  1 12:27:25 2021"
+[dumpfile_size] 55002
 [savefile] "/Users/javier/ARCADE_PCB/k052109_verilog/simulation/k052109_tb.gtkw"
 [timestart] 0
-[size] 1920 1080
-[pos] -1 -1
-*-18.000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[size] 1920 1027
+[pos] -2 -69
+*-17.000000 364000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] k052109_tb.
 [treeopen] k052109_tb.K052109_inst.
-[sst_width] 355
-[signals_width] 475
+[sst_width] 193
+[signals_width] 279
 [sst_expanded] 1
-[sst_vpaned_height] 498
+[sst_vpaned_height] 788
 @200
 -System
 @28
@@ -196,12 +196,17 @@ k052109_tb.VDE[0]
 @200
 -
 -Debug M12
+@29
+k052109_tb.clk24[0]
 @28
 k052109_tb.K052109_inst.RES_SYNC3n[0]
-@29
 k052109_tb.K052109_inst.K141_Q[0]
-@28
 k052109_tb.K052109_inst.M15[0]
 k052109_tb.K052109_inst.K141_Qn[0]
+@200
+-
+@28
+k052109_tb.fde_q[0]
+k052109_tb.fdn_q[0]
 [pattern_trace] 1
 [pattern_trace] 0

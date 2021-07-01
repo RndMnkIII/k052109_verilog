@@ -82,6 +82,11 @@ module k052109_tb;
     // assign VC = (NRD & RMRD) ? output_dword : 32'hZZZZZZZZ; //when Z VC acts as INPUT, in the other case as OUPUT
 
     //UUT
+    wire fde_q;
+    wire fdn_q, fdn_qn;
+    FDE_DLY fde1(.D(1'b1), .CLn(RES), .CK(clk24), .Q(fde_q));
+    FDN_DLY fdn1(.D(fdn_qn), .Sn(fde_q), .CK(clk24), .Q(fdn_q), .Qn(fdn_qn));
+
     k052109_DLY K052109_inst(
         .M24(clk24),
         .RES(RES),
