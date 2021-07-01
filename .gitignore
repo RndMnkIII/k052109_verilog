@@ -3,6 +3,8 @@ traces/
 *.vvp
 *.lxt
 *.vcd
+a.out
+
 
 #ignore IDE files
 #.vscode/
