@@ -9,3 +9,12 @@ on the schematics released by @Furrtek which was able to trace the internal chan
 of this IC and identify the functions that were used.
 
 https://github.com/furrtek/VGChips/tree/master/Konami
+
+Test Bench Usage:
+```
+iverilog -o k052109_tb.vvp k052109_tb.v k052109.v addr_sel.v  vram.v fujitsu_AV_UnitCellLibrary_DLY.v
+vvp k052109_tb.vvp -lxt2
+gtkwave k052109_tb.lxt&
+```
+
+
