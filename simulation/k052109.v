@@ -199,7 +199,7 @@ module k052109_DLY (
     FDO_DLY k130(.D(K148_Q),.Rn(RES_SYNC3n), .CK(M24), .Q(K130_Q));
 
     wire K123_Q, K123_Qn;
-    FDO_DLY k123(.D(J94_Qn),.Rn(RES_SYNC3n), .CK(M24), .Q(K123_Q), .Qn(K123_Qn));
+    FDO_DLY k123(.D(J94_Q),.Rn(RES_SYNC3n), .CK(M24), .Q(K123_Q), .Qn(K123_Qn)); //FDO_DLY k123(.D(J94_Qn),.Rn(RES_SYNC3n), .CK(M24), .Q(K123_Q), .Qn(K123_Qn));
 
     wire K119; //Logic Cell N3N
     assign #0.83 K119 = ~(NRD & K123_Qn & K130_Q);
@@ -242,7 +242,7 @@ module k052109_DLY (
  
 
     wire J110; //Logic Cell X2B
-    assign #3.50 J110 = K141_Qn ^ J114_Qn;
+    assign #3.50 J110 = K141_Qn ^ J114_Qn; //K141_Qn ^ J114_Qn;
 
     wire J114_Q, J114_Qn;
     FDN_DLY j114(.D(J110), .Sn(RES_SYNC3n), .CK(M24), .Q(J114_Q), .Qn(J114_Qn));
@@ -254,7 +254,7 @@ module k052109_DLY (
     assign #3.31 J121 = J114_Q; //*** CLOCK TREE J121 ***
 
     wire J101; //Logic Cell X2B
-    assign #3.50 J101 = (J109 ^ J94_Q);
+    assign #3.50 J101 = (J109 ^ J94_Qn); //(J109 ^ J94_Q); FIXED WITH J94_Qn
 
     wire J94_Q, J94_Qn;
     FDN_DLY j94(.D(J101), .Sn(RES_SYNC3n), .CK(M24), .Q(J94_Q), .Qn(J94_Qn));
@@ -263,10 +263,10 @@ module k052109_DLY (
     assign #0.55 J78 = ~M24;
 
     wire J79;
-    FDE_DLY j79(.D(J94_Qn), .CLn(RES_SYNC3n), .CK(J78), .Q(J79));
+    FDE_DLY j79(.D(J94_Qn), .CLn(RES_SYNC3n), .CK(J78), .Q(J79)); //FDE_DLY j79(.D(J94_Qn), .CLn(RES_SYNC3n), .CK(J78), .Q(J79));
 
     wire K117; //Logic Cell V1N
-    assign #0.55 K117 = ~J94_Qn;
+    assign #0.55 K117 = ~J94_Q; //K117 = ~J94_Qn;
 
     wire L80; //Logic Cell V2B
     assign #0.64 L80 = ~K117;
