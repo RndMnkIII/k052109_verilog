@@ -7,8 +7,8 @@
  * Version: 1.0 01/07/2021 Preliminar                           *
  ***************************************************************/
 //Test Bench Usage:
-//iverilog -g2005-sv -o k052109_tb.vvp k052109_tb.v k052109.v addr_sel.v fujitsu_AV_UnitCellLibrary_DLY.v
-//iverilog -o k052109_tb.vvp k052109_tb.v k052109.v addr_sel.v fujitsu_AV_UnitCellLibrary_DLY.v
+//iverilog -g2005-sv -o k052109_tb.vvp k052109_tb.v k052109.v vram.v addr_sel.v fujitsu_AV_UnitCellLibrary_DLY.v
+//iverilog -o k052109_tb.vvp k052109_tb.v k052109.v addr_sel.v  vram.v fujitsu_AV_UnitCellLibrary_DLY.v
 //vvp k052109_tb.vvp -lxt2
 //gtkwave k052109_tb.lxt&
 
@@ -87,6 +87,18 @@ module k052109_tb;
     FDE_DLY fde1(.D(1'b1), .CLn(RES), .CK(clk24), .Q(fde_q));
     FDN_DLY fdn1(.D(fdn_qn), .Sn(fde_q), .CK(clk24), .Q(fdn_q), .Qn(fdn_qn));
 
+    VRAM_G23 vram_low(.ADDR(RA), //8Kx8bit
+                      .CEn(1'b0),
+                      .OEn(ROE2n),
+                      .WEn(RWE2n),
+                      .DATA(VD[7:0]));
+
+    VRAM_I23 vram_high(.ADDR(RA), //8Kx8bit
+                      .CEn(RCS1n),
+                      .OEn(ROE1n),
+                      .WEn(RWE1n),
+                      .DATA(VD[15:8]));
+
     k052109_DLY K052109_inst(
         .M24(clk24),
         .RES(RES),
@@ -157,7 +169,7 @@ module k052109_tb;
             #mc_p; #mc_p; #mc_hp; #mc_qp;
             RES=1'b1;
             //#SIMULATION_TIME; //For test the RST signal, needs 8 NVBK cycles
-            #2000;
+            #10000;
             $finish;
         end
 endmodule
