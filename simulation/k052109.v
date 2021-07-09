@@ -263,10 +263,10 @@ module k052109_DLY (
     assign #0.55 J78 = ~M24;
 
     wire J79;
-    FDE_DLY j79(.D(J94_Qn), .CLn(RES_SYNC3n), .CK(J78), .Q(J79)); //FDE_DLY j79(.D(J94_Qn), .CLn(RES_SYNC3n), .CK(J78), .Q(J79));
+    FDE_DLY j79(.D(J94_Q), .CLn(RES_SYNC3n), .CK(J78), .Q(J79)); //FDE_DLY j79(.D(J94_Qn), .CLn(RES_SYNC3n), .CK(J78), .Q(J79));
 
     wire K117; //Logic Cell V1N
-    assign #0.55 K117 = ~J94_Q; //K117 = ~J94_Qn;
+    assign #0.55 K117 = ~J94_Qn; //K117 = ~J94_Qn;
 
     wire L80; //Logic Cell V2B
     assign #0.64 L80 = ~K117;

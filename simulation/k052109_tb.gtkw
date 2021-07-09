@@ -1,10 +1,10 @@
 [*]
 [*] GTKWave Analyzer v3.3.107 (w)1999-2020 BSI
-[*] Thu Jul  1 18:47:12 2021
+[*] Fri Jul  9 07:36:35 2021
 [*]
 [dumpfile] "/Users/javier/ARCADE_PCB/k052109_verilog/simulation/k052109_tb.lxt"
-[dumpfile_mtime] "Thu Jul  1 18:40:05 2021"
-[dumpfile_size] 634394
+[dumpfile_mtime] "Fri Jul  9 07:36:03 2021"
+[dumpfile_size] 66801
 [savefile] "/Users/javier/ARCADE_PCB/k052109_verilog/simulation/k052109_tb.gtkw"
 [timestart] 0
 [size] 1920 1027
@@ -25,9 +25,10 @@ k052109_tb.RES[0]
 k052109_tb.K052109_inst.M12[0]
 [color] 2
 k052109_tb.K052109_inst.M12n[0]
-[color] 2
+[color] 1
 k052109_tb.K052109_inst.PE[0]
-[color] 5
+@29
+[color] 3
 k052109_tb.K052109_inst.PQ[0]
 @200
 -
