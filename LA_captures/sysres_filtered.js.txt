@@ -1,0 +1,84 @@
+//sysres_filtered.js
+//Script to remove glitches up to 2 samples wide.
+//For their use with Digilent WaveForms Software
+//using Logic Analyzer DigitalDiscovery device.
+//Open a captured session and add a custom signal and
+//load this script, 
+//change the DINx input of interest for the signal
+//to filter inside the Logic editor.
+//Author: @RndMnkIII
+//Date: 07/07/21
+
+// rgData: input, raw digital data array
+// rgValue: output, decoded data array
+// rgFlag: output, decoded flag array
+
+
+c = rgData.length;
+c = c -2; //for after value
+
+i=1;
+//for(var i = 1; i < c; i++){
+while(i<c){
+   // take 4 least significant bits;
+   //rgValue[i] = rgData[i] & 0x0F;
+   before = (rgData[i-1]>>0) & 0X01;  //SYSRES - DIN0
+   current = (rgData[i]>>0) & 0X01;  //SYSRES - DIN0
+   after = (rgData[i+1]>>0) & 0X01;  //SYSRES - DIN0
+   after2 = (rgData[i+2]>>0) & 0X01;  //SYSRES - DIN0
+   if( (before==1) && (current==0) && (after==1) )
+   { 
+        rgValue[i]= current ^ 1;
+        // set flag other than zero for valid data; 
+        rgFlag[i] = 1;
+        i++;
+   }  
+   else if( (before == 0) && (current==1) && (after==0) )
+   {
+        rgValue[i]= current ^ 1;
+        rgFlag[i] = 1;
+        i++;
+   }
+    else if( (before == 0) && (current==1) && (after==1) && (after2==0) )
+    {
+        rgValue[i]= current ^ 1;
+        rgFlag[i] = 1;
+        rgValue[i+1]= after ^ 1;
+        rgFlag[i+1] = 1;
+        i=i+2;
+    }
+    else if( (before == 1) && (current==0) && (after==0) && (after2==1) )
+    {
+        rgValue[i]= current ^ 1;
+        rgFlag[i] = 1;
+        rgValue[i+1]= current ^ 1;
+        rgFlag[i+1] = 1;
+        i=i+2;
+    }
+    else
+    {
+        rgValue[i]= current;
+        rgFlag[i] = 1;
+        i++;
+    }
+}
+
+//To get a bit mask:
+
+//var mask = 1 << 5; // gets the 6th bit
+//To test if a bit is set:
+
+//if ((n & mask) != 0) {
+  // bit is set
+//} else {
+  // bit is not set
+//}
+//To set a bit:
+
+//n |= mask;
+//To clear a bit:
+
+//n &= ~mask;
+//To toggle a bit:
+
+//n ^= mask;
