@@ -1,21 +1,20 @@
 [*]
 [*] GTKWave Analyzer v3.3.107 (w)1999-2020 BSI
-[*] Fri Jul  9 07:36:35 2021
+[*] Sat Jul 10 11:30:41 2021
 [*]
 [dumpfile] "/Users/javier/ARCADE_PCB/k052109_verilog/simulation/k052109_tb.lxt"
-[dumpfile_mtime] "Fri Jul  9 07:36:03 2021"
-[dumpfile_size] 66801
+[dumpfile_mtime] "Sat Jul 10 11:25:54 2021"
+[dumpfile_size] 56671
 [savefile] "/Users/javier/ARCADE_PCB/k052109_verilog/simulation/k052109_tb.gtkw"
 [timestart] 0
-[size] 1920 1027
+[size] 1920 999
 [pos] -1 -1
-*-18.000000 208330 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-17.000000 594794 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] k052109_tb.
-[treeopen] k052109_tb.K052109_inst.
 [sst_width] 193
 [signals_width] 429
 [sst_expanded] 1
-[sst_vpaned_height] 788
+[sst_vpaned_height] 404
 @200
 -System
 @28
@@ -27,9 +26,9 @@ k052109_tb.K052109_inst.M12[0]
 k052109_tb.K052109_inst.M12n[0]
 [color] 1
 k052109_tb.K052109_inst.PE[0]
-@29
 [color] 3
 k052109_tb.K052109_inst.PQ[0]
+k052109_tb.K052109_inst.VDE[0]
 @200
 -
 @c00200
@@ -39,6 +38,8 @@ k052109_tb.K052109_inst.PQ[0]
 @28
 k052109_tb.K052109_inst.N122_Q[0]
 k052109_tb.K052109_inst.RES_SYNC3n[0]
+k052109_tb.K052109_inst.RES_SYNC2n[0]
+k052109_tb.K052109_inst.RES_SYNCn[0]
 k052109_tb.K052109_inst.K141_Q[0]
 k052109_tb.K052109_inst.K141_Qn[0]
 [color] 2
@@ -91,6 +92,39 @@ k052109_tb.K052109_inst.K110[0]
 k052109_tb.K052109_inst.PQ[0]
 @1401200
 -Debug PQ, PE
+@200
+-
+-
+@800200
+-Debug VDE
+@28
+[color] 3
+k052109_tb.K052109_inst.PQ[0]
+@200
+-
+-H79_D
+@28
+k052109_tb.K052109_inst.H78[0]
+@200
+-H79_CLK
+@28
+k052109_tb.K052109_inst.J121[0]
+@200
+-
+-H79_R
+@28
+k052109_tb.K052109_inst.J79[0]
+@200
+-
+@28
+[color] 1
+k052109_tb.K052109_inst.H79_Q[0]
+k052109_tb.K052109_inst.RMRD[0]
+k052109_tb.K052109_inst.E143[0]
+[color] 2
+k052109_tb.K052109_inst.VDE[0]
+@1000200
+-Debug VDE
 @200
 -
 @c00200
@@ -284,7 +318,7 @@ k052109_tb.VDE[0]
 -Misc.
 @200
 -
-@800200
+@c00201
 -Debug M12
 @200
 -Debug M12
@@ -295,7 +329,7 @@ k052109_tb.K052109_inst.RES_SYNC3n[0]
 k052109_tb.K052109_inst.K141_Q[0]
 k052109_tb.K052109_inst.M15[0]
 k052109_tb.K052109_inst.K141_Qn[0]
-@1000200
+@1401201
 -Debug M12
 @200
 -

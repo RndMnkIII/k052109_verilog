@@ -165,7 +165,7 @@ module k052109_tb;
     //Testing timing signals
     initial 
         begin
-            RES=1'b0; AB=16'h0; NRD=1'b0; VRAMCSn=1; RMRD=1'b0;
+            RES=1'b0; AB=16'h0; NRD=1'b1; VRAMCSn=1; RMRD=1'b0;
             #mc_p; #mc_p; #mc_hp; #mc_qp;
             RES=1'b1;
             //#SIMULATION_TIME; //For test the RST signal, needs 8 NVBK cycles

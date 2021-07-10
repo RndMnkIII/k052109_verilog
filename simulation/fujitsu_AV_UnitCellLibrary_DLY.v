@@ -299,7 +299,7 @@ module FDO_DLY 	( input D,
 
 	always @ (posedge CK or negedge Rn) 
         if (!Rn)
-            Q <= #5.96 1'b0;
+            Q <= #2.72 1'b0; //#2.72
         else
             Q <= #5.96 D;
 endmodule
