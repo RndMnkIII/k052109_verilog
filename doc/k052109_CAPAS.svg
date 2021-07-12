@@ -58,9 +58,9 @@
      fit-margin-right="0"
      fit-margin-top="0"
      id="base"
-     inkscape:current-layer="layer2"
-     inkscape:cx="2754.997"
-     inkscape:cy="2550.3708"
+     inkscape:current-layer="layer1"
+     inkscape:cx="1313.6773"
+     inkscape:cy="898.27934"
      inkscape:document-units="mm"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
@@ -71,7 +71,7 @@
      inkscape:window-width="1920"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
-     inkscape:zoom="1.2070794"
+     inkscape:zoom="2.0004913"
      pagecolor="#ffffff"
      showgrid="true"
      inkscape:pagecheckerboard="0">
@@ -42162,6 +42162,21 @@
       <title
          id="title98734">YYY</title>
     </path>
+    <path
+       id="path8115"
+       style="display:inline;opacity:1;vector-effect:none;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#800080;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke"
+       d="m 561.43927,855.19273 v -14 l 20,10e-6 m -20,17.99999 v -4 h 19.99999 m -317.99999,29 h 6.99999 v -0.99999 h 17 v -17.00001 h 5.00001 v -0.99999 h 266 v -1.00002 h 3 v -4.99999 h 19.99999">
+      <desc
+         id="desc21827">B152</desc>
+    </path>
+    <path
+       style="display:inline;opacity:1;vector-effect:none;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#ffff00;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke"
+       d="m 248.43926,230.19274 v 39 h -12.99999 v 9 h 359 v 1 h 1.99999 v 37 h 27.00001"
+       id="path46534"
+       inkscape:connector-curvature="0">
+      <desc
+         id="desc11521">RA3</desc>
+    </path>
   </g>
   <g
      inkscape:groupmode="layer"
@@ -42429,8 +42444,14 @@
       <path
          style="display:inline;opacity:1;vector-effect:none;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#ff0000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke"
          d="m 653.43926,759.19272 h -0.99999 v -0.99999"
-         id="path10230"
-         inkscape:connector-curvature="0" />
+         id="VCC"
+         inkscape:connector-curvature="0"
+         inkscape:label="VCC">
+        <desc
+           id="desc7234">VCC</desc>
+        <title
+           id="title7232">VCC</title>
+      </path>
       <path
          style="display:inline;opacity:1;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#008080;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke;image-rendering:auto"
          d="m 665.43925,763.19274 h 6.00001 v 118.99998 h 17.00001 v 4 h 269 v 34.00002 h -8 v 3"
@@ -42871,13 +42892,6 @@ K77_DD</desc>
            x="546.43927"
            y="860.69275">K148    FDO</tspan></text>
       <path
-         id="path8115"
-         style="display:inline;opacity:1;vector-effect:none;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#800080;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke"
-         d="m 561.43927,855.19273 v -14 l 20,10e-6 m -20,17.99999 v -4 h 19.99999 m -317.99999,29 h 6.99999 v -0.99999 h 17 v -17.00001 h 5.00001 v -0.99999 h 266 v -1.00002 h 3 v -4.99999 h 19.99999">
-        <desc
-           id="desc21827">B152</desc>
-      </path>
-      <path
          style="display:inline;opacity:1;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#00ff6b;stroke-width:0.7;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:0.7, 0.7;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke"
          d="m 725.43927,843.19274 h -4 l -10e-6,30.00001 h -18.99999 v 0.99999 l -180,-10e-6 v 2.00001 h -7"
          id="J151"
@@ -43263,14 +43277,6 @@ K77_DD</desc>
            style="line-height:100%"
            x="618.43927"
            y="316.69275">M12     V2B</tspan></text>
-      <path
-         style="display:inline;opacity:1;vector-effect:none;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#ffff00;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke"
-         d="m 248.43926,230.19274 v 39 h -12.99999 v 9 h 359 v 1 h 1.99999 v 37 h 27.00001"
-         id="path46534"
-         inkscape:connector-curvature="0">
-        <desc
-           id="desc11521">RA3</desc>
-      </path>
       <rect
          height="6"
          id="cellrectE143"
@@ -43347,7 +43353,7 @@ K77_DD</desc>
          inkscape:connector-curvature="0"
          inkscape:label="REG1C00_D5?">
         <desc
-           id="desc60448">REG1C00_D5</desc>
+           id="desc60448">REG1C00_D5?</desc>
         <title
            id="title116282">REG1C00_D5?</title>
       </path>
