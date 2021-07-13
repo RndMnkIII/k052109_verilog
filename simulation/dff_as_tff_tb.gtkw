@@ -1,0 +1,101 @@
+[*]
+[*] GTKWave Analyzer v3.3.107 (w)1999-2020 BSI
+[*] Tue Jul 13 16:36:37 2021
+[*]
+[dumpfile] "/Users/javier/ARCADE_PCB/k052109_verilog/simulation/dff_as_tff_tb.lxt"
+[dumpfile_mtime] "Tue Jul 13 16:34:13 2021"
+[dumpfile_size] 2334
+[savefile] "/Users/javier/ARCADE_PCB/k052109_verilog/simulation/dff_as_tff_tb.gtkw"
+[timestart] 0
+[size] 1920 1052
+[pos] -1 -1
+*-18.000000 405237 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 41
+[signals_width] 384
+[sst_expanded] 0
+[sst_vpaned_height] 80
+@28
+dff_as_tff_tb.clock[0]
+dff_as_tff_tb.reset[0]
+@200
+-
+@28
+dff_as_tff_tb.res_sync[0]
+@200
+-
+@28
+dff_as_tff_tb.K141_Q[0]
+[color] 2
+dff_as_tff_tb.K141_Qn[0]
+@200
+-
+@28
+dff_as_tff_tb.J110[0]
+dff_as_tff_tb.J114_Q[0]
+[color] 2
+dff_as_tff_tb.J114_Qn[0]
+@200
+-
+@28
+dff_as_tff_tb.J109[0]
+@200
+-
+@28
+dff_as_tff_tb.J101[0]
+dff_as_tff_tb.J94_Q[0]
+dff_as_tff_tb.J94_Qn[0]
+@200
+-
+@28
+dff_as_tff_tb.J79_Q[0]
+dff_as_tff_tb.J79_Qn[0]
+@200
+-
+-
+-
+@28
+dff_as_tff_tb.K117[0]
+@22
+dff_as_tff_tb.K77_Q[3:0]
+@28
+dff_as_tff_tb.K110[0]
+[color] 3
+dff_as_tff_tb.PQ[0]
+@200
+-
+@28
+[color] 2
+dff_as_tff_tb.K123_Q[0]
+dff_as_tff_tb.K123_Qn[0]
+dff_as_tff_tb.K148_Q[0]
+dff_as_tff_tb.L120_Q[0]
+dff_as_tff_tb.M13[0]
+[color] 3
+dff_as_tff_tb.PE[0]
+@200
+-
+@28
+[color] 1
+dff_as_tff_tb.J121[0]
+[color] 4
+dff_as_tff_tb.J79_Q[0]
+dff_as_tff_tb.H78[0]
+dff_as_tff_tb.H79_Q[0]
+dff_as_tff_tb.E143[0]
+[color] 3
+dff_as_tff_tb.VDE[0]
+@201
+-
+@28
+[color] 3
+dff_as_tff_tb.PE[0]
+[color] 3
+dff_as_tff_tb.PQ[0]
+@200
+-M12 HIGH state should be aligned with VDE
+@28
+dff_as_tff_tb.M12[0]
+[color] 3
+dff_as_tff_tb.VDE[0]
+[pattern_trace] 1
+[pattern_trace] 0

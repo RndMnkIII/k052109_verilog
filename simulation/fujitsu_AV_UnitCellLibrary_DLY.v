@@ -275,14 +275,14 @@ module FDN_DLY 	( input D,
               output reg Q,
               output Qn);
 	
-    //assign #0.55 Qn = ~Q;
-    assign Qn = ~Q;
+    assign #0.55 Qn = ~Q;
+    //assign Qn = ~Q;
 
 	always @ (posedge CK or negedge Sn) 
         if (!Sn)
             Q <= #2.82 1'b1;
         else
-            Q <= #6.10 D;
+            Q <= #3.46  D;
 endmodule
 
 //Cell Name: FDO
@@ -294,14 +294,14 @@ module FDO_DLY 	( input D,
               output reg Q,
               output Qn);
 	
-    //assigN #0.55 Qn = ~Q;
-    assign Qn = ~Q;
+    assign #0.55 Qn = ~Q;
+    //assign Qn = ~Q;
 
 	always @ (posedge CK or negedge Rn) 
         if (!Rn)
             Q <= #2.72 1'b0; //#2.72
         else
-            Q <= #5.96 D;
+            Q <= #3.46 D;
 endmodule
 
 //Cell Name: FDQ
