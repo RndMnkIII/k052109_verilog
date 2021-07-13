@@ -34,7 +34,7 @@ module dff_as_tff_tb;
     wire J110;
     assign #3.50 J110 = K141_Qn ^ J114_Q; //k141_Qn, J114_Qn original values
     wire J121;
-    assign #3.31 J121 = J114_Qn; // J114_Q original value
+    assign #1.20 J121 = J114_Qn; // J114_Q original value, #3.31 tweaked to 1.20ns
     
 
     wire J109;
