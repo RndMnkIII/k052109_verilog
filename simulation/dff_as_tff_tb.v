@@ -19,26 +19,27 @@ module dff_as_tff_tb;
 
     //Clock divider using DFF
     wire K141_Q, K141_Qn;
-    FDN_DLY k141(.D(K141_Qn), .Sn(res_sync), .CK(clock), .Q(K141_Q), .Qn(K141_Qn));
+    FDN_DLY k141(.D(K141_Qn), .Sn(res_sync), .CK(clock), .Q(K141_Q), .Qn(K141_Qn)); //.D(K141_Qn) original value
     wire M15; //Logic Cell K1B
-    assign #1.26 M15 = K141_Q;
+    //K141_Q?
+    assign #1.26 M15 = K141_Q; //K141_Q original value
 
     wire M12;
     assign M12 = M15; //*** OUTPUT SIGNAL M12 *** TWEAKED VALUE: original should be 0ns delay
-    wire M12n;
-    assign M12n = K141_Qn;
+    wire M12n; //K141_Q?
+    assign M12n = K141_Qn; //K141_Qn original value
 
     //This works as T Flip Flop for clock divide.
     wire J114_Q, J114_Qn;
     FDN_DLY j114(.D(J110), .Sn(res_sync), .CK(clock), .Q(J114_Q), .Qn(J114_Qn));
     wire J110;
-    assign #3.50 J110 = K141_Qn ^ J114_Q; //k141_Qn, J114_Qn original values
+    assign #3.50 J110 = K141_Qn ^ J114_Q; //k141_Qn, J114_Qn original values, ***TWEAK J114_Q ***
     wire J121;
-    assign #1.20 J121 = J114_Qn; // J114_Q original value, #3.31 tweaked to 1.20ns
+    assign #3.31 J121 = J114_Qn; // J114_Q original value, #3.31 tweaked to 1.20ns ***TWEAK J114_Qn ***
     
 
-    wire J109;
-    assign #0.71 J109 = ~(K141_Qn & J114_Q); //~(K141_Qn & J114_Qn) original values
+    wire J109; //K141_Q?
+    assign #0.71 J109 = ~(K141_Qn & J114_Q); //~(K141_Qn & J114_Qn) original values ***TWEAK J114_Q ***
 
     //This works as T Flip Flop for clock divide.
     wire J94_Q, J94_Qn;
@@ -48,14 +49,14 @@ module dff_as_tff_tb;
 
     //??
     wire J78;
-    assign #0.55 J78 = ~clock;
+    assign #0.55 J78 = clock;
     wire J79_Q, J79_Qn;
     FDE_DLY j79 (.D(J94_Q), .CLn(res_sync), .CK(J78), .Q(J79_Q), .Qn(J79_Qn)); //FIXED, original was J94_Qn
 
 
 
     wire K117;
-    assign #0.55 K117 = ~ J94_Q; //FIXED, original was J94_Qn
+    assign #0.55 K117 = ~J94_Q; //FIXED, original was J94_Qn
     wire L80; //Logic Cell V2B
     assign #0.64 L80 = ~K117;
 
@@ -104,10 +105,8 @@ module dff_as_tff_tb;
 
     wire H78; //Logic Cell V1N
     assign #0.55 H78 = ~PQ;
-
     wire H79_Q;
     FDO_DLY h79(.D(H78), .Rn(J79_Q), .CK(J121), .Q(H79_Q)); //.Rn(J79_Q) original value
-
     wire E143; //Logic Cell R2P
     assign #1.97 E143 = H79_Q | RMRD;
     wire VDE; //Output signal

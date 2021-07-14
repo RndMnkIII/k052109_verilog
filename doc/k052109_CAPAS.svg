@@ -58,9 +58,9 @@
      fit-margin-right="0"
      fit-margin-top="0"
      id="base"
-     inkscape:current-layer="layer2"
-     inkscape:cx="1956.5194"
-     inkscape:cy="2559.3713"
+     inkscape:current-layer="layer1"
+     inkscape:cx="1821.5423"
+     inkscape:cy="3296.098"
      inkscape:document-units="mm"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
@@ -71,7 +71,7 @@
      inkscape:window-width="1920"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
-     inkscape:zoom="2.0004913"
+     inkscape:zoom="1.8185139"
      pagecolor="#ffffff"
      showgrid="true"
      inkscape:pagecheckerboard="0">
@@ -42177,6 +42177,58 @@
       <desc
          id="desc11521">RA3</desc>
     </path>
+    <rect
+       height="2"
+       id="cellrectM12"
+       style="display:inline;opacity:1;fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;paint-order:markers fill stroke"
+       width="12"
+       x="617.43927"
+       y="315.19275" />
+    <text
+       id="celltextM12"
+       style="display:inline;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.5px;line-height:100%;font-family:'Bitstream Vera Sans Mono';-inkscape-font-specification:'Bitstream Vera Sans Mono, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       x="618.43927"
+       xml:space="preserve"
+       y="316.69275"><tspan
+         id="celltspanM12"
+         style="line-height:100%"
+         x="618.43927"
+         y="316.69275">M12     V2B</tspan></text>
+    <path
+       style="display:inline;opacity:1;vector-effect:none;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#ff8200;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke"
+       d="m 443.43927,680.19274 h 11 v 84.99999 h 18 v 9.00001 h 86.99999 v 49.99998 h 21.00001 v 3.00001 h 0.99999"
+       id="path8630"
+       inkscape:connector-curvature="0" />
+    <path
+       style="display:inline;opacity:1;vector-effect:none;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#e7b1ff;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke"
+       d="m 515.43927,860.19272 h -28.00001 v 61.00001 h 4 v 2.00001"
+       id="path11096"
+       inkscape:connector-curvature="0">
+      <desc
+         id="desc11657">COL4</desc>
+    </path>
+    <path
+       style="display:inline;opacity:1;vector-effect:none;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#00ff21;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke"
+       d="m 443.43927,720.19274 h 12 v 135.99999 h 17 v 3 h 36.99999"
+       id="path11094"
+       inkscape:connector-curvature="0" />
+    <text
+       id="celltextJ148"
+       style="display:inline;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.5px;line-height:100%;font-family:'Bitstream Vera Sans Mono';-inkscape-font-specification:'Bitstream Vera Sans Mono, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       x="510.43927"
+       xml:space="preserve"
+       y="860.69275"><tspan
+         id="celltspanJ148"
+         style="line-height:100%"
+         x="510.43927"
+         y="860.69275">J148    V1N</tspan></text>
+    <rect
+       height="2"
+       id="cellrectJ148"
+       style="display:inline;opacity:1;fill:#00ff00;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;paint-order:markers fill stroke"
+       width="12"
+       x="509.43927"
+       y="859.19275" />
   </g>
   <g
      inkscape:groupmode="layer"
@@ -42190,7 +42242,7 @@
       <rect
          height="26"
          id="cellrectJ114"
-         style="display:inline;opacity:1;fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;paint-order:markers fill stroke"
+         style="display:inline;opacity:1;fill:#8c53d1;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;paint-order:markers fill stroke"
          width="12"
          x="509.43927"
          y="723.19275" />
@@ -42242,7 +42294,7 @@
       <rect
          height="26"
          id="cellrectJ94"
-         style="display:inline;opacity:1;fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;paint-order:markers fill stroke"
+         style="display:inline;opacity:1;fill:#f9007e;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;paint-order:markers fill stroke"
          width="12"
          x="509.43927"
          y="643.19275" />
@@ -42257,12 +42309,14 @@
            x="510.43927"
            y="644.69275">J94     FDN</tspan></text>
       <path
-         id="J94_Q_"
+         id="J94_Q"
          style="display:inline;opacity:1;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#eacb15;stroke-width:0.8;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke"
          d="m 545.43926,767.19274 h -4.99999 v -32 m 4.99999,0 h -4.99999 v -65 h -18 v -1 h -7 -7.00001 v -10 h -18 v -72.00001 h 19"
-         inkscape:label="J94_Q?">
+         inkscape:label="J94_Q">
+        <desc
+           id="desc15718">FIXED, instead of J94_Qn</desc>
         <title
-           id="title91523">J94_Q?</title>
+           id="title91523">J94_Q</title>
       </path>
       <path
          style="display:inline;opacity:1;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#00ecff;stroke-width:0.8;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke"
@@ -42301,16 +42355,6 @@
            style="line-height:100%"
            x="510.43927"
            y="672.69275">J101    X2B</tspan></text>
-      <path
-         id="K141_Qn"
-         style="display:inline;opacity:1;vector-effect:none;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#6700ff;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke"
-         d="m 524.43928,835.19272 v -6.99997 h -2.00001 v -1.00002 h -13.00001 m 42.00001,29.99999 h -7 v -2.99998 h -19.99999 v -19.00002 h 20.99998 m -54,-120 v -11.99999 h 18 m 0,124 h -1 v -7 h -17 V 715.19272 h 18"
-         inkscape:label="K141_Qn">
-        <desc
-           id="desc124665">Also M12n</desc>
-        <title
-           id="title19255">K141_Qn</title>
-      </path>
       <path
          id="J114_Qn"
          style="display:inline;opacity:1;vector-effect:none;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#00c2ff;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke"
@@ -42429,7 +42473,7 @@
       <rect
          height="38"
          id="cellrectN122"
-         style="display:inline;opacity:1;fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;paint-order:markers fill stroke"
+         style="display:inline;opacity:1;fill:#009abf;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;paint-order:markers fill stroke"
          width="12"
          x="653.43927"
          y="755.19275"
@@ -42540,7 +42584,7 @@
       <rect
          height="26"
          id="cellrectK141"
-         style="display:inline;opacity:1;fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;paint-order:markers fill stroke"
+         style="display:inline;opacity:1;fill:#8c53d1;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;paint-order:markers fill stroke"
          width="12"
          x="545.43927"
          y="831.19275" />
@@ -42705,7 +42749,7 @@ K77_DD</desc>
       <rect
          height="26"
          id="cellrectJ140"
-         style="display:inline;opacity:1;fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;paint-order:markers fill stroke"
+         style="display:inline;opacity:1;fill:#b8a900;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;paint-order:markers fill stroke"
          width="12"
          x="509.43927"
          y="827.19275">
@@ -42734,40 +42778,10 @@ K77_DD</desc>
         <desc
            id="desc21802">J140_Q</desc>
       </path>
-      <path
-         style="display:inline;opacity:1;vector-effect:none;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#e7b1ff;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke"
-         d="m 515.43927,860.19272 h -28.00001 v 61.00001 h 4 v 2.00001"
-         id="path11096"
-         inkscape:connector-curvature="0">
-        <desc
-           id="desc11657">COL4</desc>
-      </path>
-      <path
-         style="display:inline;opacity:1;vector-effect:none;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#00ff21;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke"
-         d="m 443.43927,720.19274 h 12 v 135.99999 h 17 v 3 h 36.99999"
-         id="path11094"
-         inkscape:connector-curvature="0" />
-      <rect
-         height="2"
-         id="cellrectJ148"
-         style="display:inline;opacity:1;fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;paint-order:markers fill stroke"
-         width="12"
-         x="509.43927"
-         y="859.19275" />
-      <text
-         id="celltextJ148"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.5px;line-height:100%;font-family:'Bitstream Vera Sans Mono';-inkscape-font-specification:'Bitstream Vera Sans Mono, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;display:inline;fill:#000000;fill-opacity:1;stroke:none"
-         x="510.43927"
-         xml:space="preserve"
-         y="860.69275"><tspan
-           id="celltspanJ148"
-           style="line-height:100%"
-           x="510.43927"
-           y="860.69275">J148    V1N</tspan></text>
       <rect
          height="38"
          id="cellrectJ79"
-         style="display:inline;opacity:1;fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;paint-order:markers fill stroke"
+         style="display:inline;opacity:1;fill:#009abf;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;paint-order:markers fill stroke"
          width="12"
          x="509.43927"
          y="583.19275" />
@@ -42793,7 +42807,7 @@ K77_DD</desc>
       <rect
          height="2"
          id="cellrectJ78"
-         style="display:inline;opacity:1;fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;paint-order:markers fill stroke"
+         style="display:inline;opacity:1;fill:#00ff00;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;paint-order:markers fill stroke"
          width="12"
          x="509.43927"
          y="579.19275" />
@@ -42841,7 +42855,7 @@ K77_DD</desc>
       <rect
          height="26"
          id="cellrectK123"
-         style="display:inline;opacity:1;fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;paint-order:markers fill stroke"
+         style="display:inline;opacity:1;fill:#b8a900;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;paint-order:markers fill stroke"
          width="12"
          x="545.43927"
          y="759.19275">
@@ -42858,15 +42872,10 @@ K77_DD</desc>
            style="line-height:100%"
            x="546.43927"
            y="760.69275">K123    FDO</tspan></text>
-      <path
-         style="display:inline;opacity:1;vector-effect:none;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#ff8200;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke"
-         d="m 443.43927,680.19274 h 11 v 84.99999 h 18 v 9.00001 h 86.99999 v 49.99998 h 21.00001 v 3.00001 h 0.99999"
-         id="path8630"
-         inkscape:connector-curvature="0" />
       <rect
          height="26"
          id="cellrectK130"
-         style="display:inline;opacity:1;fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;paint-order:markers fill stroke"
+         style="display:inline;opacity:1;fill:#b8a900;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;paint-order:markers fill stroke"
          width="12"
          x="545.43927"
          y="787.19275" />
@@ -42883,7 +42892,7 @@ K77_DD</desc>
       <rect
          height="26"
          id="cellrectK148"
-         style="display:inline;opacity:1;fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;paint-order:markers fill stroke"
+         style="display:inline;opacity:1;fill:#b8a900;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;paint-order:markers fill stroke"
          width="12"
          x="545.43927"
          y="859.19275" />
@@ -42937,7 +42946,7 @@ K77_DD</desc>
       <rect
          height="2"
          id="cellrectL78"
-         style="display:inline;opacity:1;fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;paint-order:markers fill stroke"
+         style="display:inline;opacity:1;fill:#00ff00;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;paint-order:markers fill stroke"
          width="12"
          x="581.43927"
          y="579.19275" />
@@ -42973,7 +42982,7 @@ K77_DD</desc>
       <rect
          height="2"
          id="cellrectL80"
-         style="display:inline;opacity:1;fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;paint-order:markers fill stroke"
+         style="display:inline;opacity:1;fill:#00ff00;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;paint-order:markers fill stroke"
          width="12"
          x="581.43927"
          y="587.19275" />
@@ -42990,7 +42999,7 @@ K77_DD</desc>
       <rect
          height="2"
          id="cellrectL82"
-         style="display:inline;opacity:1;fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;paint-order:markers fill stroke"
+         style="display:inline;opacity:1;fill:#00ff00;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;paint-order:markers fill stroke"
          width="12"
          x="581.43927"
          y="595.19275" />
@@ -43043,7 +43052,7 @@ K77_DD</desc>
       <rect
          height="2"
          id="cellrectL119"
-         style="display:inline;opacity:1;fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;paint-order:markers fill stroke"
+         style="display:inline;opacity:1;fill:#00ff00;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;paint-order:markers fill stroke"
          width="12"
          x="581.43927"
          y="743.19275" />
@@ -43071,7 +43080,7 @@ K77_DD</desc>
       <rect
          height="38"
          id="cellrectL120"
-         style="display:inline;opacity:1;fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;paint-order:markers fill stroke"
+         style="display:inline;opacity:1;fill:#009abf;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;paint-order:markers fill stroke"
          width="12"
          x="581.43927"
          y="747.19275">
@@ -43103,7 +43112,7 @@ K77_DD</desc>
       <rect
          height="2"
          id="cellrectH78"
-         style="display:inline;opacity:1;fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;paint-order:markers fill stroke"
+         style="display:inline;opacity:1;fill:#00ff00;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;paint-order:markers fill stroke"
          width="12"
          x="473.43927"
          y="579.19275" />
@@ -43132,7 +43141,7 @@ K77_DD</desc>
       <rect
          height="26"
          id="cellrectH79"
-         style="display:inline;opacity:1;fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;paint-order:markers fill stroke"
+         style="display:inline;opacity:1;fill:#b8a900;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;paint-order:markers fill stroke"
          width="12"
          x="473.43927"
          y="583.19275" />
@@ -43267,23 +43276,6 @@ K77_DD</desc>
            id="desc11561">PE</desc>
       </path>
       <rect
-         height="2"
-         id="cellrectM12"
-         style="display:inline;opacity:1;fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;paint-order:markers fill stroke"
-         width="12"
-         x="617.43927"
-         y="315.19275" />
-      <text
-         id="celltextM12"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.5px;line-height:100%;font-family:'Bitstream Vera Sans Mono';-inkscape-font-specification:'Bitstream Vera Sans Mono, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;display:inline;fill:#000000;fill-opacity:1;stroke:none"
-         x="618.43927"
-         xml:space="preserve"
-         y="316.69275"><tspan
-           id="celltspanM12"
-           style="line-height:100%"
-           x="618.43927"
-           y="316.69275">M12     V2B</tspan></text>
-      <rect
          height="6"
          id="cellrectE143"
          style="display:inline;opacity:1;fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;paint-order:markers fill stroke"
@@ -43328,7 +43320,7 @@ K77_DD</desc>
       <rect
          height="2"
          id="cellrectC92"
-         style="display:inline;opacity:1;fill:#00ff00;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;paint-order:markers fill stroke"
+         style="display:inline;opacity:1;fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;paint-order:markers fill stroke"
          width="12"
          x="293.43927"
          y="635.19275" />
@@ -43690,7 +43682,7 @@ K77_DD</desc>
       <rect
          height="102"
          id="cellrectK77"
-         style="display:inline;opacity:1;fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;paint-order:markers fill stroke"
+         style="display:inline;opacity:1;fill:#657ad0;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;paint-order:markers fill stroke"
          width="12"
          x="545.43927"
          y="575.19275" />
@@ -43714,15 +43706,6 @@ K77_DD</desc>
            id="desc7240">FIXED, instead of J94_Q</desc>
         <title
            id="title7238">J94_Qn</title>
-      </path>
-      <path
-         id="RES_SYNC3n"
-         style="display:inline;opacity:1;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#84a9ff;stroke-width:0.8;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.48;stroke-opacity:0.550607;paint-order:markers fill stroke;image-rendering:optimizeSpeed"
-         d="m 669.43925,483.19274 v 78.99999 l -38.99998,2e-5 v 0.99999 h -13 -37 v 1 h -16 v 10 h -6 v 1 h -13 m -10e-6,0 h -0.99999 v 0.99999 h -19.99999 v 14.00001 h -2.00001 v 0.99999 h -13.00001 -19.99999 v 66.00001 h 20 m -20,-10e-6 10e-6,78.00002 h 18.99999 v 1.99999 h 1 13 v 1 h 21 v 31 h 2 m -2,75.99999 v 24.00001 h 1.99999 m -1.99999,-32.00001 v 8 h 1.99999 m -1.99999,-48 v 40 h -22 m 22,-68 v 28 h 1.99999 m 0,-28 h 13.00001 v -1 h 7.99999 v -13.00001 h 15 l 14.00001,2e-5 v 1 h 40 v 33 h 17 v 3 h 7 m 9.99998,-321 v 12 h 20.00001 m 0,-144 h -0.99999 v 1 h -19.00002 v 131 h 20.00001">
-        <title
-           id="title11149">RES_SYNC3n</title>
-        <desc
-           id="desc21150">N122</desc>
       </path>
       <path
          style="display:inline;opacity:1;vector-effect:none;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#9a9aff;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke"
@@ -43794,6 +43777,25 @@ K77_DD</desc>
            id="title115786">PQ</title>
         <desc
            id="desc21023">PQ</desc>
+      </path>
+      <path
+         id="K141_Qn"
+         style="display:inline;opacity:1;vector-effect:none;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#6700ff;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke"
+         d="m 524.43928,835.19272 v -6.99997 h -2.00001 v -1.00002 h -13.00001 m 42.00001,29.99999 h -7 v -2.99998 h -19.99999 v -19.00002 h 20.99998 m -54,-120 v -11.99999 h 18 m 0,124 h -1 v -7 h -17 V 715.19272 h 18"
+         inkscape:label="K141_Qn">
+        <desc
+           id="desc124665">Also M12n</desc>
+        <title
+           id="title19255">K141_Qn</title>
+      </path>
+      <path
+         id="RES_SYNC3n"
+         style="display:inline;opacity:1;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#84a9ff;stroke-width:0.8;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.48;stroke-opacity:0.550607;paint-order:markers fill stroke;image-rendering:optimizeSpeed"
+         d="m 669.43925,483.19274 v 78.99999 l -38.99998,2e-5 v 0.99999 h -13 -37 v 1 h -16 v 10 h -6 v 1 h -13 m -10e-6,0 h -0.99999 v 0.99999 h -19.99999 v 14.00001 h -2.00001 v 0.99999 h -13.00001 -19.99999 v 66.00001 h 20 m -20,-10e-6 10e-6,78.00002 h 18.99999 v 1.99999 h 1 13 v 1 h 21 v 31 h 2 m -2,75.99999 v 24.00001 h 1.99999 m -1.99999,-32.00001 v 8 h 1.99999 m -1.99999,-48 v 40 h -22 m 22,-68 v 28 h 1.99999 m 0,-28 h 13.00001 v -1 h 7.99999 v -13.00001 h 15 l 14.00001,2e-5 v 1 h 40 v 33 h 17 v 3 h 7 m 9.99998,-321 v 12 h 20.00001 m 0,-144 h -0.99999 v 1 h -19.00002 v 131 h 20.00001">
+        <title
+           id="title11149">RES_SYNC3n</title>
+        <desc
+           id="desc21150">N122</desc>
       </path>
     </g>
     <path

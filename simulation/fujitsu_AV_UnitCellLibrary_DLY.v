@@ -231,7 +231,7 @@ module FDE_DLY 	( input D,
         if (!CLn)
             Q <= #5.13 1'b0;
         else
-            Q <= #6.23 D;
+            Q <= #5.13 D;
 endmodule
 
 //Cell Name: FDG
@@ -243,7 +243,8 @@ module FDG_DLY 	( input D,
               output reg Q,
               output Qn);
 	
-    assign #0.55 Qn = ~Q;
+    //assign #0.55 Qn = ~Q;
+    assign Qn = ~Q;
 
 	always @ (posedge CK or negedge CLn) 
         if (!CLn)
@@ -275,14 +276,14 @@ module FDN_DLY 	( input D,
               output reg Q,
               output Qn);
 	
-    assign #0.55 Qn = ~Q;
-    //assign Qn = ~Q;
+    //assign #0.55 Qn = ~Q;
+    assign Qn = ~Q;
 
 	always @ (posedge CK or negedge Sn) 
         if (!Sn)
-            Q <= #2.82 1'b1;
+            Q <= #5.16 1'b1;
         else
-            Q <= #3.46  D;
+            Q <= #5.16  D;
 endmodule
 
 //Cell Name: FDO
