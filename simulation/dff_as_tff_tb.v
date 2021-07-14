@@ -37,7 +37,6 @@ module dff_as_tff_tb;
     wire J121;
     assign #3.31 J121 = J114_Qn; // J114_Q original value, #3.31 tweaked to 1.20ns ***TWEAK J114_Qn ***
     
-
     wire J109; //K141_Q?
     assign #0.71 J109 = ~(K141_Qn & J114_Q); //~(K141_Qn & J114_Qn) original values ***TWEAK J114_Q ***
 
@@ -52,9 +51,10 @@ module dff_as_tff_tb;
     assign #0.55 J78 = clock;
     wire J79_Q, J79_Qn;
     FDE_DLY j79 (.D(J94_Q), .CLn(res_sync), .CK(J78), .Q(J79_Q), .Qn(J79_Qn)); //FIXED, original was J94_Qn
-
-
-
+    
+    wire K123_Q, K123_Qn;
+    FDO_DLY k123(.D(J94_Q),.Rn(res_sync), .CK(clock), .Q(K123_Q), .Qn(K123_Qn)); //FIXED, original was J94_Qn
+    
     wire K117;
     assign #0.55 K117 = ~J94_Q; //FIXED, original was J94_Qn
     wire L80; //Logic Cell V2B
@@ -79,11 +79,14 @@ module dff_as_tff_tb;
 
 
     wire K123_Q, K123_Qn;
-    FDO_DLY k123(.D(J94_Q),.Rn(res_sync), .CK(clock), .Q(K123_Q), .Qn(K123_Qn)); //FIXED, original was j94_Qn
+    FDO_DLY k123(.D(J94_Q),.Rn(res_sync), .CK(clock), .Q(K123_Q), .Qn(K123_Qn)); //FIXED, original was J94_Qn
 
     wire K148_Q;
     wire K148_Qn;
     FDO_DLY k148(.D(K123_Q),.Rn(res_sync), .CK(clock), .Q(K148_Q), .Qn(K148_Qn) ); //K123_Q original value
+
+    wire K130_Q;
+    FDO_DLY k130(.D(K148_Q),.Rn(res_sync), .CK(clock), .Q(K130_Q));
 
     wire L120_Q;
     wire L120_Qn;
@@ -94,13 +97,35 @@ module dff_as_tff_tb;
     assign #1.26 M13 = L120_Q; //L120_Q original value
     assign PE = M13; //*** OUTPUT SIGNAL PE ***
 
+
+    wire K119; //Logic Cell N3N
+    assign #0.83 K119 = ~(NRD & K123_Qn & K130_Q);
+    
+    wire K114; //Logic Cell N3N
+    assign #0.83 K114 = ~(NRD & K117 & K123_Qn);
+
+    wire K121; //Logic Cell N2P
+    assign #1.41 K121 = (NRD & K123_Q);
+
     wire [3:0] K77_Q;
-    FDR_DLY k77( .D({1'b0, 1'b0, 1'b0, K117}), .CLn(res_sync), .CK(clock), .Q(K77_Q));
+    FDR_DLY k77( .D({K121, K114, K119, K117}), .CLn(res_sync), .CK(clock), .Q(K77_Q));
 
     wire PQ; //PQ output signal
     wire K110; //Logic Cell K1B
     assign #1.26 K110 = K77_Q[0]; //#1.26
     assign PQ = K110; //*** OUTPUT SIGNAL PQ ***
+    wire K72; //Logic Cell K1B
+    assign #1.26 K72 = K77_Q[1];
+    wire WRP;
+    assign WRP = K72; //*** OUTPUT SIGNAL WRP ***
+    wire K55; //Logic Cell K1B
+    assign #1.26 K55 = K77_Q[2];
+    wire WREN;
+    assign WREN = K55; //*** OUTPUT SIGNAL WREN ***
+    wire K112; //Logic Cell K1B
+    assign #1.26 K112 = K77_Q[3];
+    wire RDEN;
+    assign RDEN = K112; //*** OUTPUT SIGNAL RDEN ***
 
 
     wire H78; //Logic Cell V1N
@@ -129,7 +154,7 @@ module dff_as_tff_tb;
     //always #20.833 clock= ~clock; //24Mhz clock
 
 	initial begin
-        reset = 0; RMRD=0; CRCS=1; REG1C00 = 8'h00; NRD = 0;
+        reset = 0; RMRD=0; CRCS=1; REG1C00 = 8'h00; NRD = 1;
         #30;
         reset = 1;
         #190;
