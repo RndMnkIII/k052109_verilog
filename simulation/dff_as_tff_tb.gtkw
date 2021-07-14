@@ -1,17 +1,17 @@
 [*]
 [*] GTKWave Analyzer v3.3.107 (w)1999-2020 BSI
-[*] Wed Jul 14 16:32:01 2021
+[*] Wed Jul 14 17:52:02 2021
 [*]
 [dumpfile] "/Users/javier/ARCADE_PCB/k052109_verilog/simulation/dff_as_tff_tb.lxt"
-[dumpfile_mtime] "Wed Jul 14 15:25:39 2021"
+[dumpfile_mtime] "Wed Jul 14 17:51:48 2021"
 [dumpfile_size] 4179
 [savefile] "/Users/javier/ARCADE_PCB/k052109_verilog/simulation/dff_as_tff_tb.gtkw"
-[timestart] 553700
+[timestart] 0
 [size] 1920 1052
 [pos] -1 -1
-*-16.545553 866420 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-18.545553 148470 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [sst_width] 41
-[signals_width] 358
+[signals_width] 190
 [sst_expanded] 0
 [sst_vpaned_height] 80
 @28
@@ -62,17 +62,24 @@ dff_as_tff_tb.K117[0]
 -
 -
 -
-@c00200
+@800200
 -PQ gen
 @28
 dff_as_tff_tb.K117[0]
-@22
+@c00022
 dff_as_tff_tb.K77_Q[3:0]
+@28
+(0)dff_as_tff_tb.K77_Q[3:0]
+(1)dff_as_tff_tb.K77_Q[3:0]
+(2)dff_as_tff_tb.K77_Q[3:0]
+(3)dff_as_tff_tb.K77_Q[3:0]
+@1401200
+-group_end
 @28
 dff_as_tff_tb.K110[0]
 [color] 3
 dff_as_tff_tb.PQ[0]
-@1401200
+@1000200
 -PQ gen
 @200
 -
@@ -91,9 +98,9 @@ dff_as_tff_tb.PE[0]
 -PE gen
 @200
 -
-@c00200
+@800200
 -VDE gen
-@28
+@29
 dff_as_tff_tb.M12[0]
 [color] 1
 +{J121_to_H79CLK} dff_as_tff_tb.J121[0]
@@ -105,11 +112,16 @@ dff_as_tff_tb.RMRD[0]
 dff_as_tff_tb.E143[0]
 [color] 3
 dff_as_tff_tb.VDE[0]
-@1401200
+@1000200
 -VDE gen
 @200
 -
+@800200
+-All clock signals
 @28
+dff_as_tff_tb.clock[0]
+dff_as_tff_tb.M12[0]
+dff_as_tff_tb.reset[0]
 [color] 3
 dff_as_tff_tb.M12[0]
 [color] 3
@@ -118,11 +130,11 @@ dff_as_tff_tb.PQ[0]
 dff_as_tff_tb.PE[0]
 [color] 3
 dff_as_tff_tb.VDE[0]
-@29
 dff_as_tff_tb.WRP[0]
-@28
 dff_as_tff_tb.WREN[0]
 dff_as_tff_tb.RDEN[0]
+@1000200
+-All clock signals
 @200
 -
 @c00200

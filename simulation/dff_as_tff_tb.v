@@ -75,12 +75,6 @@ module dff_as_tff_tb;
     wire C92; //R2N
     assign #0.87 C92 = ~(L83 | REG1C00[5]);
 
-
-
-
-    wire K123_Q, K123_Qn;
-    FDO_DLY k123(.D(J94_Q),.Rn(res_sync), .CK(clock), .Q(K123_Q), .Qn(K123_Qn)); //FIXED, original was J94_Qn
-
     wire K148_Q;
     wire K148_Qn;
     FDO_DLY k148(.D(K123_Q),.Rn(res_sync), .CK(clock), .Q(K148_Q), .Qn(K148_Qn) ); //K123_Q original value
