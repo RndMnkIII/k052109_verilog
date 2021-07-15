@@ -199,7 +199,7 @@ module k052109_DLY (
     FDO_DLY k130(.D(K148_Q),.Rn(RES_SYNC3n), .CK(M24), .Q(K130_Q));
 
     wire K123_Q, K123_Qn;
-    FDO_DLY k123(.D(J94_Q),.Rn(RES_SYNC3n), .CK(M24), .Q(K123_Q), .Qn(K123_Qn)); //FDO_DLY k123(.D(J94_Qn),.Rn(RES_SYNC3n), .CK(M24), .Q(K123_Q), .Qn(K123_Qn));
+    FDO_DLY k123(.D(J94_Q),.Rn(RES_SYNC3n), .CK(M24), .Q(K123_Q), .Qn(K123_Qn));//FIXED, original was J94_Qn
 
     wire K119; //Logic Cell N3N
     assign #0.83 K119 = ~(NRD & K123_Qn & K130_Q);
@@ -239,22 +239,20 @@ module k052109_DLY (
     assign M12 = M15; //*** OUTPUT SIGNAL M12 ***
     wire M12n;
     assign M12n = K141_Qn;
- 
-
-    wire J110; //Logic Cell X2B
-    assign #3.50 J110 = K141_Qn ^ J114_Qn; //K141_Qn ^ J114_Qn;
 
     wire J114_Q, J114_Qn;
     FDN_DLY j114(.D(J110), .Sn(RES_SYNC3n), .CK(M24), .Q(J114_Q), .Qn(J114_Qn));
 
-    wire J109; //Logic Cell N2N
-    assign #0.71 J109 = ~(K141_Qn & J114_Qn); //assign #0.71 J109 = ~(K141_Qn & J114_Qn);
-
-    wire J121; //Logic Cell KCB
-    assign #3.31 J121 = J114_Q; //*** CLOCK TREE J121 *** // assign #3.31 J121 = J114_Q; //*** CLOCK TREE J121 ***
+    wire J110; //Logic Cell X2B
+    assign #3.50 J110 = K141_Qn ^ J114_Q; //k141_Qn, J114_Qn original values, ***TWEAK J114_Q ***
+    wire J121;
+    assign #3.31 J121 = J114_Qn; // J114_Q original value, #3.31 tweaked to 1.20ns ***TWEAK J114_Qn ***
+    
+    wire J109; //K141_Q?
+    assign #0.71 J109 = ~(K141_Qn & J114_Q); //~(K141_Qn & J114_Qn) original values ***TWEAK J114_Q ***
 
     wire J101; //Logic Cell X2B
-    assign #3.50 J101 = (J109 ^ J94_Qn); //(J109 ^ J94_Q); FIXED WITH J94_Qn
+    assign #3.50 J101 = (J109 ^ J94_Qn); //FIXED, original was J94_Q
 
     wire J94_Q, J94_Qn;
     FDN_DLY j94(.D(J101), .Sn(RES_SYNC3n), .CK(M24), .Q(J94_Q), .Qn(J94_Qn));
@@ -263,11 +261,9 @@ module k052109_DLY (
     assign #0.55 J78 = ~M24;
 
     wire J79;//CK is a inverted M24
-    FDE_DLY j79(.D(J94_Q), .CLn(RES_SYNC3n), .CK(J78), .Q(J79)); //FDE_DLY j79(.D(J94_Qn), .CLn(RES_SYNC3n), .CK(J78), .Q(J79));
-
+    FDE_DLY j79(.D(J94_Q), .CLn(RES_SYNC3n), .CK(J78), .Q(J79)); //FIXED, original was J94_Qn
     wire K117; //Logic Cell V1N
-    assign #0.55 K117 = ~J94_Qn; //K117 = ~J94_Qn;
-
+    assign #0.55 K117 = ~J94_Q; //FIXED, original was J94_Qn
     wire L80; //Logic Cell V2B
     assign #0.64 L80 = ~K117;
 
@@ -867,7 +863,7 @@ module k052109_DLY (
     assign #0.55 PXH0n = ~PXH0;
 
     wire N16_CO;
-    wire N16_QD, N16_QC, N16_QB, N16_QA;
+    wire [3:0] N16_Q;
     wire PXH1, PXH2;
     C43_DLY n16(.CK(J121),
                 .CLn(RES_SYNC2n),
@@ -875,10 +871,10 @@ module k052109_DLY (
                 .CI(H15),
                 .EN(H15),
                 .CO(N16_CO),
-                .Q({N16_QD,N16_QC,N16_QB, N16_QA}),
+                .Q(N16_Q),
                 .D({4{1'b0}}));
-    assign PXH1 = N16_QA;
-    assign PXH2 = N16_QB;
+    assign PXH1 = N16_Q[0];
+    assign PXH2 = N16_Q[1];
 
     wire [3:0] G29_Q;
     C43_DLY g29(.CK(J121),
@@ -901,14 +897,14 @@ module k052109_DLY (
 
     wire PXH3;
     wire PXH4;
-    assign PXH3 = N16_QC;
-    assign PXH4 = N16_QD;
+    assign PXH3 = N16_Q[2];
+    assign PXH4 = N16_Q[3];
 
     wire PXH3F; //Logic Cell X2B
-    assign #3.50 PXH3F = FLIP_SCREEN ^ N16_QC;
+    assign #3.50 PXH3F = FLIP_SCREEN ^ N16_Q[2];
 
     wire PXH4F; //Logic Cell X2B
-    assign #3.50 PXH4F = FLIP_SCREEN ^ N16_QD;
+    assign #3.50 PXH4F = FLIP_SCREEN ^ N16_Q[3];
 
     wire PXH5; //Logic Cell X2B
     assign #3.50 PXH5 = FLIP_SCREEN ^ G29_Q[0];

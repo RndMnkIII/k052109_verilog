@@ -48,7 +48,7 @@ module dff_as_tff_tb;
 
     //??
     wire J78;
-    assign #0.55 J78 = clock;
+    assign #0.55 J78 = ~clock; //FIXED BUG
     wire J79_Q, J79_Qn;
     FDE_DLY j79 (.D(J94_Q), .CLn(res_sync), .CK(J78), .Q(J79_Q), .Qn(J79_Qn)); //FIXED, original was J94_Qn
     
