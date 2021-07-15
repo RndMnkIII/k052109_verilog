@@ -927,25 +927,25 @@ module k052109_DLY (
 
     //* START Section 4.2. VERTICAL COUNTER signals *
     wire G11; //Logic Cell X2B
-    assign #3.50 G11 = LINE_END ^ G20_Qn;
+    assign #3.50 G11 = LINE_END ^ G20_Q;
 
     wire G20_Q, G20_Qn;
     FDO_DLY g20(.D(G11),.Rn(RES_SYNC2n), .CK(J121), .Q(G20_Q), .Qn(G20_Qn));
 
     wire TRIG_FIRQ; //Logic Cell V2B
-    assign #0.64 TRIG_FIRQ = ~G20_Qn;
+    assign #0.64 TRIG_FIRQ = ~G20_Q;
 
     wire H6; //Logic Cell R2P
-    assign #1.97 H6 = G20_Q | TEST_D15;
+    assign #1.97 H6 = G20_Qn | TEST_D15;
 
     wire H10; //Logic Cell N2P
-    assign #1.41 H10 = G20_Q & LINE_END;
+    assign #1.41 H10 = G20_Qn & LINE_END;
 
     wire H8; //Logic Cell R2P
     assign #1.97 H8 = H10 | TEST_D15;
 
     wire H4; //Logic Cell R2P
-    assign #1.97 H4 = TEST_D15 | G20_Q;
+    assign #1.97 H4 = TEST_D15 | G20_Qn;
 
     wire [3:0] J29_Q;
     wire J29_CO;
@@ -981,7 +981,7 @@ module k052109_DLY (
 
     //--G20--
     wire [7:0] ROW; //Logic Cell X2B
-    assign #3.50 ROW[0] = FLIP_SCREEN ^ G20_Q;
+    assign #3.50 ROW[0] = FLIP_SCREEN ^ G20_Qn;
 
     //--J29--
 
