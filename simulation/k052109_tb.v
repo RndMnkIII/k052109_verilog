@@ -13,7 +13,7 @@
 //gtkwave k052109_tb.lxt&
 
 `default_nettype none
-`timescale 1ns/1ps
+`timescale 1ns/10ps
 
 module k052109_tb;
     //Parameters for master clock
@@ -169,7 +169,7 @@ module k052109_tb;
             #mc_p; #mc_p; #mc_hp; #mc_qp;
             RES=1'b1;
             //#SIMULATION_TIME; //For test the RST signal, needs 8 NVBK cycles
-            #4_000_000;
+            #64700000; //one frame aprox.
             $finish;
         end
 endmodule

@@ -1,15 +1,15 @@
 [*]
 [*] GTKWave Analyzer v3.3.86 (w)1999-2017 BSI
-[*] Thu Jul 15 18:00:39 2021
+[*] Thu Jul 15 18:50:14 2021
 [*]
 [dumpfile] "/home/javier/k052109_verilog/simulation/k052109_tb.lxt"
-[dumpfile_mtime] "Thu Jul 15 17:39:38 2021"
-[dumpfile_size] 1142248
+[dumpfile_mtime] "Thu Jul 15 18:46:54 2021"
+[dumpfile_size] 322718832
 [savefile] "/home/javier/k052109_verilog/simulation/Page04_Counters.gtkw"
-[timestart] 65352000
+[timestart] 14613000000
 [size] 1920 1057
 [pos] -1 -1
-*-20.000000 69580597 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-29.000000 3027000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] k052109_tb.
 [sst_width] 213
 [signals_width] 222
@@ -62,7 +62,7 @@ k052109_tb.K052109_inst.G29_Q[3:0]
 -group_end
 @22
 k052109_tb.K052109_inst.N16_Q[3:0]
-@1001204
+@1001200
 -group_end
 @200
 -
@@ -93,18 +93,33 @@ k052109_tb.K052109_inst.G4_Q[0]
 @28
 k052109_tb.K052109_inst.LINE_END[0]
 k052109_tb.K052109_inst.G11[0]
-@29
 k052109_tb.K052109_inst.G20_Q[0]
 k052109_tb.K052109_inst.G20_Qn[0]
-@28
+[color] 3
 k052109_tb.K052109_inst.TRIG_FIRQ[0]
+@800024
+#{V_counter} (0)k052109_tb.K052109_inst.H29_Q[3:0] (1)k052109_tb.K052109_inst.H29_Q[3:0] (2)k052109_tb.K052109_inst.H29_Q[3:0] (3)k052109_tb.K052109_inst.H29_Q[3:0] (0)k052109_tb.K052109_inst.J29_Q[3:0] (1)k052109_tb.K052109_inst.J29_Q[3:0] (2)k052109_tb.K052109_inst.J29_Q[3:0] (3)k052109_tb.K052109_inst.J29_Q[3:0]
+@24
+k052109_tb.K052109_inst.ROW[7:0]
+@22
+k052109_tb.K052109_inst.H29_Q[3:0]
+k052109_tb.K052109_inst.J29_Q[3:0]
+@28
+k052109_tb.K052109_inst.HVOT[0]
+[color] 2
+k052109_tb.K052109_inst.TRIG_NMI[0]
+@29
+[color] 1
+k052109_tb.K052109_inst.TRIG_IRQ[0]
+@1001200
+-group_end
 @200
 -
 -4.3. Testing
 @28
 k052109_tb.K052109_inst.AA38[0]
 k052109_tb.K052109_inst.AA58[0]
-@1001204
+@1001200
 -group_end
 @200
 -

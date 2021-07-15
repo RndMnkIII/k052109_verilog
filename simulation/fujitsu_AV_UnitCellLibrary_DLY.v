@@ -398,7 +398,7 @@ module LT4_DLY ( input [3:0] D,
 
       always @*  
         if (!Gn) begin
-            $display("))) LT4 latched Gn=%b P=%b%b%b%b N=%b%b%b%b((( ", Gn, P[3],P[2],P[1],P[0],  N[3],N[2],N[1],N[0]);
+            //////$display("))) LT4 latched Gn=%b P=%b%b%b%b N=%b%b%b%b((( ", Gn, P[3],P[2],P[1],P[0],  N[3],N[2],N[1],N[0]);
             P <= #7.50 D; 
         end
 endmodule
@@ -427,7 +427,7 @@ module LTK_DLY ( input D,
       always @*  
         if (!Gn) begin
             Q <= #6.11 D; 
-            $display("))) LTK latched Gn=%b D=%b ((( ", Gn, D);
+            //////$display("))) LTK latched Gn=%b D=%b ((( ", Gn, D);
         end
 
 endmodule
@@ -511,23 +511,23 @@ module T5A_DLY ( input A1,
     always @ * begin
         casex (sel)
             6'b10xx10: begin 
-                //$display("<<<T5A CASE ~A1 >>>");
+                ////////$display("<<<T5A CASE ~A1 >>>");
                 out = ~A1; 
             end
             6'b10xx01: begin
-                //$display("<<<T5A CASE ~A2 >>>");
+                ////////$display("<<<T5A CASE ~A2 >>>");
                 out = ~A2;
             end
             6'b0110xx: begin
-                //$display("<<<T5A CASE ~B1 ~>>>");
+                ////////$display("<<<T5A CASE ~B1 ~>>>");
                 out = ~B1;
             end
             6'b0101xx: begin
-                //$display("<<<T5A CASE ~B2 >>>");
+                ////////$display("<<<T5A CASE ~B2 >>>");
                 out = ~B2;
             end
             default: begin
-                $display("<<<T5A Inhibit?>>>");
+                //////$display("<<<T5A Inhibit?>>>");
                 out = 1'bZ; //inhibit?
             end
         endcase
@@ -564,31 +564,31 @@ module T2B_DLY ( input A,
     always @ * begin
         casex (sel)
             4'b10xx: begin
-                //$display("<<< T2B CASE ~A >>>");
+                ////////$display("<<< T2B CASE ~A >>>");
                 out = ~A;
             end
             4'b01xx: begin
-                //$display("<<< T2B CASE ~B >>>");
+                ////////$display("<<< T2B CASE ~B >>>");
                 out = ~B;
             end
             4'b0010: begin
-                $display("<<< T2B Inhibit >>>");
+                //////$display("<<< T2B Inhibit >>>");
                 out = 1'bZ; //inhibit
             end
             4'b0001: begin
-                $display("<<< T2B Inhibit >>>");
+                //////$display("<<< T2B Inhibit >>>");
                 out = 1'bZ; //inhibit
             end
             4'b1110: begin
-                $display("<<< T2B Inhibit >>>");
+                //////$display("<<< T2B Inhibit >>>");
                 out = 1'bZ; //inhibit
             end
             4'b1101: begin
-                $display("<<< T2B Inhibit >>>");
+                //////$display("<<< T2B Inhibit >>>");
                 out = 1'bZ; //inhibit
             end
             default: begin
-                $display("<<< T2B x? >>>");
+                //////$display("<<< T2B x? >>>");
                 out = 1'bZ; //x??
             end 
         endcase
@@ -636,7 +636,7 @@ module T2C_DLY ( input A1,
                 out1 = ~B2;
             end
             default: begin
-                    $display("<<<T2C inhibit>>>");
+                    ////$display("<<<T2C inhibit>>>");
                     out0 = 1'bZ;
                     out1 = 1'bZ;
             end

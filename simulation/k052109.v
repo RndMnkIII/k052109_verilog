@@ -334,9 +334,9 @@ module k052109_DLY (
     wire CC59_Q;
     FDG_DLY cc59 (.D(ROW[2]), .CLn(RES_SYNCn), .CK(PXH1), .Q(CC59_Q));
     wire BB58_Xn;
-    always @* begin
-        if ((N16_QA_BUF2 === N16_QA_BUF3n) || (N16_QA_BUF3n === N16_QA_BUF2) || (N16_QB_BUF2 === N16_QB_BUF3n)) $display("*** BAD BB58 Sxx INPUT ***");
-    end
+    // always @* begin
+    //     if ((N16_QA_BUF2 === N16_QA_BUF3n) || (N16_QA_BUF3n === N16_QA_BUF2) || (N16_QB_BUF2 === N16_QB_BUF3n)) $display("*** BAD BB58 Sxx INPUT ***");
+    // end
     T5A_DLY bb58 (.A1(CC59_Q), .A2(CC59_Q), .B1(ROW_B[2]), .B2(ROW_A[2]), .S1n(N16_QA_BUF2), .S2(N16_QA_BUF3n), .S3n(N16_QA_BUF3n), .S4(N16_QA_BUF2), .S5n(N16_QB_BUF2), .S6(N16_QB_BUF3n), .Xn(BB58_Xn));
     wire M73; //Logic Cell V1N
     assign #0.55 M73 = ~BB58_Xn;
@@ -356,9 +356,9 @@ module k052109_DLY (
     wire CC68_Q;
     FDG_DLY cc68 (.D(CC39), .CLn(RES_SYNCn), .CK(PXH1), .Q(CC68_Q));
     wire BB63_Xn;
-    always @* begin
-        if ((N16_QA_BUF2 === N16_QA_BUF3n) || (N16_QA_BUF3n === N16_QA_BUF2) || (N16_QB_BUF2 === N16_QB_BUF3n)) $display("*** BAD BB63 Sxx INPUT ***");
-    end
+    // always @* begin
+    //     if ((N16_QA_BUF2 === N16_QA_BUF3n) || (N16_QA_BUF3n === N16_QA_BUF2) || (N16_QB_BUF2 === N16_QB_BUF3n)) $display("*** BAD BB63 Sxx INPUT ***");
+    // end
     T5A_DLY bb63 (.A1(CC68_Q), .A2(CC68_Q), .B1(ROW_B[1]), .B2(ROW_A[1]), .S1n(N16_QA_BUF2), .S2(N16_QA_BUF3n), .S3n(N16_QA_BUF3n), .S4(N16_QA_BUF2), .S5n(N16_QB_BUF2), .S6(N16_QB_BUF3n), .Xn(BB63_Xn));
     wire M69; //Logic Cell V1N
     assign #0.55 M69 = ~BB63_Xn;
